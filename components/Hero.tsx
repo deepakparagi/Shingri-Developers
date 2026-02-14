@@ -26,9 +26,9 @@ export default function Hero() {
     const currentProject = allProjects[currentSlide];
 
     return (
-        <section className="relative h-screen w-full flex flex-col lg:flex-row overflow-hidden">
+        <section className="relative min-h-[100dvh] lg:h-screen w-full flex flex-col lg:flex-row overflow-hidden bg-monte-white">
             {/* Left Content */}
-            <div className="w-full lg:w-1/2 h-1/2 lg:h-full bg-monte-white text-monte-black flex flex-col justify-center px-4 md:px-8 lg:px-24 relative z-10 order-2 lg:order-1">
+            <div className="w-full lg:w-1/2 flex-1 lg:h-full bg-monte-white text-monte-black flex flex-col justify-center px-4 md:px-8 lg:px-24 py-20 lg:py-0 relative z-10 order-2 lg:order-1">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -39,13 +39,13 @@ export default function Hero() {
                         <p className="text-sm font-sans tracking-wide uppercase">Building Your Dreams</p>
                     </div>
 
-                    <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif leading-tight lg:leading-[0.9] mb-6 lg:mb-12 text-center lg:text-left">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-tight lg:leading-[0.9] mb-8 lg:mb-12 text-center lg:text-left mt-8 lg:mt-0">
                         The Art of <br className="hidden lg:block" />
                         Fine Living <br className="hidden lg:block" />
-                        <span className="italic">Redefined</span>
+                        <span className="italic block lg:inline mt-2 lg:mt-0">Redefined</span>
                     </h1>
 
-                    <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 lg:gap-6">
+                    <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 lg:gap-6 mb-8 lg:mb-0">
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Link href="/contact" className="px-6 py-3 lg:px-8 lg:py-4 bg-monte-black text-white rounded-full text-base lg:text-lg font-medium hover:bg-black/80 transition-all flex items-center gap-2 group">
                                 Enquire Now
@@ -72,7 +72,7 @@ export default function Hero() {
             </div>
 
             {/* Right Media Slider */}
-            <div className="w-full lg:w-1/2 h-1/2 lg:h-full relative bg-black overflow-hidden order-1 lg:order-2">
+            <div className="w-full lg:w-1/2 h-[50dvh] lg:h-full relative bg-black overflow-hidden order-1 lg:order-2">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentSlide}

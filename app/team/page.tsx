@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -30,7 +29,6 @@ const teamMembers = [
 export default function TeamPage() {
     return (
         <main className="bg-monte-white min-h-screen">
-            <Header />
 
             {/* Hero Section */}
             <section className="pt-32 md:pt-48 pb-24 px-4 md:px-8 lg:px-24 bg-monte-black text-white text-center">

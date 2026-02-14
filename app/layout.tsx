@@ -6,6 +6,8 @@ import SmoothScroll from "@/components/SmoothScroll";
 
 import Loader from "@/components/Loader";
 
+import Header from "@/components/Header";
+
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -37,6 +39,7 @@ export default function RootLayout({
         inter.variable
       )}>
         <Loader />
+        <Header />
 
         <SmoothScroll>
           {children}

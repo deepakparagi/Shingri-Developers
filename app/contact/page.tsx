@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { MoveRight } from "lucide-react";
 
@@ -30,12 +29,11 @@ export default function ContactPage() {
 
     return (
         <main className="bg-monte-white min-h-screen">
-            <Header />
 
             <section className="pt-32 md:pt-48 pb-12 px-4 md:px-8 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-16">
                 {/* Contact Info */}
                 <div>
-                    <h1 className="text-6xl font-serif text-monte-black mb-8">Get in Touch</h1>
+                    <h1 className="text-4xl md:text-6xl font-serif text-monte-black mb-8">Get in Touch</h1>
                     <p className="text-lg text-gray-600 mb-12 max-w-md">
                         Interested in our properties? Contact our sales team for a private consultation or visit our headquarters.
                     </p>

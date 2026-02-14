@@ -38,7 +38,7 @@ export default function Loader() {
         <AnimatePresence mode="wait">
             {loading && (
                 <motion.div
-                    className="fixed inset-0 z-[10000] bg-monte-black flex flex-col items-center justify-center text-white"
+                    className="fixed inset-0 z-[10000] bg-monte-black flex flex-col items-center justify-center text-white px-4 text-center"
                     variants={container}
                     initial="hidden"
                     animate="show"
@@ -47,18 +47,18 @@ export default function Loader() {
                     <div className="overflow-hidden mb-2">
                         <motion.p
                             variants={item}
-                            className="text-sm md:text-base font-sans tracking-[0.3em] uppercase text-white/60"
+                            className="text-xs md:text-base font-sans tracking-[0.3em] uppercase text-white/60"
                         >
                             Welcome to
                         </motion.p>
                     </div>
 
-                    <div className="overflow-hidden relative">
+                    <div className="overflow-hidden relative w-full">
                         <motion.h1
                             variants={item}
-                            className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold tracking-widest text-white relative z-10"
+                            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold tracking-widest text-white relative z-10 leading-tight"
                         >
-                            SHINGRI <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600">DEVELOPERS</span>
+                            SHINGRI <br className="md:hidden" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600">DEVELOPERS</span>
                         </motion.h1>
                     </div>
 

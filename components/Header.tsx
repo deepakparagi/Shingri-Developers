@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Search, Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -13,6 +14,16 @@ export default function Header() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredProjects, setFilteredProjects] = useState(allProjects);
+
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const toggleSearch = () => {
@@ -45,12 +56,20 @@ export default function Header() {
         { href: "/contact", label: "Contact" },
     ];
 
+    const pathname = usePathname();
+    const isHomePage = pathname === "/";
+
     return (
         <>
-            <header className="fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-4 md:px-8 py-6 mix-blend-difference text-white">
+            <header className={cn(
+                "fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-4 md:px-8 lg:px-24 py-4 md:py-6 transition-all duration-300",
+                scrolled || !isHomePage
+                    ? "bg-monte-black/80 backdrop-blur-md border-b border-white/10 py-3 md:py-4"
+                    : "mix-blend-difference"
+            )}>
                 <div className="flex items-center justify-between gap-8">
                     {/* Logo */}
-                    <Link href="/" className="text-2xl font-serif font-bold tracking-widest text-white z-50">
+                    <Link href="/" className="text-xl md:text-2xl font-serif font-bold tracking-widest text-white z-50">
                         SHINGRI
                     </Link>
                 </div>

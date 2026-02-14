@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check, MapPin, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { allProjects } from "@/data/projects";
 
@@ -30,7 +29,6 @@ export default function ProjectDetailPage() {
 
     return (
         <main className="bg-monte-white min-h-screen">
-            <Header />
 
             {/* Hero Section */}
             <section className="relative h-[80vh] w-full">

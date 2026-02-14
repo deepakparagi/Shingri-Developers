@@ -23,7 +23,7 @@ export default function TrustSection() {
                             "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
                             "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop"
                         ].map((src, i) => (
-                            <div key={i} className="w-20 h-20 rounded-full border-4 border-monte-white -ml-4 first:ml-0 relative overflow-hidden bg-gray-200" style={{ zIndex: 3 - i }}>
+                            <div key={i} className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-monte-white -ml-4 first:ml-0 relative overflow-hidden bg-gray-200" style={{ zIndex: 3 - i }}>
                                 <Image src={src} alt="Team Member" fill className="object-cover" />
                             </div>
                         ))}

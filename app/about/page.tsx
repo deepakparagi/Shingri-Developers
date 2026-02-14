@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -9,7 +8,6 @@ import { Linkedin, Twitter, Mail, Check, Star, Award, Users, Building2, MapPin }
 export default function AboutPage() {
     return (
         <main className="bg-monte-white min-h-screen">
-            <Header />
 
 
             {/* Hero Section */}

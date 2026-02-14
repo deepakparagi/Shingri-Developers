@@ -26,7 +26,7 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 300 }}
         >
-            <Link href={`/projects/${property.slug}`} className="block group relative w-full h-[600px] rounded-[32px] overflow-hidden cursor-pointer">
+            <Link href={`/projects/${property.slug}`} className="block group relative w-full h-[500px] md:h-[600px] rounded-[32px] overflow-hidden cursor-pointer">
                 {/* Background Image */}
                 <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
                     <Image

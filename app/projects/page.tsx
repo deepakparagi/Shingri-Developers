@@ -107,7 +107,7 @@ export default function ProjectsPage() {
                                     <h3 className="text-2xl font-serif">{prop.title}</h3>
                                 </Link>
                                 <p className="text-sm text-gray-500 uppercase tracking-wider">{prop.location}</p>
-                                <span className="inline-block mt-2 px-3 py-1 bg-gray-100 text-xs font-semibold uppercase tracking-widest rounded-full">
+                                <span className="inline-block mt-2 px-3 py-1 bg-gray-100 text-monte-black text-xs font-semibold uppercase tracking-widest rounded-full">
                                     {prop.status}
                                 </span>
                             </div>

@@ -66,10 +66,10 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
                         </div>
 
                         <div className="flex gap-4 md:translate-y-full md:group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                            <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full" title="Bedrooms">
+                            <div className="flex items-center gap-2 bg-gray-100 text-monte-black px-3 py-1 rounded-full" title="Bedrooms">
                                 <Bed size={16} /> <span className="text-sm font-medium">{property.beds} Bed</span>
                             </div>
-                            <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full" title="Area">
+                            <div className="flex items-center gap-2 bg-gray-100 text-monte-black px-3 py-1 rounded-full" title="Area">
                                 <Expand size={16} /> <span className="text-sm font-medium">{property.area}</span>
                             </div>
                         </div>

@@ -103,7 +103,7 @@ export default function ProjectsPage() {
                         >
                             <PropertyCard property={prop} />
                             <div className="mt-4">
-                                <Link href={`/projects/${prop.slug}`} className="hover:text-monte-gold transition-colors block">
+                                <Link href={`/projects/${prop.slug}`} className="text-monte-black hover:text-monte-gold transition-colors block">
                                     <h3 className="text-2xl font-serif">{prop.title}</h3>
                                 </Link>
                                 <p className="text-sm text-gray-500 uppercase tracking-wider">{prop.location}</p>

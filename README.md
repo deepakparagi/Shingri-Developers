@@ -2,11 +2,31 @@
 
 A premium real estate portfolio website built with **Next.js 14**, **Tailwind CSS**, and **Framer Motion**.
 
-## 🚀 Deploy Now
+## 🚀 Deployment
 
-The easiest way to host this website is to deploy it on Vercel. Click the button below to deploy your own copy of this project:
+The easiest way to deploy this Next.js app is using [Vercel](https://vercel.com/), the creators of Next.js.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdeepakparagi%2FShingri-Developers-02)
+### Vercel (Recommended)
+
+1.  Push your code to a Git repository (GitHub, GitLab, or Bitbucket).
+2.  Go to [Vercel](https://vercel.com/) and sign up/log in.
+3.  Click **Add New Project** and import your repository.
+4.  Vercel will automatically detect the framework and build settings.
+5.  Click **Deploy**.
+
+### Manual Production Build
+
+To run the application in production mode locally or on a VPS:
+
+1.  Build the application:
+    ```bash
+    npm run build
+    ```
+2.  Start the production server:
+    ```bash
+    npm start
+    ```
+    The app will be available at `http://localhost:3000`.
 
 ## ✨ Features
 

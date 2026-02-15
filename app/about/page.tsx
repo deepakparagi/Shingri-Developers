@@ -11,7 +11,7 @@ export default function AboutPage() {
 
 
             {/* Hero Section */}
-            <section className="pt-48 md:pt-64 pb-32 px-4 md:px-8 lg:px-24 flex flex-col items-center text-center">
+            <section className="pt-52 md:pt-64 pb-32 px-4 md:px-8 lg:px-24 flex flex-col items-center text-center">
                 <motion.div
                     initial="hidden"
                     animate="visible"

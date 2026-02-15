@@ -33,13 +33,18 @@ export default function FeatureGrid() {
                     viewport={{ once: true }}
                 >
                     {items.map((item, i) => (
-                        <motion.div key={i} className="flex md:flex-col gap-4 items-start md:items-start p-4 md:p-0 bg-white md:bg-transparent rounded-xl md:rounded-none shadow-sm md:shadow-none" variants={itemAnim}>
-                            <div className="p-3 bg-monte-white md:bg-transparent rounded-full flex-shrink-0">
-                                <item.icon size={32} strokeWidth={1} className="text-monte-black" />
+                        <motion.div
+                            key={i}
+                            className="flex md:flex-col gap-4 items-start md:items-start p-6 md:p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-transparent hover:border-monte-gold/20 group"
+                            variants={itemAnim}
+                            whileHover={{ y: -10 }}
+                        >
+                            <div className="p-4 bg-monte-white rounded-full flex-shrink-0 group-hover:bg-monte-black group-hover:text-white transition-colors duration-500">
+                                <item.icon size={32} strokeWidth={1} className="text-monte-black group-hover:text-white transition-colors duration-500" />
                             </div>
                             <div>
-                                <h3 className="text-xl font-medium mb-1">{item.title}</h3>
-                                <p className="text-sm text-gray-500">{item.desc}</p>
+                                <h3 className="text-xl font-medium mb-2 group-hover:text-monte-gold transition-colors">{item.title}</h3>
+                                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
                             </div>
                         </motion.div>
                     ))}

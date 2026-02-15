@@ -25,12 +25,16 @@ export default function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+        if (!isMenuOpen) setIsSearchOpen(false);
+    };
     const toggleSearch = () => {
         setIsSearchOpen(!isSearchOpen);
         if (!isSearchOpen) {
             setSearchQuery(""); // Reset search logic when opening
             setFilteredProjects(allProjects);
+            setIsMenuOpen(false);
         }
     };
 
@@ -64,7 +68,7 @@ export default function Header() {
             <header className={cn(
                 "fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-4 md:px-8 lg:px-12 py-4 md:py-6 transition-all duration-300 text-white",
                 scrolled || !isHomePage
-                    ? "bg-[#121212]/80 backdrop-blur-md py-3 md:py-4 border-b border-white/10"
+                    ? "bg-[#121212]/95 backdrop-blur-md py-3 md:py-4 border-b border-white/10"
                     : "bg-gradient-to-b from-neutral-900/90 via-neutral-900/60 to-transparent pt-6 md:pt-8"
             )}>
                 <div className="flex items-center justify-between gap-8 ml-1">
@@ -117,7 +121,7 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-[60] bg-monte-black/80 backdrop-blur-3xl pt-32 px-8 lg:px-24 overflow-y-auto border-t border-white/10"
+                        className="fixed inset-0 z-[95] bg-monte-black/80 backdrop-blur-3xl pt-32 px-8 lg:px-24 overflow-y-auto border-t border-white/10"
                     >
                         <button
                             onClick={toggleSearch}
@@ -185,7 +189,7 @@ export default function Header() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: "100%" }}
                         transition={{ type: "tween", duration: 0.3 }}
-                        className="fixed inset-0 bg-monte-black/95 backdrop-blur-3xl text-white flex flex-col justify-center items-center z-40 md:hidden"
+                        className="fixed inset-0 bg-monte-black/95 backdrop-blur-3xl text-white flex flex-col justify-center items-center z-[90] md:hidden"
                     >
                         <nav className="flex flex-col gap-8 text-center">
                             {navLinks.map((link) => (

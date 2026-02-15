@@ -115,7 +115,7 @@ export default function Footer() {
 
 
             <div className="mt-12 pt-8 border-t border-white/10 flex justify-between items-center text-sm text-white/40">
-                <p>© 2024 SHINGRI Developers. All rights reserved.</p>
+                <p>© 2026 SHINGRI Developers. All rights reserved.</p>
                 <div className="flex gap-6">
                     <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
                     <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>

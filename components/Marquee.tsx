@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Marquee() {
     return (
-        <section className="relative py-24 overflow-hidden flex items-center bg-monte-accent">
+        <section className="relative py-4 overflow-hidden flex items-center bg-monte-accent">
             {/* Parallax Background */}
             <div
                 className="absolute inset-0 z-0 bg-fixed bg-center bg-cover"

@@ -66,10 +66,10 @@ export default function Header() {
     return (
         <>
             <header className={cn(
-                "fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-4 md:px-8 lg:px-12 py-4 md:py-6 transition-all duration-300 text-white",
+                "fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-4 md:px-8 lg:px-12 py-4 md:py-6 transition-all duration-500 text-white",
                 scrolled || !isHomePage
-                    ? "bg-[#121212]/95 backdrop-blur-md py-3 md:py-4 border-b border-white/10"
-                    : "bg-gradient-to-b from-neutral-900/90 via-neutral-900/60 to-transparent pt-6 md:pt-8"
+                    ? "bg-[#121212]/80 backdrop-blur-xl py-3 md:py-4 border-b border-white/5 shadow-sm"
+                    : "bg-gradient-to-b from-neutral-900/90 via-neutral-900/50 to-transparent pt-6 md:pt-8"
             )}>
                 <div className="flex items-center justify-between gap-8 ml-1">
                     {/* Logo */}
@@ -89,12 +89,12 @@ export default function Header() {
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-8 mr-8">
                     {navLinks.map((link) => (
-                        <motion.div key={link.href} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <Link href={link.href} className="text-sm tracking-widest hover:text-gray-300 transition-colors uppercase relative group drop-shadow-md font-medium">
-                                {link.label}
-                                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                        <div key={link.href} className="relative group overflow-hidden">
+                            <Link href={link.href} className="text-sm tracking-[0.2em] text-white/90 hover:text-white transition-colors uppercase relative font-medium py-2 block">
+                                <span className="relative z-10">{link.label}</span>
+                                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-monte-gold transform scale-x-0 origin-right transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100 group-hover:origin-left"></span>
                             </Link>
-                        </motion.div>
+                        </div>
                     ))}
                 </nav>
 

@@ -22,22 +22,22 @@ interface PropertyProps {
 export default function PropertyCard({ property }: { property: PropertyProps }) {
     return (
         <motion.div
-            whileHover={{ y: -15 }}
+            whileHover={{ y: -8 }}
             whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="rounded-[32px] hover:shadow-2xl hover:shadow-monte-black/20 transition-all duration-500"
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="rounded-[32px] hover:shadow-2xl hover:shadow-monte-black/10 transition-all duration-700 group"
         >
-            <Link href={`/projects/${property.slug}`} className="block group relative w-full h-[500px] md:h-[600px] rounded-[32px] overflow-hidden cursor-pointer">
+            <Link href={`/projects/${property.slug}`} className="block relative w-full h-[500px] md:h-[600px] rounded-[32px] overflow-hidden cursor-pointer">
                 {/* Background Image */}
                 <div className="absolute inset-0 overflow-hidden">
                     <Image
                         src={property.image}
                         alt="Property"
                         fill
-                        className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-110"
+                        className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110 will-change-transform"
                         sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
                 </div>
 
                 {/* Bottom Drawer */}

@@ -27,30 +27,33 @@ export default function VennDiagram() {
                 <motion.div
                     initial={{ x: -10, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
+                    whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.8)", zIndex: 10 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    className="absolute top-1/2 left-1/2 w-40 h-40 md:w-80 md:h-80 rounded-full border border-white/20 flex items-center justify-center -translate-x-[85%] -translate-y-[85%]"
+                    className="absolute top-1/2 left-1/2 w-40 h-40 md:w-80 md:h-80 rounded-full border border-white/20 flex items-center justify-center -translate-x-[85%] -translate-y-[85%] bg-monte-black/50 backdrop-blur-sm cursor-pointer"
                 >
-                    <span className="absolute -top-6 md:-top-8 text-[10px] md:text-sm uppercase tracking-widest text-white/80 w-24 md:w-32 text-center">10% Initial Payment</span>
+                    <span className="absolute -top-6 md:-top-8 text-[10px] md:text-sm uppercase tracking-widest text-white/80 w-24 md:w-32 text-center font-medium">10% Initial Payment</span>
                 </motion.div>
 
                 {/* Circle 2: Top Right */}
                 <motion.div
                     initial={{ x: 10, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
+                    whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.8)", zIndex: 10 }}
                     transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                    className="absolute top-1/2 left-1/2 w-40 h-40 md:w-80 md:h-80 rounded-full border border-white/20 flex items-center justify-center -translate-x-[15%] -translate-y-[85%]"
+                    className="absolute top-1/2 left-1/2 w-40 h-40 md:w-80 md:h-80 rounded-full border border-white/20 flex items-center justify-center -translate-x-[15%] -translate-y-[85%] bg-monte-black/50 backdrop-blur-sm cursor-pointer"
                 >
-                    <span className="absolute -top-6 md:-top-8 text-[10px] md:text-sm uppercase tracking-widest text-white/80 w-24 md:w-32 text-center">5 Years Installment</span>
+                    <span className="absolute -top-6 md:-top-8 text-[10px] md:text-sm uppercase tracking-widest text-white/80 w-24 md:w-32 text-center font-medium">5 Years Installment</span>
                 </motion.div>
 
                 {/* Circle 3: Bottom */}
                 <motion.div
                     initial={{ y: 10, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
+                    whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.8)", zIndex: 10 }}
                     transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-                    className="absolute top-1/2 left-1/2 w-40 h-40 md:w-80 md:h-80 rounded-full border border-white/20 flex items-center justify-center -translate-x-1/2 -translate-y-[15%]"
+                    className="absolute top-1/2 left-1/2 w-40 h-40 md:w-80 md:h-80 rounded-full border border-white/20 flex items-center justify-center -translate-x-1/2 -translate-y-[15%] bg-monte-black/50 backdrop-blur-sm cursor-pointer"
                 >
-                    <span className="absolute -bottom-6 md:-bottom-8 text-[10px] md:text-sm uppercase tracking-widest text-white/80 w-24 md:w-32 text-center">Rental Income 15%</span>
+                    <span className="absolute -bottom-6 md:-bottom-8 text-[10px] md:text-sm uppercase tracking-widest text-white/80 w-24 md:w-32 text-center font-medium">Rental Income 15%</span>
                 </motion.div>
             </div>
         </section>

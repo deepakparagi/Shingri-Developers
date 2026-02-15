@@ -4,10 +4,18 @@ import { ArrowRight, Instagram, Youtube, Twitter } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { motion } from "framer-motion";
+
 export default function Footer() {
     return (
-        <footer className="bg-monte-black text-white pt-16 md:pt-24 pb-12 px-4 md:px-8 lg:px-24">
-            <div className="flex flex-col lg:flex-row gap-16 mb-24">
+        <footer className="bg-monte-black text-white pt-16 md:pt-24 pb-12 px-4 md:px-8 lg:px-24 overflow-hidden">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="flex flex-col lg:flex-row gap-16 mb-24"
+            >
 
                 {/* Brand Column */}
                 <div>
@@ -60,9 +68,14 @@ export default function Footer() {
                                 className="bg-transparent border-b border-white/20 py-4 w-full focus:outline-none focus:border-white transition-colors placeholder:text-white/40 text-white"
                             />
                         </div>
-                        <button type="submit" className="self-start px-8 py-3 bg-white text-monte-black rounded-full mt-4 font-medium hover:bg-gray-200 transition-colors flex items-center gap-2 cursor-pointer">
+                        <motion.button
+                            type="submit"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="self-start px-8 py-3 bg-white text-monte-black rounded-full mt-4 font-medium hover:bg-gray-200 transition-colors flex items-center gap-2 cursor-pointer"
+                        >
                             Send Request <ArrowRight size={18} />
-                        </button>
+                        </motion.button>
                     </form>
                 </div>
 
@@ -79,7 +92,7 @@ export default function Footer() {
                     ></iframe>
                 </div>
 
-            </div>
+            </motion.div>
 
             <div className="h-[1px] w-full bg-white/10 mb-12" />
 

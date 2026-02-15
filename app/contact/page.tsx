@@ -4,6 +4,8 @@ import { useState } from "react";
 import Footer from "@/components/Footer";
 import { MoveRight } from "lucide-react";
 
+import { motion } from "framer-motion";
+
 export default function ContactPage() {
     const [formData, setFormData] = useState({
         name: "",
@@ -32,7 +34,11 @@ export default function ContactPage() {
 
             <section className="pt-32 md:pt-48 pb-12 px-4 md:px-8 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-16">
                 {/* Contact Info */}
-                <div>
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                >
                     <h1 className="text-4xl md:text-6xl font-serif text-monte-black mb-8">Get in Touch</h1>
                     <p className="text-lg text-gray-600 mb-12 max-w-md">
                         Interested in our properties? Contact our sales team for a private consultation or visit our headquarters.
@@ -55,10 +61,15 @@ export default function ContactPage() {
                             <a href="mailto:adityashingri7@gmail.com" className="text-lg text-monte-black hover:text-gray-600 transition-colors">adityashingri7@gmail.com</a>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Form */}
-                <div className="bg-white p-8 md:p-12 shadow-2xl shadow-gray-200">
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="bg-white p-8 md:p-12 shadow-2xl shadow-gray-200"
+                >
                     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                         <div>
                             <label className="block text-sm uppercase tracking-widest text-gray-500 mb-2">Name</label>
@@ -107,12 +118,12 @@ export default function ContactPage() {
                                 placeholder="I am interested in..."
                             />
                         </div>
-                        <button type="submit" className="bg-monte-black text-white py-4 px-8 flex items-center justify-between group mt-4 hover:bg-black/90 transition-colors">
+                        <button type="submit" className="bg-monte-black text-white py-4 px-8 flex items-center justify-between group mt-4 hover:bg-black/90 transition-colors cursor-pointer">
                             <span>Send Message via WhatsApp</span>
                             <MoveRight className="group-hover:translate-x-2 transition-transform" />
                         </button>
                     </form>
-                </div>
+                </motion.div>
             </section>
 
             {/* Map Section */}

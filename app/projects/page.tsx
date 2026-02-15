@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import PropertyCard from "@/components/PropertyCard";
 import Link from "next/link";
 import Footer from "@/components/Footer";
@@ -9,6 +10,7 @@ import { allProjects } from "@/data/projects";
 
 export default function ProjectsPage() {
     const [filter, setFilter] = useState("All");
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const filteredProjects = filter === "All"
         ? allProjects
@@ -24,20 +26,49 @@ export default function ProjectsPage() {
 
                 {/* Filter Tabs & Dropdown */}
                 <div className="mb-16 border-b border-gray-200 pb-4">
-                    {/* Mobile Dropdown */}
-                    <div className="md:hidden relative">
-                        <select
-                            value={filter}
-                            onChange={(e) => setFilter(e.target.value)}
-                            className="w-full appearance-none bg-white border border-gray-200 rounded-full py-3 px-6 text-lg font-serif text-monte-black focus:outline-none focus:border-monte-black transition-all shadow-sm"
+                    {/* Mobile Custom Dropdown */}
+                    <div className="md:hidden relative z-50">
+                        <button
+                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                            className="w-full bg-white border border-gray-200 rounded-full py-4 px-8 flex justify-between items-center text-xl font-serif text-monte-black shadow-sm hover:border-monte-black transition-colors"
                         >
-                            {["All", "Ongoing", "Upcoming", "Completed"].map((tab) => (
-                                <option key={tab} value={tab}>{tab}</option>
-                            ))}
-                        </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-6 text-monte-black">
-                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                        </div>
+                            <span>{filter} Projects</span>
+                            <motion.div
+                                animate={{ rotate: isDropdownOpen ? 180 : 0 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <ChevronDown size={20} />
+                            </motion.div>
+                        </button>
+
+                        <AnimatePresence>
+                            {isDropdownOpen && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute top-full left-0 right-0 mt-2 bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden"
+                                >
+                                    {["All", "Ongoing", "Upcoming", "Completed"].map((tab) => (
+                                        <button
+                                            key={tab}
+                                            onClick={() => {
+                                                setFilter(tab);
+                                                setIsDropdownOpen(false);
+                                            }}
+                                            className={`w-full py-4 px-8 text-left text-lg font-serif transition-colors hover:bg-gray-50 flex justify-between items-center ${filter === tab ? "text-monte-black font-medium bg-gray-50" : "text-gray-500"
+                                                }`}
+                                        >
+                                            {tab}
+                                            {filter === tab && (
+                                                <motion.div layoutId="check" className="w-2 h-2 rounded-full bg-monte-gold" />
+                                            )}
+                                        </button>
+                                    ))}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
 
                     {/* Desktop Tabs */}

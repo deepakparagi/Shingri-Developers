@@ -2,6 +2,7 @@
 
 import { ArrowRight, Instagram, Youtube, Twitter } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
     return (
@@ -10,7 +11,14 @@ export default function Footer() {
 
                 {/* Brand Column */}
                 <div>
-                    <h3 className="text-3xl font-serif mb-6">SHINGRI</h3>
+                    <div className="relative h-20 w-48 mb-6">
+                        <Image
+                            src="/images/logo.png"
+                            alt="SHINGRI Developers"
+                            fill
+                            className="object-contain object-left"
+                        />
+                    </div>
                     <p className="text-white/60 mb-6 max-w-xs">
                         Redefining luxury living in India. Exclusive properties for the discerning investor.
                     </p>

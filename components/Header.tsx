@@ -62,15 +62,23 @@ export default function Header() {
     return (
         <>
             <header className={cn(
-                "fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-4 md:px-8 lg:px-24 py-4 md:py-6 transition-all duration-300",
+                "fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-4 md:px-8 lg:px-12 py-4 md:py-6 transition-all duration-300 text-white",
                 scrolled || !isHomePage
-                    ? "bg-monte-black/80 backdrop-blur-md border-b border-white/10 py-3 md:py-4"
-                    : "mix-blend-difference"
+                    ? "bg-[#121212]/80 backdrop-blur-md py-3 md:py-4 border-b border-white/10"
+                    : "bg-gradient-to-b from-neutral-900/90 via-neutral-900/60 to-transparent pt-6 md:pt-8"
             )}>
-                <div className="flex items-center justify-between gap-8">
+                <div className="flex items-center justify-between gap-8 ml-1">
                     {/* Logo */}
-                    <Link href="/" className="text-xl md:text-2xl font-serif font-bold tracking-widest text-white z-50">
-                        SHINGRI
+                    <Link href="/" className="relative z-50 flex-shrink-0">
+                        <div className="relative h-12 w-28 md:h-16 md:w-40 transition-transform duration-300 hover:scale-105">
+                            <Image
+                                src="/images/logo.png"
+                                alt="SHINGRI Developers"
+                                fill
+                                className="object-contain object-left drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] filter brightness-110 contrast-125"
+                                priority
+                            />
+                        </div>
                     </Link>
                 </div>
 
@@ -78,7 +86,7 @@ export default function Header() {
                 <nav className="hidden md:flex items-center gap-8 mr-8">
                     {navLinks.map((link) => (
                         <motion.div key={link.href} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <Link href={link.href} className="text-sm tracking-widest hover:text-gray-300 transition-colors uppercase relative group">
+                            <Link href={link.href} className="text-sm tracking-widest hover:text-gray-300 transition-colors uppercase relative group drop-shadow-md font-medium">
                                 {link.label}
                                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
                             </Link>
@@ -86,7 +94,7 @@ export default function Header() {
                     ))}
                 </nav>
 
-                <div className="flex items-center gap-6 z-50">
+                <div className="flex items-center gap-6 z-50 flex-shrink-0">
                     <button
                         onClick={toggleSearch}
                         className="p-2 hover:bg-white/10 rounded-full transition-colors"

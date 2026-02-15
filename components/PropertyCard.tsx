@@ -40,7 +40,7 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
                 </div>
 
                 {/* Bottom Drawer */}
-                <div className="absolute bottom-0 left-0 w-full bg-white/95 backdrop-blur-sm p-8 transition-transform duration-500 translate-y-[calc(100%-0px)] group-hover:translate-y-0">
+                <div className="absolute bottom-0 left-0 w-full bg-white/95 backdrop-blur-sm p-8 transition-transform duration-500 translate-y-0 md:translate-y-[calc(100%-0px)] md:group-hover:translate-y-0">
                     <div className="flex justify-between items-end mb-4">
                         <div>
                             <p className="text-gray-500 text-sm uppercase tracking-wider mb-1">Price</p>

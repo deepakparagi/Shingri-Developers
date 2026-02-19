@@ -1,4 +1,4 @@
-﻿
+
 > monte-web@0.1.0 lint
 > eslint
 
@@ -8,8 +8,6 @@ D:\Shingri Developers Websites\Shingri Developers-02\app\about\page.tsx
     6:20   warning  'Twitter' is defined but never used                              @typescript-eslint/no-unused-vars
     6:29   warning  'Mail' is defined but never used                                 @typescript-eslint/no-unused-vars
     6:35   warning  'Check' is defined but never used                                @typescript-eslint/no-unused-vars
-  173:144  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
-  219:60   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
   274:89   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
   274:103  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
 
@@ -65,14 +63,5 @@ D:\Shingri Developers Websites\Shingri Developers-02\components\ThemeToggle.tsx:
 D:\Shingri Developers Websites\Shingri Developers-02\components\VennDiagram.tsx
   5:7  warning  'mobileItems' is assigned a value but never used  @typescript-eslint/no-unused-vars
 
-D:\Shingri Developers Websites\Shingri Developers-02\components\showcase\PerformanceSection.tsx
-  4:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
-
-D:\Shingri Developers Websites\Shingri Developers-02\components\showcase\ShowcaseHero.tsx
-  2:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
-
-D:\Shingri Developers Websites\Shingri Developers-02\components\showcase\ShowcaseTabs.tsx
-  5:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
-
-Ô£û 19 problems (7 errors, 12 warnings)
+✖ 14 problems (5 errors, 9 warnings)
 

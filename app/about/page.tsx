@@ -170,7 +170,7 @@ export default function AboutPage() {
                             <span className="text-sm uppercase tracking-widest text-monte-gold mb-2 block font-bold">Our Footprint</span>
                             <h2 className="text-4xl md:text-5xl font-serif mb-6 text-monte-text-primary">Expanding Horizons</h2>
                             <p className="text-monte-text-body text-lg leading-relaxed">
-                                From our roots in Belgaum, we are actively expanding our legacy across North Karnataka. We are bringing SHINGRI's signature blend of luxury and community living to new cities, creating landmarks that redefine the skyline.
+                                From our roots in Belgaum, we are actively expanding our legacy across North Karnataka. We are bringing SHINGRI&apos;s signature blend of luxury and community living to new cities, creating landmarks that redefine the skyline.
                             </p>
                         </div>
                         <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -216,7 +216,7 @@ export default function AboutPage() {
                             <span className="text-sm uppercase tracking-widest text-monte-text-secondary mb-2 block font-bold">Social Responsibility</span>
                             <h2 className="text-4xl font-serif text-monte-text-primary mb-6">Impact Beyond Construction</h2>
                             <p className="text-lg text-monte-text-body mb-6 leading-relaxed">
-                                We believe that a developer's responsibility extends beyond the boundary walls of their projects. Through various initiatives, we contribute to local infrastructure development, support educational programs, and ensure that our growth translates into prosperity for the entire region.
+                                We believe that a developer&apos;s responsibility extends beyond the boundary walls of their projects. Through various initiatives, we contribute to local infrastructure development, support educational programs, and ensure that our growth translates into prosperity for the entire region.
                             </p>
                             <div className="grid grid-cols-2 gap-8 border-t border-monte-border pt-8">
                                 {[

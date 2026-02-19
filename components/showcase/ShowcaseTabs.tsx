@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import Image from "next/image"; // Assuming you might replace divs with Images later
+
 
 const tabs = [
     { id: "redesign", label: "Redesign", color: "bg-orange-500" },

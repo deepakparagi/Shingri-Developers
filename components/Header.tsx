@@ -142,7 +142,7 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-[95] bg-black/95 backdrop-blur-3xl pt-32 px-4 md:px-8 lg:px-24 overflow-y-auto"
+                        className="fixed inset-0 z-[105] bg-black/95 backdrop-blur-3xl pt-32 px-4 md:px-8 lg:px-24 overflow-y-auto"
                     >
                         <button
                             onClick={toggleSearch}
@@ -155,7 +155,7 @@ export default function Header() {
                             <input
                                 type="text"
                                 placeholder="Search..."
-                                className="w-full bg-transparent border-b border-white/20 text-2xl md:text-5xl font-serif text-white placeholder:text-white/30 py-4 focus:outline-none focus:border-monte-gold transition-colors mb-10"
+                                className="w-full bg-transparent border-b border-white/20 text-2xl md:text-5xl font-serif !text-white placeholder:!text-white py-4 focus:outline-none focus:border-monte-gold transition-colors mb-10"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 autoFocus
@@ -178,8 +178,8 @@ export default function Header() {
                                             />
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <h3 className="text-lg font-serif mb-0.5 group-hover:text-monte-gold transition-colors text-white truncate">{project.title}</h3>
-                                            <p className="text-white/60 text-sm mb-1.5 truncate">{project.location}</p>
+                                            <h3 className="text-lg font-serif mb-0.5 group-hover:text-monte-gold transition-colors !text-white truncate">{project.title}</h3>
+                                            <p className="!text-white text-sm mb-1.5 truncate">{project.location}</p>
                                         </div>
                                     </Link>
                                 ))}

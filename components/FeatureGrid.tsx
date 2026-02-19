@@ -91,7 +91,7 @@ export default function FeatureGrid() {
                             <Image src="https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop" alt="Luxury Villas" fill className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100 z-0" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent z-0 pointer-events-none" />
                             <div className="relative z-10 text-white">
-                                <h3 className="text-2xl font-serif drop-shadow-lg">Luxury Villas</h3>
+                                <h3 className="text-2xl font-serif drop-shadow-lg !text-white">Luxury Villas</h3>
                             </div>
                         </motion.div>
 
@@ -106,7 +106,7 @@ export default function FeatureGrid() {
                             <Image src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop" alt="Penthouses" fill className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100 z-0" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent z-0 pointer-events-none" />
                             <div className="relative z-10 text-white">
-                                <h3 className="text-xl font-serif drop-shadow-lg">Penthouses</h3>
+                                <h3 className="text-xl font-serif drop-shadow-lg !text-white">Penthouses</h3>
                             </div>
                         </motion.div>
 
@@ -121,7 +121,7 @@ export default function FeatureGrid() {
                             <Image src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop" alt="Apartments" fill className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100 z-0" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent z-0 pointer-events-none" />
                             <div className="relative z-10 text-white">
-                                <h3 className="text-2xl font-serif drop-shadow-lg">Apartments</h3>
+                                <h3 className="text-2xl font-serif drop-shadow-lg !text-white">Apartments</h3>
                             </div>
                         </motion.div>
 
@@ -140,7 +140,7 @@ export default function FeatureGrid() {
                                 <div className="w-14 h-14 rounded-full border border-white/20 bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-white/40 transition-all duration-300">
                                     <ArrowDown size={24} className="text-white group-hover:translate-y-1 transition-transform duration-300" />
                                 </div>
-                                <p className="text-sm text-white uppercase tracking-[0.2em] font-medium">Download Catalog</p>
+                                <p className="text-sm text-white uppercase tracking-[0.2em] font-medium !text-white">Download Catalog</p>
                             </div>
                         </motion.div>
 
@@ -155,7 +155,7 @@ export default function FeatureGrid() {
                             <Image src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="Off-plan" fill className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100 z-0" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 z-0 pointer-events-none" />
                             <div className="relative z-10 text-white">
-                                <h3 className="text-xl font-serif">Off-Plan Projects</h3>
+                                <h3 className="text-xl font-serif !text-white">Off-Plan Projects</h3>
                             </div>
                         </motion.div>
 

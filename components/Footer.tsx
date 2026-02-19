@@ -147,22 +147,22 @@ export default function Footer() {
                     </div>
 
                     {/* Copyright */}
-                    <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
-                        <p>© 2026 SHINGRI Developers. All rights reserved.</p>
-                        <p>
+                    <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs !text-white">
+                        <p className="!text-white">© 2026 SHINGRI Developers. All rights reserved.</p>
+                        <p className="!text-white">
                             Developed by{" "}
                             <a
                                 href="https://deepakparagi.github.io/Deepak-Paragi-Portfolio/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-white/50 hover:text-white transition-colors underline underline-offset-2"
+                                className="!text-white hover:text-white/80 transition-colors"
                             >
                                 Deepak Paragi
                             </a>
                         </p>
                         <div className="flex gap-6">
-                            <Link href="#" className="hover:text-white/60 transition-colors">Privacy Policy</Link>
-                            <Link href="#" className="hover:text-white/60 transition-colors">Terms of Service</Link>
+                            <Link href="#" className="!text-white hover:text-white/80 transition-colors">Privacy Policy</Link>
+                            <Link href="#" className="!text-white hover:text-white/80 transition-colors">Terms of Service</Link>
                         </div>
                     </div>
                 </div>

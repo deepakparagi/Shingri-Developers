@@ -22,10 +22,10 @@ const item = {
 
 export default function PropertyGrid() {
     return (
-        <section className="bg-monte-beige py-16 md:py-24 px-4 md:px-8 lg:px-16">
-            <div className="max-w-[1800px] mx-auto">
+        <section className="bg-white py-16 md:py-24 border-b border-monte-border">
+            <div className="container-global">
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16"
                     variants={container}
                     initial="hidden"
                     whileInView="visible"

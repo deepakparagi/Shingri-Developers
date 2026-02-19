@@ -8,7 +8,7 @@ import ShowcaseFeatures from "@/components/showcase/ShowcaseFeatures";
 
 export default function ShowcasePage() {
     return (
-        <main className="min-h-screen bg-gray-50 text-black overflow-x-hidden selection:bg-blue-500 selection:text-white">
+        <main className="min-h-screen bg-monte-beige text-monte-text-primary overflow-x-hidden selection:bg-monte-gold selection:text-white">
             <ShowcaseHero />
             <ShowcaseFeatures />
             <ShowcaseTabs />

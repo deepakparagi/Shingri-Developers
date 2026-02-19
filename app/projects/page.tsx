@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import PropertyCard from "@/components/PropertyCard";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 import { allProjects } from "@/data/projects";
 
 export default function ProjectsPage() {
@@ -18,11 +19,157 @@ export default function ProjectsPage() {
 
     return (
         <main className="bg-monte-beige min-h-screen">
-            <div className="max-w-screen-2xl mx-auto pt-32 pb-12 px-4 md:px-8 lg:px-24">
-                <h1 className="text-4xl md:text-7xl font-serif text-monte-charcoal mb-6">Our Projects</h1>
-                <p className="text-monte-taupe max-w-2xl mb-12 text-lg">
-                    Discover our portfolio of exquisite developments, each a testament to luxury and architectural excellence.
-                </p>
+
+            {/* ═══ HERO: CINEMATIC PORTFOLIO SHOWCASE ═══ */}
+            <section className="relative min-h-screen pt-32 flex items-center overflow-hidden bg-[#0a0a0a]">
+
+                {/* Subtle ambient glow */}
+                <div className="pointer-events-none absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-[rgba(212,175,55,0.04)] blur-[120px]" />
+                <div className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[rgba(212,175,55,0.03)] blur-[100px]" />
+
+                <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-24 flex flex-col lg:flex-row items-center gap-16 pb-32 lg:pb-24">
+
+                    {/* ── LEFT: TYPOGRAPHY ── */}
+                    <div className="w-full lg:w-[55%] flex-shrink-0">
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.9, ease: [0.33, 1, 0.68, 1] }}
+                        >
+                            {/* Category label */}
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="w-8 h-[1.5px]" style={{ background: "rgba(212,175,55,0.8)" }} />
+                                <span className="text-[11px] font-bold tracking-[0.35em] uppercase" style={{ color: "rgba(212,175,55,0.85)" }}>
+                                    Portfolio
+                                </span>
+                            </div>
+
+                            {/* Main heading — stacked, oversized */}
+                            <h1 className="font-serif leading-[0.9] tracking-tight" style={{ color: "#ffffff" }}>
+                                <motion.span
+                                    initial={{ opacity: 0, y: 60 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1, delay: 0.15, ease: [0.33, 1, 0.68, 1] }}
+                                    className="block text-[14vw] sm:text-[10vw] lg:text-[8rem] xl:text-[9.5rem] text-white/15"
+                                >
+                                    Our
+                                </motion.span>
+                                <motion.span
+                                    initial={{ opacity: 0, y: 60 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1, delay: 0.28, ease: [0.33, 1, 0.68, 1] }}
+                                    className="block text-[14vw] sm:text-[10vw] lg:text-[8rem] xl:text-[9.5rem] -mt-3 lg:-mt-6"
+                                >
+                                    Projects
+                                </motion.span>
+                            </h1>
+
+                            {/* Gold divider + stats */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.8, delay: 0.55 }}
+                                className="flex items-center gap-8 mt-8"
+                            >
+                                <div className="h-[1px] flex-1 max-w-[80px]" style={{ background: "linear-gradient(to right, rgba(212,175,55,0.7), transparent)" }} />
+                                {/* Counter badge */}
+                                <div className="flex items-baseline gap-2">
+                                    <span className="text-5xl font-serif" style={{ color: "rgba(212,175,55,0.9)" }}>30+</span>
+                                    <span className="text-xs tracking-[0.25em] uppercase text-white/40">Developments</span>
+                                </div>
+                                <div className="h-[1px] flex-1 max-w-[80px]" style={{ background: "linear-gradient(to left, rgba(212,175,55,0.7), transparent)" }} />
+                            </motion.div>
+
+                            <motion.p
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.7 }}
+                                className="text-base md:text-lg text-white/40 mt-6 max-w-md leading-relaxed"
+                            >
+                                From heritage residences to landmark towers — each development is a testament to craftsmanship.
+                            </motion.p>
+                        </motion.div>
+                    </div>
+
+                    {/* ── RIGHT: FLOATING PROJECT PREVIEW CARDS ── */}
+                    <div className="w-full lg:w-[45%] relative h-auto lg:h-[560px] flex-shrink-0 flex flex-col gap-6 mt-12 lg:mt-0 lg:block">
+
+                        {/* Card 1 — back */}
+                        <motion.div
+                            initial={{ opacity: 0, rotate: 8, y: 40 }}
+                            animate={{ opacity: 1, rotate: 6, y: 0 }}
+                            transition={{ duration: 1.1, delay: 0.3 }}
+                            className="relative w-full h-64 sm:h-72 lg:absolute lg:top-0 lg:right-0 lg:w-64 lg:h-80 rounded-2xl overflow-hidden shadow-2xl group cursor-pointer transition-shadow duration-500 hover:shadow-black/50"
+                        >
+                            <div className="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0" />
+                            <Image
+                                src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop"
+                                alt="Penthouse project"
+                                fill
+                                className="object-cover scale-100 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-20" />
+                            <div className="absolute bottom-6 left-6 z-30 transform transition-transform duration-500 group-hover:-translate-y-1">
+                                <p className="text-[10px] tracking-[0.2em] text-white/70 uppercase mb-2 font-medium">Penthouse</p>
+                                <p className="text-white text-xl font-serif">Sky Residences</p>
+                            </div>
+                        </motion.div>
+
+                        {/* Card 2 — middle */}
+                        <motion.div
+                            initial={{ opacity: 0, rotate: -4, y: 60 }}
+                            animate={{ opacity: 1, rotate: -3, y: 0 }}
+                            transition={{ duration: 1.1, delay: 0.45 }}
+                            className="relative w-full h-64 sm:h-72 lg:absolute lg:top-16 lg:left-8 lg:w-72 lg:h-80 rounded-2xl overflow-hidden shadow-2xl z-10 group cursor-pointer transition-shadow duration-500 hover:shadow-black/50"
+                        >
+                            <div className="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0" />
+                            <Image
+                                src="https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=600&auto=format&fit=crop"
+                                alt="Villa project"
+                                fill
+                                className="object-cover scale-100 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-20" />
+                            <div className="absolute bottom-6 left-6 z-30 transform transition-transform duration-500 group-hover:-translate-y-1">
+                                <p className="text-[10px] tracking-[0.2em] text-white/70 uppercase mb-2 font-medium">Villa</p>
+                                <p className="text-white text-xl font-serif">Emerald Estate</p>
+                            </div>
+                        </motion.div>
+
+                        {/* Card 3 — front */}
+                        <motion.div
+                            initial={{ opacity: 0, rotate: 3, y: 80 }}
+                            animate={{ opacity: 1, rotate: 2, y: 0 }}
+                            transition={{ duration: 1.1, delay: 0.6 }}
+                            className="relative w-full h-64 sm:h-72 lg:absolute lg:bottom-0 lg:right-16 lg:w-60 lg:h-72 rounded-2xl overflow-hidden shadow-2xl z-20 group cursor-pointer transition-shadow duration-500 hover:shadow-black/50"
+                        >
+                            <div className="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0" />
+                            <Image
+                                src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600&auto=format&fit=crop"
+                                alt="Apartment project"
+                                fill
+                                className="object-cover scale-100 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-20" />
+                            <div className="absolute bottom-6 left-6 z-30 transform transition-transform duration-500 group-hover:-translate-y-1">
+                                <p className="text-[10px] tracking-[0.2em] text-white/70 uppercase mb-2 font-medium">Apartment</p>
+                                <p className="text-white text-xl font-serif">The Orchid</p>
+                            </div>
+                        </motion.div>
+
+                        {/* Thin gold decorative line */}
+                        <div
+                            className="absolute left-1/2 bottom-0 w-[1px] h-16 opacity-30"
+                            style={{ background: "linear-gradient(to top, rgba(212,175,55,0.8), transparent)" }}
+                        />
+                    </div>
+                </div>
+
+                {/* Bottom border line */}
+                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            </section>
+
+            <div className="max-w-screen-2xl mx-auto pt-12 pb-12 px-4 md:px-8 lg:px-24">
 
                 {/* Filter Tabs & Dropdown */}
                 <div className="mb-16 border-b border-monte-border/50 pb-4">
@@ -30,7 +177,7 @@ export default function ProjectsPage() {
                     <div className="md:hidden relative z-50">
                         <button
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                            className="w-full bg-monte-ivory border border-monte-border rounded-full py-4 px-8 flex justify-between items-center text-xl font-serif text-monte-charcoal shadow-sm hover:border-monte-gold transition-colors"
+                            className="w-full bg-white border border-monte-border rounded-full py-4 px-8 flex justify-between items-center text-xl font-serif text-monte-text-primary shadow-sm hover:border-monte-gold transition-colors"
                         >
                             <span>{filter} Projects</span>
                             <motion.div
@@ -48,7 +195,7 @@ export default function ProjectsPage() {
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                                     transition={{ duration: 0.2 }}
-                                    className="absolute top-full left-0 right-0 mt-2 bg-monte-ivory rounded-[32px] shadow-xl border border-monte-border/50 overflow-hidden"
+                                    className="absolute top-full left-0 right-0 mt-2 bg-white rounded-[32px] shadow-xl border border-monte-border overflow-hidden"
                                 >
                                     {["All", "Ongoing", "Upcoming", "Completed"].map((tab) => (
                                         <button
@@ -57,7 +204,7 @@ export default function ProjectsPage() {
                                                 setFilter(tab);
                                                 setIsDropdownOpen(false);
                                             }}
-                                            className={`w-full py-4 px-8 text-left text-lg font-serif transition-colors hover:bg-monte-sand/50 flex justify-between items-center ${filter === tab ? "text-monte-charcoal font-medium bg-monte-sand/30" : "text-monte-taupe"
+                                            className={`w-full py-4 px-8 text-left text-lg font-serif transition-colors hover:bg-monte-sand/50 flex justify-between items-center ${filter === tab ? "text-monte-text-primary font-medium bg-monte-sand/30" : "text-monte-text-secondary"
                                                 }`}
                                         >
                                             {tab}
@@ -77,7 +224,7 @@ export default function ProjectsPage() {
                             <button
                                 key={tab}
                                 onClick={() => setFilter(tab)}
-                                className={`text-lg tracking-widest uppercase transition-colors relative pb-2 ${filter === tab ? "text-monte-charcoal font-bold" : "text-monte-taupe/60 hover:text-monte-gold"
+                                className={`text-lg tracking-widest uppercase transition-colors relative pb-2 ${filter === tab ? "text-monte-text-primary font-bold" : "text-monte-text-secondary hover:text-monte-gold"
                                     }`}
                             >
                                 {tab}
@@ -103,15 +250,6 @@ export default function ProjectsPage() {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
                                 <PropertyCard property={prop} />
-                                <div className="mt-4">
-                                    <Link href={`/projects/${prop.slug}`} className="text-monte-charcoal hover:text-monte-gold transition-colors block">
-                                        <h3 className="text-2xl font-serif">{prop.title}</h3>
-                                    </Link>
-                                    <p className="text-sm text-monte-taupe uppercase tracking-widest mt-1">{prop.location}</p>
-                                    <span className="inline-block mt-3 px-3 py-1 bg-monte-sand/50 text-monte-charcoal text-xs font-bold uppercase tracking-widest rounded-full border border-monte-border/30">
-                                        {prop.status}
-                                    </span>
-                                </div>
                             </motion.div>
                         ))}
                     </div>

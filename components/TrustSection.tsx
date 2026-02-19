@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { EASE } from "@/lib/motion";
 
 const stats = [
     { value: "70+", label: "Successful Transactions Monthly" },
@@ -11,20 +12,20 @@ const stats = [
 
 export default function TrustSection() {
     return (
-        <section className="bg-monte-beige py-24 px-4 md:px-8 lg:px-24 border-t border-monte-border/20">
-            <div className="max-w-screen-2xl mx-auto">
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+        <section className="bg-white py-16 md:py-24 border-t border-monte-border">
+            <div className="container-global">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
 
                     {/* Team Section */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="flex flex-col gap-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.65, ease: EASE }}
+                        className="flex flex-col gap-6 w-full lg:w-auto"
                     >
-                        <h2 className="text-4xl font-serif text-monte-charcoal">Meet Our Professional Team</h2>
-                        <div className="flex items-center">
+                        <h2 className="text-3xl md:text-4xl font-serif text-monte-text-primary text-center lg:text-left">Meet Our Professional Team</h2>
+                        <div className="flex items-center justify-center lg:justify-start">
                             {/* Overlapping Headshots */}
                             {[
                                 "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop",
@@ -33,7 +34,7 @@ export default function TrustSection() {
                             ].map((src, i) => (
                                 <motion.div
                                     key={i}
-                                    className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-monte-beige -ml-4 first:ml-0 relative overflow-hidden bg-monte-sand"
+                                    className="w-14 h-14 md:w-20 md:h-20 rounded-full border-4 border-white -ml-4 first:ml-0 relative overflow-hidden bg-monte-sand"
                                     style={{ zIndex: 3 - i }}
                                     whileHover={{ scale: 1.1, zIndex: 10 }}
                                 >
@@ -41,24 +42,24 @@ export default function TrustSection() {
                                 </motion.div>
                             ))}
                             <div className="ml-6">
-                                <span className="text-sm font-medium underline underline-offset-4 cursor-pointer hover:text-monte-gold text-monte-charcoal transition-colors">View All Team</span>
+                                <span className="text-sm font-medium underline underline-offset-4 cursor-pointer hover:text-monte-gold text-monte-text-primary transition-colors">View All Team</span>
                             </div>
                         </div>
                     </motion.div>
 
                     {/* Stats Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-center lg:text-left">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 text-center lg:text-left w-full lg:w-auto">
                         {stats.map((stat, i) => (
                             <motion.div
                                 key={i}
-                                className="flex flex-col gap-2"
+                                className="flex flex-col gap-2 items-center lg:items-start"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: i * 0.2, duration: 0.6 }}
+                                transition={{ delay: i * 0.08, duration: 0.6, ease: EASE }}
                             >
-                                <span className="text-5xl font-serif text-monte-charcoal">{stat.value}</span>
-                                <span className="text-sm text-monte-taupe max-w-[150px] mx-auto lg:mx-0">{stat.label}</span>
+                                <span className="text-4xl md:text-5xl font-serif text-monte-text-primary">{stat.value}</span>
+                                <span className="text-sm text-monte-text-secondary max-w-[150px]">{stat.label}</span>
                             </motion.div>
                         ))}
                     </div>

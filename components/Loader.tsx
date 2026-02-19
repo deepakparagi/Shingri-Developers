@@ -10,7 +10,7 @@ export default function Loader() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 3500); // Extended loading time for the animation sequence
+        }, 3500); // Extended loading time
 
         return () => clearTimeout(timer);
     }, []);
@@ -45,10 +45,10 @@ export default function Loader() {
                     animate="show"
                     exit="exit"
                 >
-                    <div className="overflow-hidden mb-2">
+                    <div className="overflow-hidden mb-4">
                         <motion.p
                             variants={item}
-                            className="text-xs md:text-base font-sans tracking-[0.3em] uppercase text-white/60"
+                            className="text-sm md:text-lg font-sans tracking-[0.3em] uppercase text-white/60"
                         >
                             Welcome to
                         </motion.p>
@@ -57,13 +57,13 @@ export default function Loader() {
                     <div className="overflow-hidden relative flex justify-center">
                         <motion.div
                             variants={item}
-                            className="relative w-48 h-20 sm:w-64 sm:h-24 md:w-80 md:h-28"
+                            className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48" // Significantly Increased Size
                         >
                             <Image
                                 src="/images/logo.png"
                                 alt="SHINGRI Developers"
                                 fill
-                                className="object-contain filter invert brightness-0 invert"
+                                className="object-contain" // Removed filters for Original Colors
                                 priority
                             />
                         </motion.div>
@@ -73,7 +73,7 @@ export default function Loader() {
                         initial={{ width: 0 }}
                         animate={{ width: "200px" }}
                         transition={{ duration: 1.5, delay: 0.8, ease: "easeInOut" }}
-                        className="h-[1px] bg-gradient-to-r from-transparent via-yellow-500 to-transparent mt-8"
+                        className="h-[1px] bg-gradient-to-r from-transparent via-monte-gold to-transparent mt-8" // Changed to Gold
                     />
                 </motion.div>
             )}

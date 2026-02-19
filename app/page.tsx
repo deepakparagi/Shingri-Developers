@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-monte-white">
+    <main className="relative min-h-screen bg-monte-beige">
       <Hero />
       <PropertyGrid />
       <TrustSection />

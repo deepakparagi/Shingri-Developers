@@ -4,26 +4,37 @@
   /* Base Colors - White / Light Theme */
   --color-monte-beige: #FFFFFF;
   /* Main Background (Pure White) */
-  --color-monte-ivory: #F7F5F0;
-  /* Secondary Background (Warm Off-White) */
-  --color-monte-sand: #EDE8DF;
-  /* Tertiary Background (Light Sand) */
+  --color-monte-ivory: #FFFFFF;
+  /* Secondary Background (Pure White) */
+  --color-monte-sand: #F5F5F5;
+  /* Tertiary Background (Very Light Gray for differentiation) */
 
-  /* Typography Scale - Dark for contrast on white */
-  --color-monte-text-primary: #1A1A1A;
-  /* Near Black - Headings */
-  --color-monte-text-body: #2C2A26;
-  /* Dark Charcoal - Body */
-  --color-monte-text-secondary: #6B6560;
-  /* Warm Gray - Metadata */
-  --color-monte-text-caption: #9E9890;
-  /* Light Warm Gray - Caption */
+  /* Typography Scale - High Contrast / WCAG AA Compliant */
+  --color-monte-text-primary: #000000;
+  /* Main Headings */
+  --color-monte-text-body: #000000;
+  /* Paragraphs */
+  --color-monte-text-secondary: #000000;
+  /* Muted Text - Updated to Black as per request */
+  --color-monte-text-caption: #404040;
+  /* Light Labels / Metadata - Dark Gray for some distinction */
+
+  --color-monte-text-inverse: #FFFFFF;
+  /* For Dark Backgrounds */
 
   /* Accents */
   --color-monte-gold: #C6A75E;
-  --color-monte-gold-hover: #B8963F;
-  --color-monte-border: #DDD8CF;
-  /* Light Warm Border */
+  --color-monte-gold-hover: #B0924E;
+  --color-monte-border: #E5E7EB;
+  /* Light Gray Border */
+
+  /* Semantic mappings for Tailwind */
+  --color-background: var(--color-monte-beige);
+  --color-foreground: var(--color-monte-text-body);
+
+  /* ... rest of the file ... */
+
+
 
   /* Semantic mappings for Tailwind */
   --color-background: var(--color-monte-beige);
@@ -48,13 +59,16 @@
   --color-border: var(--color-monte-border);
 
   /* Legacy Backward Compatibility */
-  --color-monte-charcoal: var(--color-monte-text-primary);
-  --color-monte-taupe: var(--color-monte-text-secondary);
+  --color-monte-charcoal: #111111;
+  --color-monte-taupe: #A1A1AA;
   --color-monte-black: #1A1A1A;
   --color-monte-white: #FFFFFF;
 
-  --font-serif: var(--font-cormorant), serif;
-  --font-sans: var(--font-inter), sans-serif;
+  /* Mapped from Next.js fonts */
+  --font-serif: var(--font-serif), sans-serif;
+  /* Outfit is a Sans Display */
+  --font-sans: var(--font-sans), sans-serif;
+  /* Manrope is a Sans */
 
   --animate-scroll: scroll 20s linear infinite;
 
@@ -83,7 +97,7 @@ html {
 body {
   color: var(--color-monte-text-body);
   background: var(--color-monte-beige);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
@@ -93,24 +107,63 @@ body {
 /* Typography Utility Classes for consistency */
 h1,
 h2,
-h3,
+h3 {
+  color: var(--color-monte-text-primary);
+  font-family: var(--font-serif);
+  /* Uses Outfit */
+  letter-spacing: -0.02em;
+  /* Tight tracking for display */
+  line-height: 1.1;
+  /* Balanced display leading */
+  font-weight: 600;
+}
+
 h4,
 h5,
 h6 {
   color: var(--color-monte-text-primary);
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+  font-weight: 500;
 }
 
+p,
+li,
+span,
+div {
+  /* color: var(--color-monte-text-body); - handled by inheritance mostly, but explicit p rule exists */
+  line-height: 1.6;
+  /* Relaxed reading experience */
+}
+
+/* Explicit P rule override */
 p {
   color: var(--color-monte-text-body);
+  line-height: 1.65;
+  margin-bottom: 1rem;
 }
 
 .text-caption {
   color: var(--color-monte-text-caption);
+  line-height: 1.5;
+}
+
+/* Buttons and Navigation style enforcement */
+button,
+.nav-link,
+a[class*="button"],
+a[class*="btn"] {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  /* Premium tracking */
+  text-transform: uppercase;
 }
 
 ::selection {
-  background-color: var(--color-monte-gold);
-  color: #000;
+  background-color: #333333;
+  /* Dark selection for visibility on white */
+  color: #FFFFFF;
 }
 
 /* Smooth Scroll Container */
@@ -142,25 +195,27 @@ html.lenis body {
   }
 
   /* Fluid Typography using clamp() */
-  /* Mobile (320px) to Desktop (1920px) scaling */
+  /* Optimized for 320px (Mobile) to 1920px (Desktop) */
   :root {
-    --text-xs: clamp(0.75rem, 0.70rem + 0.25vw, 0.875rem);
-    --text-sm: clamp(0.875rem, 0.83rem + 0.21vw, 1rem);
-    --text-base: clamp(1rem, 0.96rem + 0.21vw, 1.125rem);
-    --text-lg: clamp(1.125rem, 1.08rem + 0.21vw, 1.25rem);
-    --text-xl: clamp(1.25rem, 1.21rem + 0.21vw, 1.5rem);
-    --text-2xl: clamp(1.5rem, 1.41rem + 0.42vw, 1.875rem);
-    --text-3xl: clamp(1.875rem, 1.74rem + 0.63vw, 2.25rem);
-    --text-4xl: clamp(2.25rem, 2.08rem + 0.83vw, 3rem);
-    --text-5xl: clamp(3rem, 2.79rem + 1.04vw, 3.75rem);
-    --text-6xl: clamp(3.75rem, 3.29rem + 2.29vw, 6rem);
-    --text-7xl: clamp(4.5rem, 3.88rem + 3.13vw, 7.5rem);
+    --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.875rem);
+    --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 1rem);
+    --text-base: clamp(0.9rem, 0.85rem + 0.25vw, 1.125rem);
+    --text-lg: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    --text-xl: clamp(1.15rem, 1.1rem + 0.25vw, 1.5rem);
+    --text-2xl: clamp(1.35rem, 1.2rem + 0.75vw, 1.875rem);
+    --text-3xl: clamp(1.75rem, 1.5rem + 1.25vw, 2.25rem);
+    --text-4xl: clamp(2rem, 1.7rem + 1.5vw, 3rem);
+    --text-5xl: clamp(2.5rem, 2.1rem + 2vw, 3.75rem);
+    --text-6xl: clamp(3rem, 2.5rem + 2.5vw, 6rem);
+    --text-7xl: clamp(3.5rem, 3rem + 3vw, 7.5rem);
   }
 
   img,
   video {
     max-width: 100%;
     height: auto;
+    display: block;
+    /* Removes bottom space */
   }
 }
 
@@ -207,5 +262,10 @@ html.lenis body {
 
   .text-fluid-7xl {
     font-size: var(--text-7xl);
+  }
+
+  /* Global Container - standardizing widths */
+  .container-global {
+    @apply w-full max-w-[98%] 2xl:max-w-screen-2xl mx-auto px-4 md:px-8;
   }
 }

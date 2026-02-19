@@ -30,21 +30,155 @@ export default function TeamPage() {
     return (
         <main className="bg-monte-beige min-h-screen">
 
-            {/* Hero Section */}
-            <section className="pt-28 md:pt-48 pb-12 md:pb-24 px-4 md:px-8 lg:px-24 bg-monte-ivory text-monte-charcoal text-center">
-                <div className="max-w-screen-2xl mx-auto">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
+            {/* ═══ HERO: HUMAN-CENTRIC LEADERSHIP ═══ */}
+            <section className="relative min-h-screen pt-32 flex overflow-hidden bg-[#070707]">
+
+                {/* Ambient glow — left */}
+                <div className="pointer-events-none absolute -top-20 left-0 w-[500px] h-[500px] rounded-full bg-[rgba(212,175,55,0.03)] blur-[100px]" />
+
+                {/* ── LEFT: TYPOGRAPHY ── */}
+                <div className="relative z-10 w-full lg:w-1/2 flex flex-col justify-center px-6 md:px-12 lg:px-24 pb-32 lg:pb-24">
+
+                    {/* Thin gold decorative line */}
+                    <motion.div
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: 0.9, delay: 0.3 }}
+                        className="w-12 h-[1.5px] mb-8 origin-left"
+                        style={{ background: "rgba(212,175,55,0.75)" }}
+                    />
+
+                    {/* Label */}
+                    <motion.span
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-4xl sm:text-5xl md:text-7xl font-serif mb-4 md:mb-6 text-monte-charcoal"
+                        transition={{ duration: 0.7, delay: 0.2 }}
+                        className="text-[11px] font-bold tracking-[0.35em] uppercase mb-8 block"
+                        style={{ color: "rgba(212,175,55,0.8)" }}
                     >
-                        Meet the Visionaries
-                    </motion.h1>
-                    <p className="text-monte-taupe max-w-2xl mx-auto text-base md:text-lg">
-                        The minds and hands crafting the future of luxury living in India.
-                    </p>
+                        Our People
+                    </motion.span>
+
+                    {/* Main heading */}
+                    <div className="overflow-hidden mb-2">
+                        <motion.h1
+                            initial={{ y: "100%", opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 1.1, delay: 0.35, ease: [0.33, 1, 0.68, 1] }}
+                            className="font-serif leading-[0.88]"
+                        >
+                            <span
+                                className="block text-[12vw] sm:text-[8vw] lg:text-7xl xl:text-8xl"
+                                style={{ color: "#ffffff" }}
+                            >
+                                Meet the
+                            </span>
+                            <span
+                                className="block text-[12vw] sm:text-[8vw] lg:text-7xl xl:text-8xl mt-1"
+                                style={{ color: "rgba(212,175,55,0.88)" }}
+                            >
+                                Visionaries
+                            </span>
+                        </motion.h1>
+                    </div>
+
+                    {/* Supporting text */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.9, delay: 0.75 }}
+                        className="text-base md:text-lg mt-8 max-w-sm leading-relaxed"
+                        style={{ color: "rgba(255,255,255,0.38)" }}
+                    >
+                        The minds shaping India&apos;s luxury real estate landscape — one landmark at a time.
+                    </motion.p>
+
+                    {/* Stat row */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 1 }}
+                        className="flex items-center gap-8 mt-12"
+                    >
+                        <div>
+                            <p className="text-2xl font-serif" style={{ color: "rgba(212,175,55,0.85)" }}>15+</p>
+                            <p className="text-[10px] tracking-[0.2em] uppercase mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>Experts</p>
+                        </div>
+                        <div className="w-[1px] h-8" style={{ background: "rgba(255,255,255,0.1)" }} />
+                        <div>
+                            <p className="text-2xl font-serif" style={{ color: "rgba(212,175,55,0.85)" }}>30+</p>
+                            <p className="text-[10px] tracking-[0.2em] uppercase mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>Years</p>
+                        </div>
+                    </motion.div>
                 </div>
+
+                {/* ── RIGHT: PORTRAIT MONTAGE ── */}
+                <div className="w-full lg:w-1/2 relative h-[50vh] lg:h-auto overflow-hidden mt-8 lg:mt-0">
+                    {/* Gradient: fades left into the dark bg */}
+                    <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#070707] via-[#070707]/30 to-transparent pointer-events-none" />
+                    {/* Gradient: fades bottom */}
+                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#070707]/70 to-transparent pointer-events-none" />
+
+                    {/* 2-column portrait grid — staggered heights */}
+                    <div className="absolute inset-0 flex gap-3 p-4 items-stretch">
+                        {/* Column 1 */}
+                        <div className="flex flex-col gap-3 w-1/2">
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1.1, delay: 0.4 }}
+                                className="relative flex-[3] rounded-2xl overflow-hidden min-h-0"
+                            >
+                                <Image src={teamMembers[0].image} alt={teamMembers[0].name} fill className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.03]" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                                <div className="absolute bottom-4 left-4">
+                                    <p className="text-xs tracking-[0.15em] text-white/50 uppercase">{teamMembers[0].role}</p>
+                                    <p className="text-white text-sm font-serif mt-0.5">{teamMembers[0].name}</p>
+                                </div>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1.1, delay: 0.65 }}
+                                className="relative flex-[2] rounded-2xl overflow-hidden min-h-0"
+                            >
+                                <Image src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop" alt="Team" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.03]" />
+                            </motion.div>
+                        </div>
+                        {/* Column 2 — top-offset */}
+                        <div className="flex flex-col gap-3 w-1/2 mt-12">
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1.1, delay: 0.55 }}
+                                className="relative flex-[2] rounded-2xl overflow-hidden min-h-0"
+                            >
+                                <Image src={teamMembers[1].image} alt={teamMembers[1].name} fill className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.03]" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                                <div className="absolute bottom-4 left-4">
+                                    <p className="text-xs tracking-[0.15em] text-white/50 uppercase">{teamMembers[1].role}</p>
+                                    <p className="text-white text-sm font-serif mt-0.5">{teamMembers[1].name}</p>
+                                </div>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1.1, delay: 0.75 }}
+                                className="relative flex-[3] rounded-2xl overflow-hidden min-h-0"
+                            >
+                                <Image src={teamMembers[2].image} alt={teamMembers[2].name} fill className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.03]" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                                <div className="absolute bottom-4 left-4">
+                                    <p className="text-xs tracking-[0.15em] text-white/50 uppercase">{teamMembers[2].role}</p>
+                                    <p className="text-white text-sm font-serif mt-0.5">{teamMembers[2].name}</p>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom border */}
+                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
             </section>
 
             {/* Founder Spotlight */}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -8,16 +8,19 @@ import Loader from "@/components/Loader";
 
 import Header from "@/components/Header";
 
-const cormorant = Cormorant_Garamond({
+// Headings / Display Font -> Mapped to --font-serif for compatibility with existing classes
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-cormorant",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-serif",
   display: "swap",
 });
 
-const inter = Inter({
+// Body Font -> Mapped to --font-sans
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -35,8 +38,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(
         "min-h-screen bg-monte-white font-sans antialiased text-monte-black overflow-x-hidden", // Prevent horizontal overflow
-        cormorant.variable,
-        inter.variable
+        inter.variable,
+        manrope.variable
       )}>
         <Loader />
         <Header />

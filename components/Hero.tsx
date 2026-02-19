@@ -188,11 +188,7 @@ export default function Hero() {
                     <motion.div
                         key={currentSlide}
                         initial={{ opacity: 0, y: 28, scale: 0.96 }}
-                        animate={[
-                            // 1. Entrance
-                            { opacity: 1, y: 0, scale: 1 },
-                            // 2. Ongoing float (overrides y to oscillate)
-                        ]}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ duration: DUR.slow, ease: EASE }}
                         className="relative w-full max-w-[360px] lg:max-w-[420px] h-[420px] md:h-[480px] rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.5)] group z-20 mx-auto lg:mx-0 cursor-pointer"
                     >

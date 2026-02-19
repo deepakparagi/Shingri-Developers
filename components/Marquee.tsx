@@ -22,7 +22,7 @@ export default function Marquee() {
                 >
                     {Array.from({ length: 4 }).map((_, i) => (
                         <div key={i} className="flex items-center mx-4">
-                            KBS Developers • Building Legacy Since 1995 •&nbsp;
+                                KBS Developers • Building Legacy Since 1995 •&nbsp;
                         </div>
                     ))}
                 </motion.div>

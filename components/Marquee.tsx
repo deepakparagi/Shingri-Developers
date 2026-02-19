@@ -22,9 +22,7 @@ export default function Marquee() {
                 >
                     {Array.from({ length: 4 }).map((_, i) => (
                         <div key={i} className="flex items-center mx-4">
-                            <span className="text-3xl sm:text-5xl md:text-7xl font-sans font-semibold text-monte-black tracking-tight">
-                                Luxury Residences starting from ₹ 35 Lakhs • Interest-Free Options •&nbsp;
-                            </span>
+                            KBS Developers • Building Legacy Since 1995 •&nbsp;
                         </div>
                     ))}
                 </motion.div>

@@ -1,21 +1,21 @@
 export const allProjects = [
     {
         slug: "shingri-heights",
-        image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop",
         price: "From ₹ 3.5 Cr",
         installment: "Flexible Plan",
         initial: "₹ 35 Lakhs",
         beds: 3,
         area: "1,800 sqft",
         status: "Ongoing",
-        title: "Shingri Heights",
+        title: "KBS Heights",
         location: "Tilakwadi, Belgaum",
-        description: "Experience the pinnacle of urban living at Shingri Heights. This architectural marvel offers panoramic views of Belgaum, combining modern aesthetics with functional luxury. Each residence is designed to maximize natural light and ventilation, providing a serene oasis in the heart of the city.",
+        description: "Experience the pinnacle of urban living at KBS Heights. This architectural marvel offers panoramic views of Belgaum, combining modern aesthetics with functional luxury. Each residence is designed to maximize natural light and ventilation, providing a serene oasis in the heart of the city.",
         amenities: ["Rooftop Infinity Pool", "State-of-the-art Gym", "Landscaped Gardens", "24/7 Security", "Children's Play Area", "Clubhouse"],
         gallery: [
-            "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1600566753086-00f18cf6b3ea?q=80&w=1200&auto=format&fit=crop"
+            "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=1200&auto=format&fit=crop"
         ]
     },
     {
@@ -46,9 +46,9 @@ export const allProjects = [
         beds: 5,
         area: "4,500 sqft",
         status: "Completed",
-        title: "Shingri Palace",
+        title: "KBS Palace",
         location: "Saptapur, Dharwad",
-        description: "A testament to timeless elegance, Shingri Palace is a completed masterpiece in Dharwad. Blending heritage-inspired architecture with contemporary comforts, it stands as a landmark of prestige and sophistication.",
+        description: "A testament to timeless elegance, KBS Palace is a completed masterpiece in Dharwad. Blending heritage-inspired architecture with contemporary comforts, it stands as a landmark of prestige and sophistication.",
         amenities: ["Grand Lobby", "Banquet Hall", "Library", "Indoor Games Room", "Yoga Studio", "Guest Suites"],
         gallery: [
             "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop",
@@ -58,7 +58,7 @@ export const allProjects = [
     },
     {
         slug: "green-valley",
-        image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop",
         price: "From ₹ 2.5 Cr",
         installment: "Down Payment",
         initial: "₹ 25 Lakhs",
@@ -70,9 +70,10 @@ export const allProjects = [
         description: "Embrace nature at Green Valley, where sustainable living meets modern comfort. Located on Hulgur Road, this project offers eco-friendly homes surrounded by lush greenery, perfect for those seeking a healthier, balanced lifestyle.",
         amenities: ["Organic Garden", "Jogging Track", "Solar Power", "Rainwater Harvesting", "Community Center", "Meditation Zone"],
         gallery: [
-            "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1200&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=1200&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop"
+            "https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=1200&auto=format&fit=crop"
         ]
     },
+
 ];

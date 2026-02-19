@@ -32,22 +32,22 @@ export default function ShowcaseTabs() {
     const [activeTab, setActiveTab] = useState("redesign");
 
     return (
-        <section className="py-24 px-4 md:px-8 lg:px-24 bg-white min-h-[80vh] flex flex-col justify-center">
+        <section className="py-24 px-4 md:px-8 lg:px-24 bg-monte-beige min-h-[80vh] flex flex-col justify-center">
 
             {/* Tab Navigation */}
             <div className="flex justify-center mb-16">
-                <div className="inline-flex bg-gray-100 p-1 rounded-full relative">
+                <div className="inline-flex bg-monte-ivory p-1 rounded-full relative border border-monte-border/30">
                     {tabs.map((tab) => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`relative px-6 py-2 rounded-full text-sm font-medium transition-colors z-10 ${activeTab === tab.id ? "text-white" : "text-gray-500 hover:text-black"
+                            className={`relative px-6 py-2 rounded-full text-sm font-medium transition-colors z-10 ${activeTab === tab.id ? "text-monte-charcoal" : "text-monte-taupe hover:text-monte-white"
                                 }`}
                         >
                             {activeTab === tab.id && (
                                 <motion.div
                                     layoutId="activeTab"
-                                    className="absolute inset-0 bg-black rounded-full"
+                                    className="absolute inset-0 bg-monte-gold rounded-full"
                                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                 />
                             )}
@@ -58,7 +58,7 @@ export default function ShowcaseTabs() {
             </div>
 
             {/* Content Display */}
-            <div className="relative h-[400px] md:h-[500px] w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+            <div className="relative h-[400px] md:h-[500px] w-full max-w-5xl mx-auto rounded-[32px] overflow-hidden shadow-2xl shadow-monte-black/50 border border-monte-border/30">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeTab}
@@ -66,14 +66,14 @@ export default function ShowcaseTabs() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
                         transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className={`absolute inset-0 flex flex-col md:flex-row items-center justify-between p-12 bg-gradient-to-br ${content[activeTab as keyof typeof content].gradient}`}
+                        className={`absolute inset-0 flex flex-col md:flex-row items-center justify-between p-12 bg-monte-ivory`}
                     >
                         <div className="md:w-1/2 space-y-6">
                             <motion.h2
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900"
+                                className="text-4xl md:text-6xl font-bold tracking-tight text-monte-charcoal"
                             >
                                 {content[activeTab as keyof typeof content].title}
                             </motion.h2>
@@ -81,14 +81,14 @@ export default function ShowcaseTabs() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="text-xl text-gray-600 max-w-md"
+                                className="text-xl text-monte-taupe max-w-md"
                             >
                                 {content[activeTab as keyof typeof content].desc}
                             </motion.p>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 py-3 bg-black text-white rounded-full font-medium mt-4"
+                                className="px-6 py-3 bg-monte-gold text-monte-charcoal rounded-full font-medium mt-4"
                             >
                                 Learn more
                             </motion.button>
@@ -100,7 +100,7 @@ export default function ShowcaseTabs() {
                                 initial={{ scale: 0.8, rotate: -5 }}
                                 animate={{ scale: 1, rotate: 0 }}
                                 transition={{ type: "spring", duration: 0.8 }}
-                                className={`w-64 h-64 rounded-3xl shadow-lg ${tabs.find(t => t.id === activeTab)?.color}`}
+                                className={`w-64 h-64 rounded-3xl shadow-lg border border-monte-border/30 bg-monte-sand`}
                             />
                         </div>
                     </motion.div>

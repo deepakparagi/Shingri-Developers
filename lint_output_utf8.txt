@@ -1,0 +1,46 @@
+﻿
+D:\Shingri Developers Websites\Shingri Developers-02\app\about\page.tsx
+    6:10   warning  'Linkedin' is defined but never used                             @typescript-eslint/no-unused-vars
+    6:20   warning  'Twitter' is defined but never used                              @typescript-eslint/no-unused-vars
+    6:29   warning  'Mail' is defined but never used                                 @typescript-eslint/no-unused-vars
+    6:35   warning  'Check' is defined but never used                                @typescript-eslint/no-unused-vars
+  119:136  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  163:56   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  222:86   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  222:100  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+D:\Shingri Developers Websites\Shingri Developers-02\components\Footer.tsx
+  3:22  warning  'Instagram' is defined but never used  @typescript-eslint/no-unused-vars
+  3:33  warning  'Youtube' is defined but never used    @typescript-eslint/no-unused-vars
+  3:42  warning  'Twitter' is defined but never used    @typescript-eslint/no-unused-vars
+
+D:\Shingri Developers Websites\Shingri Developers-02\components\Header.tsx
+  43:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\Shingri Developers Websites\Shingri Developers-02\components\Header.tsx:43:13
+  41 |     useEffect(() => {
+  42 |         if (searchQuery.trim() === "") {
+> 43 |             setFilteredProjects(allProjects);
+     |             ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  44 |         } else {
+  45 |             const query = searchQuery.toLowerCase();
+  46 |             const results = allProjects.filter(project =>  react-hooks/set-state-in-effect
+
+D:\Shingri Developers Websites\Shingri Developers-02\components\showcase\PerformanceSection.tsx
+  4:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Shingri Developers Websites\Shingri Developers-02\components\showcase\ShowcaseHero.tsx
+  2:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Shingri Developers Websites\Shingri Developers-02\components\showcase\ShowcaseTabs.tsx
+  5:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+Ô£û 15 problems (5 errors, 10 warnings)
+
+

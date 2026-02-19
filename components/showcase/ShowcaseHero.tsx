@@ -15,7 +15,7 @@ export default function ShowcaseHero() {
     const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
     return (
-        <section ref={containerRef} className="h-[150vh] relative bg-white overflow-hidden">
+        <section ref={containerRef} className="h-[150vh] relative bg-monte-beige overflow-hidden">
             <div className="sticky top-0 h-screen flex flex-col items-center justify-center">
 
                 {/* Typography Reveal */}
@@ -33,7 +33,7 @@ export default function ShowcaseHero() {
                                 transition: { staggerChildren: 0.1 }
                             }
                         }}
-                        className="text-[12vw] leading-none font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-black to-gray-500"
+                        className="text-[12vw] leading-none font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-monte-white to-monte-taupe"
                     >
                         {Array.from("Mac mini").map((char, i) => (
                             <motion.span
@@ -58,20 +58,20 @@ export default function ShowcaseHero() {
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 1, duration: 0.5, type: "spring" }}
-                        className="absolute top-0 right-[22%] w-4 h-4 rounded-full bg-gradient-to-tr from-blue-400 to-purple-500 shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+                        className="absolute top-0 right-[22%] w-4 h-4 rounded-full bg-gradient-to-tr from-monte-gold to-orange-500 shadow-[0_0_20px_rgba(198,167,94,0.5)]"
                     />
                     <motion.div
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 1.1, duration: 0.5, type: "spring" }}
-                        className="absolute top-0 right-[6%] w-4 h-4 rounded-full bg-gradient-to-tr from-orange-400 to-pink-500 shadow-[0_0_20px_rgba(249,115,22,0.5)]"
+                        className="absolute top-0 right-[6%] w-4 h-4 rounded-full bg-gradient-to-tr from-monte-gold to-yellow-500 shadow-[0_0_20px_rgba(198,167,94,0.5)]"
                     />
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.2, duration: 0.8 }}
-                        className="text-xl md:text-3xl font-medium text-gray-400 mt-4 tracking-wide"
+                        className="text-xl md:text-3xl font-medium text-monte-taupe mt-4 tracking-wide"
                     >
                         Smaller. Faster. More pro.
                     </motion.p>

@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Loader() {
     const [loading, setLoading] = useState(true);
@@ -53,13 +54,19 @@ export default function Loader() {
                         </motion.p>
                     </div>
 
-                    <div className="overflow-hidden relative w-full">
-                        <motion.h1
+                    <div className="overflow-hidden relative flex justify-center">
+                        <motion.div
                             variants={item}
-                            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold tracking-widest text-white relative z-10 leading-tight"
+                            className="relative w-48 h-20 sm:w-64 sm:h-24 md:w-80 md:h-28"
                         >
-                            SHINGRI <br className="md:hidden" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600">DEVELOPERS</span>
-                        </motion.h1>
+                            <Image
+                                src="/images/logo.png"
+                                alt="SHINGRI Developers"
+                                fill
+                                className="object-contain filter invert brightness-0 invert"
+                                priority
+                            />
+                        </motion.div>
                     </div>
 
                     <motion.div

@@ -47,7 +47,7 @@ export default function ContactPage() {
         <main className="bg-monte-white min-h-screen">
 
             {/* ═══ HERO: STABLE & SAFE ═══ */}
-            <section className="relative min-h-screen pt-32 flex items-center justify-center overflow-hidden bg-[#060606]">
+            <section className="relative min-h-[100dvh] pt-32 pb-20 md:pt-40 md:pb-24 lg:pt-32 lg:pb-20 flex items-center justify-center overflow-hidden bg-[#060606]">
 
                 {/* Z-0: Background Effects */}
                 <motion.div
@@ -58,23 +58,23 @@ export default function ContactPage() {
                 />
 
                 {/* Z-10: Content Container */}
-                <div className="relative z-10 text-center px-6 md:px-12 max-w-5xl mx-auto pb-24 select-none">
+                <div className="relative z-10 text-center px-6 md:px-12 max-w-5xl mx-auto select-none">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: EASE }}
                         className="flex flex-col items-center gap-6"
                     >
-                        <span className="text-[11px] font-bold tracking-[0.35em] uppercase text-monte-gold/90">
+                        <span className="text-[11px] font-bold tracking-[0.35em] uppercase !text-monte-gold/90">
                             Get In Touch
                         </span>
 
-                        <h1 className="font-serif text-white leading-[0.9] tracking-tight text-5xl md:text-7xl lg:text-9xl">
+                        <h1 className="font-serif !text-white leading-[0.9] tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
                             Let&apos;s Build<br />
-                            <span className="text-monte-gold">Legacy.</span>
+                            <span className="!text-monte-gold">Legacy.</span>
                         </h1>
 
-                        <p className="text-white/40 max-w-lg mt-8 text-lg leading-relaxed">
+                        <p className="!text-white/40 max-w-lg mt-6 md:mt-8 text-base md:text-lg leading-relaxed">
                             Our team responds within 24 hours. Let&apos;s discuss your vision.
                         </p>
                     </motion.div>

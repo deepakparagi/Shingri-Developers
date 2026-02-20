@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -7,19 +7,21 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Loader from "@/components/Loader";
 
 import Header from "@/components/Header";
+import NotificationIsland from "@/components/NotificationIsland";
+import ScrollProgress from "@/components/ScrollProgress";
 
-// Headings / Display Font -> Mapped to --font-serif for compatibility with existing classes
-const inter = Inter({
+// Headings / Display Font
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-serif",
   display: "swap",
 });
 
-// Body Font -> Mapped to --font-sans
-const manrope = Manrope({
+// Body Font
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -38,9 +40,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(
         "min-h-screen bg-monte-white font-sans antialiased text-monte-black overflow-x-hidden", // Prevent horizontal overflow
-        inter.variable,
-        manrope.variable
+        playfair.variable,
+        dmSans.variable
       )}>
+        <ScrollProgress />
+        <NotificationIsland />
         <Loader />
         <Header />
 

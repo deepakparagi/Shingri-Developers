@@ -2,23 +2,13 @@
 
 import PropertyCard from "./PropertyCard";
 import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "@/lib/motion";
 
 import { allProjects } from "@/data/projects";
 
-const container = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.2
-        }
-    }
-};
-
-const item = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
-};
+// ── Entrance Constants — Standardized ────────────────────────────
+const containerVars = staggerContainer(0.1, 0.2);
+const itemVars = fadeUp;
 
 export default function PropertyGrid() {
     return (
@@ -26,13 +16,13 @@ export default function PropertyGrid() {
             <div className="container-global">
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16"
-                    variants={container}
+                    variants={containerVars}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true, margin: "-100px" }}
                 >
                     {allProjects.map((prop, index) => (
-                        <motion.div key={index} variants={item}>
+                        <motion.div key={index} variants={itemVars}>
                             <PropertyCard property={prop} />
                         </motion.div>
                     ))}

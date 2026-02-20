@@ -45,8 +45,8 @@ export default function ProjectClient({ slug }: { slug: string }) {
                         <Link href="/projects" className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors">
                             <ArrowLeft size={20} /> Back to Projects
                         </Link>
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif mb-4">{project.title}</h1>
-                        <div className="flex items-center gap-2 text-xl md:text-2xl text-white/90">
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif mb-4 !text-white">{project.title}</h1>
+                        <div className="flex items-center gap-2 text-xl md:text-2xl !text-white/90">
                             <MapPin size={24} />
                             {project.location}
                         </div>

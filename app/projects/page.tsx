@@ -17,17 +17,28 @@ export default function ProjectsPage() {
         ? allProjects
         : allProjects.filter(p => p.status === filter);
 
+    const handleFilterChange = (newFilter: string) => {
+        setFilter(newFilter);
+        setIsDropdownOpen(false);
+        
+        // Smooth scroll to projects section
+        const projectsSection = document.getElementById('projects-grid');
+        if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
         <main className="bg-monte-beige min-h-screen">
 
             {/* ═══ HERO: CINEMATIC PORTFOLIO SHOWCASE ═══ */}
-            <section className="relative min-h-screen pt-32 flex items-center overflow-hidden bg-[#0a0a0a]">
+            <section className="relative min-h-[100dvh] pt-32 pb-20 md:pt-40 md:pb-24 lg:pt-32 lg:pb-20 flex items-center overflow-hidden bg-[#0a0a0a]">
 
                 {/* Subtle ambient glow */}
                 <div className="pointer-events-none absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-[rgba(212,175,55,0.04)] blur-[120px]" />
                 <div className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[rgba(212,175,55,0.03)] blur-[100px]" />
 
-                <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-24 flex flex-col lg:flex-row items-center gap-16 pb-32 lg:pb-24">
+                <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
                     {/* ── LEFT: TYPOGRAPHY ── */}
                     <div className="w-full lg:w-[55%] flex-shrink-0">
@@ -50,7 +61,7 @@ export default function ProjectsPage() {
                                     initial={{ opacity: 0, y: 60 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 1, delay: 0.15, ease: [0.33, 1, 0.68, 1] }}
-                                    className="block text-[14vw] sm:text-[10vw] lg:text-[8rem] xl:text-[9.5rem] text-white/15"
+                                    className="block text-[14vw] sm:text-[10vw] lg:text-[7rem] xl:text-[8rem] text-white/15"
                                 >
                                     Our
                                 </motion.span>
@@ -58,7 +69,7 @@ export default function ProjectsPage() {
                                     initial={{ opacity: 0, y: 60 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 1, delay: 0.28, ease: [0.33, 1, 0.68, 1] }}
-                                    className="block text-[14vw] sm:text-[10vw] lg:text-[8rem] xl:text-[9.5rem] -mt-3 lg:-mt-6"
+                                    className="block text-[14vw] sm:text-[10vw] lg:text-[7rem] xl:text-[8rem] -mt-2 lg:-mt-4"
                                 >
                                     Projects
                                 </motion.span>
@@ -69,22 +80,22 @@ export default function ProjectsPage() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.55 }}
-                                className="flex items-center gap-8 mt-8"
+                                className="flex items-center gap-6 md:gap-8 mt-6 md:mt-8"
                             >
-                                <div className="h-[1px] flex-1 max-w-[80px]" style={{ background: "linear-gradient(to right, rgba(212,175,55,0.7), transparent)" }} />
+                                <div className="h-[1px] flex-1 max-w-[60px] md:max-w-[80px]" style={{ background: "linear-gradient(to right, rgba(212,175,55,0.7), transparent)" }} />
                                 {/* Counter badge */}
                                 <div className="flex items-baseline gap-2">
-                                    <span className="text-5xl font-serif" style={{ color: "rgba(212,175,55,0.9)" }}>30+</span>
+                                    <span className="text-4xl md:text-5xl font-serif" style={{ color: "rgba(212,175,55,0.9)" }}>30+</span>
                                     <span className="text-xs tracking-[0.25em] uppercase text-white/40">Developments</span>
                                 </div>
-                                <div className="h-[1px] flex-1 max-w-[80px]" style={{ background: "linear-gradient(to left, rgba(212,175,55,0.7), transparent)" }} />
+                                <div className="h-[1px] flex-1 max-w-[60px] md:max-w-[80px]" style={{ background: "linear-gradient(to left, rgba(212,175,55,0.7), transparent)" }} />
                             </motion.div>
 
                             <motion.p
                                 initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.7 }}
-                                className="text-base md:text-lg text-white/40 mt-6 max-w-md leading-relaxed"
+                                className="text-sm md:text-base lg:text-lg text-white/40 mt-6 max-w-md leading-relaxed"
                             >
                                 From heritage residences to landmark towers — each development is a testament to craftsmanship.
                             </motion.p>
@@ -92,14 +103,14 @@ export default function ProjectsPage() {
                     </div>
 
                     {/* ── RIGHT: FLOATING PROJECT PREVIEW CARDS ── */}
-                    <div className="w-full lg:w-[45%] relative h-auto lg:h-[560px] flex-shrink-0 flex flex-col gap-6 mt-12 lg:mt-0 lg:block">
+                    <div className="w-full lg:w-[45%] relative h-auto min-h-[400px] lg:min-h-[560px] flex-shrink-0 flex flex-col gap-6 lg:block">
 
                         {/* Card 1 — back */}
                         <motion.div
                             initial={{ opacity: 0, rotate: 8, y: 40 }}
                             animate={{ opacity: 1, rotate: 6, y: 0 }}
                             transition={{ duration: 1.1, delay: 0.3 }}
-                            className="relative w-full h-64 sm:h-72 lg:absolute lg:top-0 lg:right-0 lg:w-64 lg:h-80 rounded-2xl overflow-hidden shadow-2xl group cursor-pointer transition-shadow duration-500 hover:shadow-black/50"
+                            className="relative w-full h-56 sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:w-64 lg:h-80 rounded-2xl overflow-hidden shadow-2xl group cursor-pointer transition-shadow duration-500 hover:shadow-black/50"
                         >
                             <div className="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0" />
                             <Image
@@ -110,8 +121,8 @@ export default function ProjectsPage() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-20" />
                             <div className="absolute bottom-6 left-6 z-30 transform transition-transform duration-500 group-hover:-translate-y-1">
-                                <p className="text-[10px] tracking-[0.2em] text-white/70 uppercase mb-2 font-medium">Penthouse</p>
-                                <p className="text-white text-xl font-serif">Sky Residences</p>
+                                <p className="text-[10px] tracking-[0.2em] !text-monte-gold/80 uppercase mb-2 font-medium">Penthouse</p>
+                                <p className="!text-monte-gold text-xl font-serif">Sky Residences</p>
                             </div>
                         </motion.div>
 
@@ -120,7 +131,7 @@ export default function ProjectsPage() {
                             initial={{ opacity: 0, rotate: -4, y: 60 }}
                             animate={{ opacity: 1, rotate: -3, y: 0 }}
                             transition={{ duration: 1.1, delay: 0.45 }}
-                            className="relative w-full h-64 sm:h-72 lg:absolute lg:top-16 lg:left-8 lg:w-72 lg:h-80 rounded-2xl overflow-hidden shadow-2xl z-10 group cursor-pointer transition-shadow duration-500 hover:shadow-black/50"
+                            className="relative w-full h-56 sm:h-64 lg:absolute lg:top-16 lg:left-8 lg:w-72 lg:h-80 rounded-2xl overflow-hidden shadow-2xl z-10 group cursor-pointer transition-shadow duration-500 hover:shadow-black/50"
                         >
                             <div className="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0" />
                             <Image
@@ -131,8 +142,8 @@ export default function ProjectsPage() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-20" />
                             <div className="absolute bottom-6 left-6 z-30 transform transition-transform duration-500 group-hover:-translate-y-1">
-                                <p className="text-[10px] tracking-[0.2em] text-white/70 uppercase mb-2 font-medium">Villa</p>
-                                <p className="text-white text-xl font-serif">Emerald Estate</p>
+                                <p className="text-[10px] tracking-[0.2em] !text-monte-gold/80 uppercase mb-2 font-medium">Villa</p>
+                                <p className="!text-monte-gold text-xl font-serif">Emerald Estate</p>
                             </div>
                         </motion.div>
 
@@ -141,7 +152,7 @@ export default function ProjectsPage() {
                             initial={{ opacity: 0, rotate: 3, y: 80 }}
                             animate={{ opacity: 1, rotate: 2, y: 0 }}
                             transition={{ duration: 1.1, delay: 0.6 }}
-                            className="relative w-full h-64 sm:h-72 lg:absolute lg:bottom-0 lg:right-16 lg:w-60 lg:h-72 rounded-2xl overflow-hidden shadow-2xl z-20 group cursor-pointer transition-shadow duration-500 hover:shadow-black/50"
+                            className="relative w-full h-56 sm:h-64 lg:absolute lg:bottom-0 lg:right-16 lg:w-60 lg:h-72 rounded-2xl overflow-hidden shadow-2xl z-20 group cursor-pointer transition-shadow duration-500 hover:shadow-black/50"
                         >
                             <div className="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0" />
                             <Image
@@ -152,8 +163,8 @@ export default function ProjectsPage() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-20" />
                             <div className="absolute bottom-6 left-6 z-30 transform transition-transform duration-500 group-hover:-translate-y-1">
-                                <p className="text-[10px] tracking-[0.2em] text-white/70 uppercase mb-2 font-medium">Apartment</p>
-                                <p className="text-white text-xl font-serif">The Orchid</p>
+                                <p className="text-[10px] tracking-[0.2em] !text-monte-gold/80 uppercase mb-2 font-medium">Apartment</p>
+                                <p className="!text-monte-gold text-xl font-serif">The Orchid</p>
                             </div>
                         </motion.div>
 
@@ -200,10 +211,7 @@ export default function ProjectsPage() {
                                     {["All", "Ongoing", "Upcoming", "Completed"].map((tab) => (
                                         <button
                                             key={tab}
-                                            onClick={() => {
-                                                setFilter(tab);
-                                                setIsDropdownOpen(false);
-                                            }}
+                                            onClick={() => handleFilterChange(tab)}
                                             className={`w-full py-4 px-8 text-left text-lg font-serif transition-colors hover:bg-monte-sand/50 flex justify-between items-center ${filter === tab ? "text-monte-text-primary font-medium bg-monte-sand/30" : "text-monte-text-secondary"
                                                 }`}
                                         >
@@ -223,7 +231,7 @@ export default function ProjectsPage() {
                         {["All", "Ongoing", "Upcoming", "Completed"].map((tab) => (
                             <button
                                 key={tab}
-                                onClick={() => setFilter(tab)}
+                                onClick={() => handleFilterChange(tab)}
                                 className={`text-lg tracking-widest uppercase transition-colors relative pb-2 ${filter === tab ? "text-monte-text-primary font-bold" : "text-monte-text-secondary hover:text-monte-gold"
                                     }`}
                             >
@@ -240,20 +248,32 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Projects Grid */}
-                <div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-                        {filteredProjects.map((prop, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                            >
-                                <PropertyCard property={prop} />
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={filter}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                    >
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                            {filteredProjects.map((prop, index) => (
+                                <motion.div
+                                    key={prop.slug}
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ 
+                                        duration: 0.4, 
+                                        delay: index * 0.1,
+                                        ease: "easeOut"
+                                    }}
+                                >
+                                    <PropertyCard property={prop} />
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
             </div>
             <Footer />
         </main>

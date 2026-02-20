@@ -30,155 +30,188 @@ export default function TeamPage() {
     return (
         <main className="bg-monte-beige min-h-screen">
 
-            {/* ═══ HERO: HUMAN-CENTRIC LEADERSHIP ═══ */}
-            <section className="relative min-h-screen pt-32 flex overflow-hidden bg-[#070707]">
+            {/* ═══ HERO: CREATIVE VISIONARIES BENTO ═══ */}
+            <section className="relative min-h-[110dvh] lg:min-h-[105dvh] pt-32 pb-20 md:pt-40 md:pb-24 flex items-center overflow-hidden bg-[#070707]">
 
-                {/* Ambient glow — left */}
-                <div className="pointer-events-none absolute -top-20 left-0 w-[500px] h-[500px] rounded-full bg-[rgba(212,175,55,0.03)] blur-[100px]" />
-
-                {/* ── LEFT: TYPOGRAPHY ── */}
-                <div className="relative z-10 w-full lg:w-1/2 flex flex-col justify-center px-6 md:px-12 lg:px-24 pb-32 lg:pb-24">
-
-                    {/* Thin gold decorative line */}
+                {/* Decorative background elements */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                     <motion.div
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: 0.9, delay: 0.3 }}
-                        className="w-12 h-[1.5px] mb-8 origin-left"
-                        style={{ background: "rgba(212,175,55,0.75)" }}
+                        animate={{
+                            opacity: [0.05, 0.1, 0.05],
+                            scale: [1, 1.1, 1]
+                        }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute top-[-10%] right-[-5%] w-[60%] h-[80%] bg-monte-gold/5 blur-[120px] rounded-full"
                     />
-
-                    {/* Label */}
-                    <motion.span
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.2 }}
-                        className="text-[11px] font-bold tracking-[0.35em] uppercase mb-8 block"
-                        style={{ color: "rgba(212,175,55,0.8)" }}
-                    >
-                        Our People
-                    </motion.span>
-
-                    {/* Main heading */}
-                    <div className="overflow-hidden mb-2">
-                        <motion.h1
-                            initial={{ y: "100%", opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 1.1, delay: 0.35, ease: [0.33, 1, 0.68, 1] }}
-                            className="font-serif leading-[0.88]"
-                        >
-                            <span
-                                className="block text-[12vw] sm:text-[8vw] lg:text-7xl xl:text-8xl"
-                                style={{ color: "#ffffff" }}
-                            >
-                                Meet the
-                            </span>
-                            <span
-                                className="block text-[12vw] sm:text-[8vw] lg:text-7xl xl:text-8xl mt-1"
-                                style={{ color: "rgba(212,175,55,0.88)" }}
-                            >
-                                Visionaries
-                            </span>
-                        </motion.h1>
-                    </div>
-
-                    {/* Supporting text */}
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.9, delay: 0.75 }}
-                        className="text-base md:text-lg mt-8 max-w-sm leading-relaxed"
-                        style={{ color: "rgba(255,255,255,0.38)" }}
-                    >
-                        The minds shaping India&apos;s luxury real estate landscape — one landmark at a time.
-                    </motion.p>
-
-                    {/* Stat row */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 1 }}
-                        className="flex items-center gap-8 mt-12"
-                    >
-                        <div>
-                            <p className="text-2xl font-serif" style={{ color: "rgba(212,175,55,0.85)" }}>15+</p>
-                            <p className="text-[10px] tracking-[0.2em] uppercase mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>Experts</p>
-                        </div>
-                        <div className="w-[1px] h-8" style={{ background: "rgba(255,255,255,0.1)" }} />
-                        <div>
-                            <p className="text-2xl font-serif" style={{ color: "rgba(212,175,55,0.85)" }}>30+</p>
-                            <p className="text-[10px] tracking-[0.2em] uppercase mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>Years</p>
-                        </div>
-                    </motion.div>
+                    <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay" />
                 </div>
 
-                {/* ── RIGHT: PORTRAIT MONTAGE ── */}
-                <div className="w-full lg:w-1/2 relative h-[50vh] lg:h-auto overflow-hidden mt-8 lg:mt-0">
-                    {/* Gradient: fades left into the dark bg */}
-                    <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#070707] via-[#070707]/30 to-transparent pointer-events-none" />
-                    {/* Gradient: fades bottom */}
-                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#070707]/70 to-transparent pointer-events-none" />
+                <div className="container-global relative z-10 w-full">
+                    <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
-                    {/* 2-column portrait grid — staggered heights */}
-                    <div className="absolute inset-0 flex gap-3 p-4 items-stretch">
-                        {/* Column 1 */}
-                        <div className="flex flex-col gap-3 w-1/2">
+                        {/* ── LEFT: TYPOGRAPHY ── */}
+                        <div className="w-full lg:w-[45%] flex flex-col justify-center">
                             <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1.1, delay: 0.4 }}
-                                className="relative flex-[3] rounded-2xl overflow-hidden min-h-0"
+                                initial={{ width: 0 }}
+                                animate={{ width: "3.5rem" }}
+                                transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.2 }}
+                                className="h-[2px] mb-8 bg-monte-gold/60"
+                            />
+
+                            <motion.span
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.8, delay: 0.1 }}
+                                className="text-[10px] md:text-[11px] font-bold tracking-[0.4em] uppercase mb-6 block text-monte-gold"
                             >
-                                <Image src={teamMembers[0].image} alt={teamMembers[0].name} fill className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.03]" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                                <div className="absolute bottom-4 left-4">
-                                    <p className="text-xs tracking-[0.15em] text-white/50 uppercase">{teamMembers[0].role}</p>
-                                    <p className="text-white text-sm font-serif mt-0.5">{teamMembers[0].name}</p>
+                                Human-Centric Leadership
+                            </motion.span>
+
+                            <div className="relative mb-8">
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+                                    className="font-serif leading-[1.05]"
+                                >
+                                    <span className="block text-[14vw] sm:text-[10vw] lg:text-7xl xl:text-8xl text-white">
+                                        Meet the
+                                    </span>
+                                    <span className="block text-[14vw] sm:text-[10vw] lg:text-7xl xl:text-8xl mt-2 text-monte-gold/90 font-light italic">
+                                        Visionaries
+                                    </span>
+                                </motion.h1>
+                            </div>
+
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.9, delay: 0.8 }}
+                                className="text-base md:text-xl text-white/40 max-w-lg leading-relaxed mb-12 font-light"
+                            >
+                                The architects of ambition, shaping India&apos;s luxury real estate landscape with precision, heart, and heritage.
+                            </motion.p>
+
+                            {/* Refined Stats Row */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 1, delay: 1.2 }}
+                                className="flex items-center gap-12"
+                            >
+                                <div className="group cursor-default">
+                                    <p className="text-3xl md:text-4xl font-serif text-monte-gold mb-1 transition-transform duration-500 group-hover:-translate-y-1">15+</p>
+                                    <p className="text-[9px] tracking-[0.3em] uppercase text-white/30 font-bold group-hover:text-monte-gold/50 transition-colors">Design Experts</p>
                                 </div>
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1.1, delay: 0.65 }}
-                                className="relative flex-[2] rounded-2xl overflow-hidden min-h-0"
-                            >
-                                <Image src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop" alt="Team" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.03]" />
+                                <div className="w-[1px] h-10 bg-white/10" />
+                                <div className="group cursor-default">
+                                    <p className="text-3xl md:text-4xl font-serif text-monte-gold mb-1 transition-transform duration-500 group-hover:-translate-y-1">30+</p>
+                                    <p className="text-[9px] tracking-[0.3em] uppercase text-white/30 font-bold group-hover:text-monte-gold/50 transition-colors">Years of Heritage</p>
+                                </div>
                             </motion.div>
                         </div>
-                        {/* Column 2 — top-offset */}
-                        <div className="flex flex-col gap-3 w-1/2 mt-12">
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1.1, delay: 0.55 }}
-                                className="relative flex-[2] rounded-2xl overflow-hidden min-h-0"
-                            >
-                                <Image src={teamMembers[1].image} alt={teamMembers[1].name} fill className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.03]" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                                <div className="absolute bottom-4 left-4">
-                                    <p className="text-xs tracking-[0.15em] text-white/50 uppercase">{teamMembers[1].role}</p>
-                                    <p className="text-white text-sm font-serif mt-0.5">{teamMembers[1].name}</p>
-                                </div>
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 1.1, delay: 0.75 }}
-                                className="relative flex-[3] rounded-2xl overflow-hidden min-h-0"
-                            >
-                                <Image src={teamMembers[2].image} alt={teamMembers[2].name} fill className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.03]" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                                <div className="absolute bottom-4 left-4">
-                                    <p className="text-xs tracking-[0.15em] text-white/50 uppercase">{teamMembers[2].role}</p>
-                                    <p className="text-white text-sm font-serif mt-0.5">{teamMembers[2].name}</p>
-                                </div>
-                            </motion.div>
+
+                        {/* ── RIGHT: CREATIVE BENTO MONTAGE ── */}
+                        <div className="w-full lg:w-[55%] h-[500px] sm:h-[600px] md:h-[750px] relative mt-8 lg:mt-0">
+                            {/* Bento Grid Container - Optimized for mobile/desktop */}
+                            <div className="grid grid-cols-2 lg:grid-cols-12 lg:grid-rows-12 gap-3 md:gap-4 h-full">
+
+                                {/* Item 1: Large Featured Member (Rohit) */}
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+                                    className="col-span-2 lg:col-span-8 lg:row-span-7 relative rounded-2xl md:rounded-[2rem] overflow-hidden group shadow-2xl"
+                                >
+                                    <Image
+                                        src={teamMembers[0].image}
+                                        alt={teamMembers[0].name}
+                                        fill
+                                        className="object-cover object-top transition-all duration-1000 group-hover:scale-110 group-hover:brightness-110"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                                    <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8">
+                                        <p className="text-[9px] md:text-[10px] tracking-[0.3em] text-monte-gold uppercase mb-1 md:mb-2 font-bold opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0 italic">{teamMembers[0].role}</p>
+                                        <h3 className="text-xl md:text-3xl font-serif text-white">{teamMembers[0].name}</h3>
+                                    </div>
+                                </motion.div>
+
+                                {/* Item 2: Vertical Profile (Priya) */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: 30 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
+                                    className="col-span-1 lg:col-span-4 lg:row-span-8 relative rounded-2xl md:rounded-[2rem] overflow-hidden group"
+                                >
+                                    <Image
+                                        src={teamMembers[1].image}
+                                        alt={teamMembers[1].name}
+                                        fill
+                                        className="object-cover transition-all duration-1000 group-hover:scale-110 grayscale-[0.5] group-hover:grayscale-0"
+                                    />
+                                    <div className="absolute inset-0 bg-monte-gold/10 mix-blend-overlay group-hover:opacity-0 transition-opacity" />
+                                    <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6">
+                                        <p className="text-[8px] md:text-[9px] tracking-[0.2em] text-white/60 uppercase mb-1">{teamMembers[1].role}</p>
+                                        <h3 className="text-lg md:text-xl font-serif text-white">{teamMembers[1].name}</h3>
+                                    </div>
+                                </motion.div>
+
+                                {/* Item 3: Wide Bottom (Amit) */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 40 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
+                                    className="col-span-1 lg:col-span-7 lg:row-span-5 relative rounded-2xl md:rounded-[2rem] overflow-hidden group"
+                                >
+                                    <Image
+                                        src={teamMembers[2].image}
+                                        alt={teamMembers[2].name}
+                                        fill
+                                        className="object-cover object-top transition-all duration-1000 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent opacity-50" />
+                                    <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6">
+                                        <p className="text-[8px] md:text-[9px] tracking-[0.2em] text-white/60 uppercase mb-1">{teamMembers[2].role}</p>
+                                        <h3 className="text-lg md:text-xl font-serif text-white">{teamMembers[2].name}</h3>
+                                    </div>
+                                </motion.div>
+
+                                {/* Item 4: Detail / Abstract Square */}
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 1, delay: 1 }}
+                                    className="hidden sm:block lg:col-span-5 lg:row-span-4 relative rounded-2xl md:rounded-[2rem] overflow-hidden border border-white/5 bg-white/5 backdrop-blur-sm group"
+                                >
+                                    <Image
+                                        src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=400&auto=format&fit=crop"
+                                        alt="Architecture"
+                                        fill
+                                        className="object-cover opacity-40 group-hover:opacity-100 transition-opacity duration-700"
+                                    />
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <div className="text-center p-4">
+                                            <p className="text-[8px] md:text-[10px] tracking-[0.4em] text-monte-gold uppercase mb-1 md:mb-2">Since</p>
+                                            <p className="text-xl md:text-2xl font-serif text-white">1995</p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
-                {/* Bottom border */}
-                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+                {/* Scrolled Down Indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2, duration: 1 }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
+                >
+                    <span className="text-[8px] uppercase tracking-[0.5em] text-white/20">Explore</span>
+                    <div className="w-[1px] h-12 bg-gradient-to-b from-monte-gold/50 to-transparent" />
+                </motion.div>
             </section>
 
             {/* Founder Spotlight */}

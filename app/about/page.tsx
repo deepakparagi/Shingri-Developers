@@ -12,7 +12,7 @@ export default function AboutPage() {
 
 
             {/* ═══ HERO: LEGACY & ARCHITECTURAL DEPTH ═══ */}
-            <section className="relative min-h-screen pt-32 flex items-center overflow-hidden bg-[#080808]">
+            <section className="relative min-h-[100dvh] pt-32 pb-20 md:pt-40 md:pb-24 lg:pt-32 lg:pb-20 flex items-center overflow-hidden bg-[#080808]">
 
                 {/* Animated ambient background */}
                 <motion.div
@@ -23,12 +23,12 @@ export default function AboutPage() {
                 />
 
                 {/* Giant ghost background word */}
-                <div className="pointer-events-none select-none absolute inset-0 flex items-center overflow-hidden">
+                <div className="pointer-events-none select-none absolute inset-0 flex items-center justify-center overflow-hidden">
                     <motion.span
                         initial={{ opacity: 0, x: -40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 2, ease: "easeOut" }}
-                        className="font-serif text-[22vw] md:text-[18vw] leading-none tracking-[0.15em] whitespace-nowrap"
+                        className="font-serif text-[20vw] md:text-[16vw] lg:text-[14vw] leading-none tracking-[0.15em] whitespace-nowrap"
                         style={{ color: "rgba(255,255,255,0.025)" }}
                     >
                         LEGACY
@@ -45,7 +45,7 @@ export default function AboutPage() {
                 />
 
                 {/* Main content — offset right to clear the gold line */}
-                <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-8 md:px-24 lg:px-32 xl:px-36 py-32">
+                <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-8 md:px-24 lg:px-32 xl:px-36 pt-0 pb-32">
                     <motion.div
                         initial="hidden"
                         animate="visible"
@@ -207,14 +207,14 @@ export default function AboutPage() {
                                 fill
                                 className="object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-monte-charcoal/80 to-transparent p-8 flex flex-col justify-end text-white">
-                                <h3 className="text-3xl font-serif mb-2">Building Communities</h3>
-                                <p className="text-white/90">More than just homes, we build safe havens for families to grow.</p>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-8 flex flex-col justify-end text-white">
+                                <h3 className="text-3xl font-serif mb-2 !text-white">Building Communities</h3>
+                                <p className="!text-white/90 !mb-0">More than just homes, we build safe havens for families to grow.</p>
                             </div>
                         </div>
                         <div className="order-1 md:order-2">
-                            <span className="text-sm uppercase tracking-widest text-monte-text-secondary mb-2 block font-bold">Social Responsibility</span>
-                            <h2 className="text-4xl font-serif text-monte-text-primary mb-6">Impact Beyond Construction</h2>
+                            <span className="text-[11px] uppercase tracking-[0.25em] text-monte-gold mb-4 block font-bold font-sans">Social Responsibility</span>
+                            <h2 className="text-4xl md:text-5xl font-serif text-monte-text-primary mb-6">Impact Beyond Construction</h2>
                             <p className="text-lg text-monte-text-body mb-6 leading-relaxed">
                                 We believe that a developer&apos;s responsibility extends beyond the boundary walls of their projects. Through various initiatives, we contribute to local infrastructure development, support educational programs, and ensure that our growth translates into prosperity for the entire region.
                             </p>
@@ -226,8 +226,8 @@ export default function AboutPage() {
                                     { val: "3", label: "Upcoming Townships" },
                                 ].map((stat, i) => (
                                     <div key={i}>
-                                        <h4 className="text-4xl font-serif text-monte-text-primary">{stat.val}</h4>
-                                        <p className="text-sm text-monte-text-body mt-1">{stat.label}</p>
+                                        <h4 className="text-4xl md:text-5xl font-serif text-monte-text-primary">{stat.val}</h4>
+                                        <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-monte-text-secondary mt-2 font-sans">{stat.label}</p>
                                     </div>
                                 ))}
                             </div>

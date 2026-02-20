@@ -21,7 +21,7 @@ export default function Footer() {
                     {/* Left: Heading + Form */}
                     <div className="flex flex-col gap-8">
                         {/* Logo */}
-                        <div className="relative h-14 w-32">
+                        <div className="relative h-20 w-44 md:h-24 md:w-52">
                             <Image
                                 src="/images/logo.png"
                                 alt="SHINGRI Developers"

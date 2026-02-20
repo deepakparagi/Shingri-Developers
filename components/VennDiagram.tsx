@@ -124,6 +124,7 @@ export default function VennDiagram() {
                         fill="black"
                         initial={{ stroke: "rgba(255,255,255,0.30)", strokeWidth: 1 }}
                         whileHover={{ stroke: "rgba(255,255,255,0.9)", strokeWidth: 1.5, filter: "drop-shadow(0 0 14px rgba(255,255,255,0.35))" }}
+                        whileTap={{ stroke: "rgba(255,255,255,0.9)", strokeWidth: 1.5, filter: "drop-shadow(0 0 14px rgba(255,255,255,0.35))", scale: 1.02 }}
                         transition={{ duration: 0.3 }}
                         style={{ cursor: "pointer" }}
                     />
@@ -133,6 +134,7 @@ export default function VennDiagram() {
                         fill="black"
                         initial={{ stroke: "rgba(255,255,255,0.30)", strokeWidth: 1 }}
                         whileHover={{ stroke: "rgba(255,255,255,0.9)", strokeWidth: 1.5, filter: "drop-shadow(0 0 14px rgba(255,255,255,0.35))" }}
+                        whileTap={{ stroke: "rgba(255,255,255,0.9)", strokeWidth: 1.5, filter: "drop-shadow(0 0 14px rgba(255,255,255,0.35))", scale: 1.02 }}
                         transition={{ duration: 0.3 }}
                         style={{ cursor: "pointer" }}
                     />
@@ -142,19 +144,28 @@ export default function VennDiagram() {
                         fill="black"
                         initial={{ stroke: "rgba(255,255,255,0.30)", strokeWidth: 1 }}
                         whileHover={{ stroke: "rgba(255,255,255,0.9)", strokeWidth: 1.5, filter: "drop-shadow(0 0 14px rgba(255,255,255,0.35))" }}
+                        whileTap={{ stroke: "rgba(255,255,255,0.9)", strokeWidth: 1.5, filter: "drop-shadow(0 0 14px rgba(255,255,255,0.35))", scale: 1.02 }}
                         transition={{ duration: 0.3 }}
                         style={{ cursor: "pointer" }}
                     />
 
                     {/* ── Glow aura behind center ── */}
-                    <circle cx="300" cy="267" r="105"
+                    <motion.circle cx="300" cy="267" r="105"
                         fill="rgba(255,255,255,0.10)"
-                        filter="url(#pulseGlow)" />
+                        filter="url(#pulseGlow)"
+                        animate={{ opacity: [0.5, 0.8, 0.5] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    />
 
                     {/* ── Center: Smart Ownership ── */}
-                    <circle cx="300" cy="267" r="70"
+                    <motion.circle cx="300" cy="267" r="70"
                         fill="white"
-                        filter="url(#smartGlow)" />
+                        filter="url(#smartGlow)"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ duration: 0.3 }}
+                        style={{ cursor: "pointer" }}
+                    />
 
                     {/* Center labels */}
                     <text x="300" y="260" textAnchor="middle"

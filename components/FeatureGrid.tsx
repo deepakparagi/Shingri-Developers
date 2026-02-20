@@ -3,22 +3,12 @@
 import { Shield, Coins, TrendingUp, Building2, ArrowDown } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { EASE } from "@/lib/motion";
+import { EASE, fadeUp, staggerContainer } from "@/lib/motion";
 
 const APPLE_EASE = EASE;
 
-const container = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.08, delayChildren: 0.05 },
-    },
-};
-
-const itemAnim = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: APPLE_EASE } },
-};
+const containerVars = staggerContainer(0.08, 0.1);
+const itemVars = fadeUp;
 
 export default function FeatureGrid() {
     return (
@@ -41,7 +31,7 @@ export default function FeatureGrid() {
                     </motion.h2>
                     <motion.div
                         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
-                        variants={container}
+                        variants={containerVars}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
@@ -50,7 +40,7 @@ export default function FeatureGrid() {
                             <motion.div
                                 key={i}
                                 className="flex flex-col gap-6 p-6 md:p-8 rounded-3xl bg-white border border-monte-border hover:shadow-lg transition-all duration-500 group relative overflow-hidden shadow-sm"
-                                variants={itemAnim}
+                                variants={itemVars}
                                 whileHover={{ y: -6, transition: { duration: 0.3, ease: APPLE_EASE } }}
                             >
                                 <div className="w-14 h-14 rounded-2xl bg-monte-sand flex items-center justify-center group-hover:scale-110 transition-transform duration-500 border border-monte-border relative z-10 text-monte-text-primary group-hover:text-monte-gold">
@@ -77,15 +67,16 @@ export default function FeatureGrid() {
                     >
                         Discover Properties
                     </motion.h2>
-                    <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
-
+                    <motion.div
+                        className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]"
+                        variants={containerVars}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                    >
                         {/* Luxury Villas - Vertical */}
                         <motion.div
-                            initial={{ opacity: 0, y: 18 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.15 }}
-                            transition={{ delay: 0.05, duration: 0.65, ease: APPLE_EASE }}
-                            // Darkened placeholder background
+                            variants={itemVars}
                             className="col-span-1 md:row-span-2 bg-white/5 rounded-3xl relative overflow-hidden group cursor-pointer h-52 sm:h-64 md:h-auto border border-white/10 flex flex-col justify-end p-6"
                         >
                             <Image src="https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop" alt="Luxury Villas" fill className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100 z-0" />
@@ -97,10 +88,7 @@ export default function FeatureGrid() {
 
                         {/* Penthouse Suites - Square */}
                         <motion.div
-                            initial={{ opacity: 0, y: 18 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.15 }}
-                            transition={{ delay: 0.1, duration: 0.65, ease: APPLE_EASE }}
+                            variants={itemVars}
                             className="col-span-1 md:row-span-1 bg-white/5 rounded-3xl relative overflow-hidden group cursor-pointer h-52 sm:h-64 md:h-auto border border-white/10 flex flex-col justify-end p-6"
                         >
                             <Image src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop" alt="Penthouses" fill className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100 z-0" />
@@ -112,10 +100,7 @@ export default function FeatureGrid() {
 
                         {/* Apartments - Horizontal */}
                         <motion.div
-                            initial={{ opacity: 0, y: 18 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.15 }}
-                            transition={{ delay: 0.15, duration: 0.65, ease: APPLE_EASE }}
+                            variants={itemVars}
                             className="col-span-1 md:col-span-2 md:row-span-1 bg-white/5 rounded-3xl relative overflow-hidden group cursor-pointer h-52 sm:h-64 md:h-auto border border-white/10 flex flex-col justify-end p-6"
                         >
                             <Image src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop" alt="Apartments" fill className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100 z-0" />
@@ -127,11 +112,8 @@ export default function FeatureGrid() {
 
                         {/* Catalog Download - Redesigned */}
                         <motion.div
-                            initial={{ opacity: 0, y: 18 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.15 }}
-                            transition={{ delay: 0.18, duration: 0.65, ease: APPLE_EASE }}
-                            className="col-span-1 md:col-span-1 md:row-span-1 bg-black border border-white/10 rounded-3xl flex items-center justify-center cursor-pointer hover:bg-white/5 transition-all group h-48 md:h-auto py-8 md:py-0 shadow-sm relative overflow-hidden"
+                            variants={itemVars}
+                            className="col-span-1 md:col-span-1 md:row-span-1 bg-black border border-white/10 rounded-3xl flex items-center justify-center cursor-pointer hover:border-monte-gold/40 transition-all group h-48 md:h-auto py-8 md:py-0 shadow-sm hover:shadow-2xl hover:shadow-monte-gold/10 relative overflow-hidden"
                             whileHover={{ y: -4, transition: { duration: 0.28, ease: APPLE_EASE } }}
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -146,10 +128,7 @@ export default function FeatureGrid() {
 
                         {/* Off-Plan Projects */}
                         <motion.div
-                            initial={{ opacity: 0, y: 18 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.15 }}
-                            transition={{ delay: 0.22, duration: 0.65, ease: APPLE_EASE }}
+                            variants={itemVars}
                             className="col-span-1 md:col-span-2 md:row-span-1 bg-white/5 rounded-3xl relative overflow-hidden group cursor-pointer h-52 sm:h-64 md:h-auto border border-white/10 flex flex-col justify-end p-6"
                         >
                             <Image src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="Off-plan" fill className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100 z-0" />
@@ -158,8 +137,7 @@ export default function FeatureGrid() {
                                 <h3 className="text-xl font-serif !text-white">Off-Plan Projects</h3>
                             </div>
                         </motion.div>
-
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

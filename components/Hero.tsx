@@ -6,7 +6,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { allProjects } from "@/data/projects";
-import { EASE, DUR, floatLoop, buttonHover, buttonTap, buttonTransition } from "@/lib/motion";
+import { EASE, DUR, SPRING, magneticHover, ambientMotion, buttonHover, buttonTap, buttonTransition } from "@/lib/motion";
 
 const SLIDE_DURATION = 8000;
 
@@ -15,13 +15,13 @@ const heroContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.1, delayChildren: 0.25 },
+        transition: { staggerChildren: 0.12, delayChildren: 0.3 },
     },
 };
 
 const heroItemVariants = {
-    hidden: { opacity: 0, y: 22 },
-    visible: { opacity: 1, y: 0, transition: { duration: DUR.slow, ease: EASE } },
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { ...SPRING } },
 };
 
 export default function Hero() {
@@ -29,9 +29,9 @@ export default function Hero() {
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
     const sectionRef = useRef<HTMLElement>(null);
 
-    // ── Parallax: background moves at 40% of scroll speed ──────
+    // ── Parallax: background moves at 15% of scroll speed ──────
     const { scrollY } = useScroll();
-    const bgY = useTransform(scrollY, [0, 600], ["0%", "8%"]);
+    const bgY = useTransform(scrollY, [0, 800], ["0%", "15%"]);
 
     // ── Slide Timer ─────────────────────────────────────────────
     useEffect(() => {
@@ -49,7 +49,7 @@ export default function Hero() {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full min-h-[100dvh] lg:h-[100dvh] overflow-x-hidden lg:overflow-hidden bg-black !text-white"
+            className="relative w-full min-h-[100dvh] lg:h-[100dvh] overflow-x-hidden lg:overflow-hidden bg-black !text-white pt-32 md:pt-40 lg:pt-32"
         >
             {/* ── 1. BACKGROUND with parallax ────────────────────────────── */}
             <AnimatePresence initial={false} mode="popLayout">
@@ -75,7 +75,7 @@ export default function Hero() {
             </AnimatePresence>
 
             {/* ── 2. CONTENT ──────────────────────────────────────────────── */}
-            <div className="container-global relative z-10 h-full flex flex-col lg:flex-row items-center lg:justify-between pt-32 pb-32 lg:pt-28 lg:pb-20 gap-8 lg:gap-0">
+            <div className="container-global relative z-10 h-full flex flex-col lg:flex-row items-center lg:justify-between pt-8 pb-24 md:pt-12 md:pb-28 lg:pt-8 lg:pb-20 gap-8 lg:gap-0">
 
                 {/* LEFT: Text & Stats — staggered entrance */}
                 <motion.div
@@ -115,12 +115,14 @@ export default function Hero() {
                             </motion.h1>
                         </div>
                         <div className="overflow-hidden">
-                            <motion.h1
-                                variants={heroItemVariants}
-                                className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-none !text-monte-gold my-2"
-                            >
-                                Fine Living
-                            </motion.h1>
+                            <motion.div animate={ambientMotion.animate} transition={ambientMotion.transition as any}>
+                                <motion.h1
+                                    variants={heroItemVariants}
+                                    className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-none !text-monte-gold my-2"
+                                >
+                                    Fine Living
+                                </motion.h1>
+                            </motion.div>
                         </div>
                         <div className="overflow-hidden">
                             <motion.h1
@@ -155,9 +157,8 @@ export default function Hero() {
                         className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 md:gap-6 w-full sm:w-auto"
                     >
                         <motion.div
-                            whileHover={buttonHover}
+                            {...magneticHover}
                             whileTap={buttonTap}
-                            transition={buttonTransition}
                         >
                             <Link
                                 href="/contact"
@@ -167,9 +168,8 @@ export default function Hero() {
                             </Link>
                         </motion.div>
                         <motion.div
-                            whileHover={buttonHover}
+                            {...magneticHover}
                             whileTap={buttonTap}
-                            transition={buttonTransition}
                         >
                             <Link
                                 href="/projects"
@@ -195,8 +195,8 @@ export default function Hero() {
                         {/* ── Floating idle loop ─── */}
                         <motion.div
                             className="absolute inset-0"
-                            animate={{ y: [0, -6, 0] }}
-                            transition={{ duration: 5, ease: "easeInOut", repeat: Infinity, repeatType: "loop" }}
+                            animate={ambientMotion.animate}
+                            transition={ambientMotion.transition as any}
                         >
                             {/* Full Bleed Image */}
                             <Image
@@ -213,7 +213,7 @@ export default function Hero() {
 
                         {/* Status Badge */}
                         <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
-                            <span className="bg-monte-gold text-black text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md">
+                            <span className="bg-monte-gold/20 text-monte-gold text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest border border-monte-gold/30 backdrop-blur-md shadow-md">
                                 {currentProject.status}
                             </span>
                         </div>

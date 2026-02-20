@@ -71,9 +71,9 @@ export default function Header() {
     return (
         <>
             <header className={cn(
-                "fixed top-0 left-0 w-full z-[100] transition-all duration-[350ms] py-3 md:py-4",
+                "fixed top-0 left-0 w-full z-[1000] transition-all duration-500 py-3 md:py-4",
                 scrolled
-                    ? "bg-[#111111]/85 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_32px_rgba(0,0,0,0.55)]"
+                    ? "glass-dark shadow-[0_4px_32px_rgba(0,0,0,0.55)]"
                     : "bg-transparent border-b border-transparent"
             )}>
                 {/* Global Container for Alignment */}
@@ -95,25 +95,31 @@ export default function Header() {
 
                     {/* Desktop Navigation - Centered */}
                     <nav className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-                        {navLinks.map((link) => {
+                        {navLinks.map((link, i) => {
                             const isActive = pathname === link.href;
                             return (
-                                <Link
+                                <motion.div
                                     key={link.href}
-                                    href={link.href}
-                                    className="text-sm font-medium tracking-[0.15em] text-white hover:text-monte-gold transition-colors duration-300 uppercase relative group py-1"
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1 + i * 0.05, duration: 0.6, ease: EASE }}
                                 >
-                                    {link.label}
-                                    {/* Animated underline — slides in from left */}
-                                    <motion.span
-                                        className="absolute -bottom-0.5 left-0 h-[1px] bg-monte-gold"
-                                        initial={{ width: "0%" }}
-                                        animate={{ width: isActive ? "100%" : "0%" }}
-                                        transition={{ duration: 0.35, ease: EASE }}
-                                    />
-                                    {/* Hover underline via CSS (group-hover) */}
-                                    <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-monte-gold/50 transition-all duration-300 group-hover:w-full" />
-                                </Link>
+                                    <Link
+                                        href={link.href}
+                                        className="text-sm font-medium tracking-[0.15em] text-white hover:text-monte-gold transition-colors duration-300 uppercase relative group py-1"
+                                    >
+                                        {link.label}
+                                        {/* Animated underline — slides in from left */}
+                                        <motion.span
+                                            className="absolute -bottom-0.5 left-0 h-[1px] bg-monte-gold"
+                                            initial={{ width: "0%" }}
+                                            animate={{ width: isActive ? "100%" : "0%" }}
+                                            transition={{ duration: 0.35, ease: EASE }}
+                                        />
+                                        {/* Hover underline via CSS (group-hover) */}
+                                        <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-monte-gold/50 transition-all duration-300 group-hover:w-full" />
+                                    </Link>
+                                </motion.div>
                             );
                         })}
                     </nav>
@@ -142,7 +148,7 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-[105] bg-black/95 backdrop-blur-3xl pt-32 px-4 md:px-8 lg:px-24 overflow-y-auto"
+                        className="fixed inset-0 z-[1100] bg-black/95 backdrop-blur-3xl pt-32 px-4 md:px-8 lg:px-24 overflow-y-auto"
                     >
                         <button
                             onClick={toggleSearch}
@@ -198,7 +204,7 @@ export default function Header() {
                         exit={{ opacity: 0, x: "100%" }}
                         transition={{ type: "tween", duration: 0.35, ease: EASE }}
                         // Full screen, dark background
-                        className="fixed inset-0 bg-black/95 backdrop-blur-xl text-white flex flex-col justify-center items-center z-[90] md:hidden"
+                        className="fixed inset-0 bg-black/95 backdrop-blur-xl text-white flex flex-col justify-center items-center z-[1100] md:hidden"
                     >
                         <nav className="flex flex-col gap-8 text-center">
                             {navLinks.map((link) => (

@@ -32,14 +32,6 @@
   --color-background: var(--color-monte-beige);
   --color-foreground: var(--color-monte-text-body);
 
-  /* ... rest of the file ... */
-
-
-
-  /* Semantic mappings for Tailwind */
-  --color-background: var(--color-monte-beige);
-  --color-foreground: var(--color-monte-text-body);
-
   --color-card: var(--color-monte-ivory);
   --color-card-foreground: var(--color-monte-text-body);
 
@@ -110,12 +102,9 @@ h2,
 h3 {
   color: var(--color-monte-text-primary);
   font-family: var(--font-serif);
-  /* Uses Outfit */
-  letter-spacing: -0.02em;
-  /* Tight tracking for display */
-  line-height: 1.1;
-  /* Balanced display leading */
-  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  font-weight: 500;
 }
 
 h4,
@@ -123,7 +112,7 @@ h5,
 h6 {
   color: var(--color-monte-text-primary);
   font-family: var(--font-serif);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   font-weight: 500;
 }
 
@@ -131,16 +120,15 @@ p,
 li,
 span,
 div {
-  /* color: var(--color-monte-text-body); - handled by inheritance mostly, but explicit p rule exists */
-  line-height: 1.6;
-  /* Relaxed reading experience */
+  line-height: 1.7;
 }
 
 /* Explicit P rule override */
 p {
   color: var(--color-monte-text-body);
-  line-height: 1.65;
-  margin-bottom: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
 }
 
 .text-caption {
@@ -210,6 +198,19 @@ html.lenis body {
     --text-7xl: clamp(3.5rem, 3rem + 3vw, 7.5rem);
   }
 
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   img,
   video {
     max-width: 100%;
@@ -267,5 +268,31 @@ html.lenis body {
   /* Global Container - standardizing widths */
   .container-global {
     @apply w-full max-w-[98%] 2xl:max-w-screen-2xl mx-auto px-4 md:px-8;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply backdrop-blur-xl bg-white/10 border border-white/20;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-xl bg-black/40 border border-white/10;
+  }
+
+  /* Shimmer Effect */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
   }
 }

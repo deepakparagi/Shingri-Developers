@@ -67,7 +67,7 @@ export default function Hero() {
     const heroBgRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!sectionRef.current || isMobile) return;
+        if (!sectionRef.current) return;
 
         const ctx = gsap.context(() => {
             // Background Settling (Scale down on scroll)
@@ -98,14 +98,13 @@ export default function Hero() {
 
         return () => {
             ctx.revert();
-            ScrollTrigger.getAll().forEach(t => t.kill());
         };
-    }, [isMobile]);
+    }, []);
 
     return (
         <section
             ref={sectionRef}
-            className="relative w-full min-h-[110vh] flex items-center pt-24 md:pt-32 pb-20 overflow-hidden bg-black !text-white"
+            className="relative w-full min-h-screen flex items-center pt-24 md:pt-32 pb-20 overflow-hidden bg-black !text-white"
         >
             {/* ── 1. BACKGROUND with parallax ────────────────────────────── */}
             <AnimatePresence initial={false} mode="popLayout">
@@ -257,7 +256,7 @@ export default function Hero() {
                         {/* ── Floating idle loop ─── */}
                         <motion.div
                             className="absolute inset-0"
-                            {...(isMobile ? {} : { animate: ambientMotion.animate, transition: ambientMotion.transition as any })}
+                            {...ambientMotion}
                         >
                             {/* Full Bleed Image */}
                             <Image

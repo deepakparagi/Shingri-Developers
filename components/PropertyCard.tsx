@@ -49,15 +49,24 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
     const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
     const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
 
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (isTouchDevice) return;
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
         const rect = cardRef.current?.getBoundingClientRect();
         if (!rect) return;
 
         const width = rect.width;
         const height = rect.height;
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
+
+        let clientX, clientY;
+        if ('touches' in e) {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        } else {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        }
+
+        const mouseX = clientX - rect.left;
+        const mouseY = clientY - rect.top;
 
         const xPct = (mouseX / width) - 0.5;
         const yPct = (mouseY / height) - 0.5;
@@ -98,25 +107,6 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
         return () => document.removeEventListener("pointerdown", handleOutsideClick);
     }, [isTouchDevice, isExpanded]);
 
-    // ── Staggered Entrance (GSAP) ───────────────────────────────
-    useEffect(() => {
-        if (!cardRef.current) return;
-
-        gsap.fromTo(cardRef.current,
-            { opacity: 0, y: 50, scale: 0.95 },
-            {
-                opacity: 1, y: 0, scale: 1,
-                duration: 1.2,
-                ease: "power4.out",
-                scrollTrigger: {
-                    trigger: cardRef.current,
-                    start: "top bottom-=100px",
-                    toggleActions: "play none none none"
-                }
-            }
-        );
-    }, []);
-
     // ── Tap handler: toggle on touch, passthrough on desktop ────
     const handleTap = useCallback((e: React.MouseEvent) => {
         if (isTouchDevice) {
@@ -129,19 +119,19 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
         <motion.div
             ref={cardRef}
             style={{
-                rotateX: isTouchDevice ? 0 : rotateX,
-                rotateY: isTouchDevice ? 0 : rotateY,
+                rotateX,
+                rotateY,
                 perspective: "1200px",
                 transformStyle: "preserve-3d",
             }}
-            onMouseEnter={isTouchDevice ? undefined : () => {
+            onMouseEnter={() => {
                 setIsExpanded(true);
                 glareOpacity.set(0.4);
             }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            whileHover={isTouchDevice ? undefined : { y: -15, scale: 1.03 }}
-            whileTap={isTouchDevice ? { scale: 0.98 } : { scale: 0.97 }}
+            whileHover={{ y: -15, scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
             transition={{ ...APPLE_SPRING_STIFF }}
             className={cn(
                 "group relative rounded-[32px] bg-white transition-all duration-500 ease-out will-change-transform",

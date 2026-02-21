@@ -6,10 +6,16 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     return (
         <ReactLenis root options={{
             // @ts-ignore
-            smoothTouch: false, // Use native momentum scroll on touch devices for better performance
-            // @ts-ignore
+            smoothTouch: false,
             syncTouch: true,
-            lerp: 0.1
+            lerp: 0.1,
+            wheelMultiplier: 1.2,
+            touchMultiplier: 1.2,
+            infinite: false,
+            // @ts-ignore
+            orientation: "vertical",
+            gestureOrientation: "vertical",
+            smoothWheel: true,
         }}>
             {children}
         </ReactLenis>

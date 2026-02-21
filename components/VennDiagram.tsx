@@ -55,15 +55,15 @@ export default function VennDiagram() {
                     <defs>
                         {/* Soft white glow for center circle */}
                         <filter id="smartGlow" x="-80%" y="-80%" width="260%" height="260%">
-                            <feGaussianBlur stdDeviation={isMobile ? 6 : 14} result="blur" />
+                            <feGaussianBlur stdDeviation={14} result="blur" />
                             <feMerge>
                                 <feMergeNode in="blur" />
                                 <feMergeNode in="SourceGraphic" />
                             </feMerge>
                         </filter>
-                        {/* Pulsing glow animation — reduced on mobile */}
+                        {/* Pulsing glow animation */}
                         <filter id="pulseGlow" x="-100%" y="-100%" width="300%" height="300%">
-                            <feGaussianBlur stdDeviation={isMobile ? 8 : 22} result="blur" />
+                            <feGaussianBlur stdDeviation={22} result="blur" />
                         </filter>
                     </defs>
 
@@ -185,7 +185,7 @@ export default function VennDiagram() {
                     {/* ── Glow aura behind center — fades in after convergence ── */}
                     <motion.circle cx="300" cy="267" r="105"
                         fill="rgba(255,255,255,0.10)"
-                        filter={isMobile ? undefined : "url(#pulseGlow)"}
+                        filter="url(#pulseGlow)"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: [0, 0.8, 0.5] }}
                         viewport={{ once: true, amount: 0.3 }}
@@ -195,7 +195,7 @@ export default function VennDiagram() {
                     {/* ── Center: Smart Ownership — scales up + glows after rings land ── */}
                     <motion.circle cx="300" cy="267" r="70"
                         fill="white"
-                        filter={isMobile ? undefined : "url(#smartGlow)"}
+                        filter="url(#smartGlow)"
                         initial={prefersReducedMotion ? {} : { scale: 0.6, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         viewport={{ once: true, amount: 0.3 }}

@@ -12,7 +12,7 @@ export default function AboutPage() {
 
 
             {/* ═══ HERO: LEGACY & ARCHITECTURAL DEPTH ═══ */}
-            <section className="relative h-[100dvh] flex items-center pt-48 md:pt-72 overflow-hidden bg-[#080808]">
+            <section className="relative min-h-[110vh] flex items-center pt-24 md:pt-32 pb-28 md:pb-36 overflow-hidden bg-[#080808]">
 
                 {/* Animated ambient background */}
                 <motion.div
@@ -88,7 +88,7 @@ export default function AboutPage() {
                     </div>
 
                     {/* ── RIGHT visual composition block: Architectural Master Plan ── */}
-                    <div className="relative h-[340px] sm:h-[420px] md:h-[500px] lg:h-[550px] xl:h-[650px] 2xl:h-[700px] w-full flex items-center justify-center lg:justify-end -mt-24 lg:-mt-56">
+                    <div className="relative h-[400px] sm:h-[480px] md:h-[550px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px] w-full flex items-center justify-center lg:justify-end">
                         <div className="relative w-full h-full max-w-[420px] sm:max-w-[500px] lg:max-w-[550px] xl:max-w-[650px] flex items-center justify-center">
 
                             {/* Blueprint Grid Background Layer */}

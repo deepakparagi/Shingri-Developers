@@ -32,7 +32,7 @@ export default function ProjectsPage() {
         <main className="bg-monte-beige min-h-screen">
 
             {/* ═══ HERO: ARCHITECTURAL RECONSTRUCTION ═══ */}
-            <section className="relative h-[100dvh] flex items-center pt-52 md:pt-64 overflow-hidden bg-[#0a0a0a]">
+            <section className="relative min-h-[110vh] flex items-center pt-24 md:pt-32 pb-24 overflow-hidden bg-[#0a0a0a]">
 
                 {/* Subtle ambient glow - intentional positioning */}
                 <div className="pointer-events-none absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-[rgba(212,175,55,0.03)] blur-[120px]" />
@@ -104,7 +104,7 @@ export default function ProjectsPage() {
                     </div>
 
                     {/* ── RIGHT visual composition block — Balanced Scaling ── */}
-                    <div className="relative h-[320px] sm:h-[420px] md:h-[500px] lg:h-[550px] xl:h-[650px] 2xl:h-[700px] w-full flex items-center justify-center lg:justify-end -mt-24 lg:-mt-20">
+                    <div className="relative h-[320px] sm:h-[420px] md:h-[500px] lg:h-[550px] xl:h-[650px] 2xl:h-[700px] w-full flex items-center justify-center lg:justify-end">
                         <div className="relative w-full h-full max-w-[420px] sm:max-w-[500px] lg:max-w-[550px] xl:max-w-[650px]">
                             {/* Card 1 — Center Focus Highlight */}
                             {/* Card 1 — Villa Project */}

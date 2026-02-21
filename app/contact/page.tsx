@@ -48,7 +48,7 @@ export default function ContactPage() {
         <main className="bg-monte-white min-h-screen">
 
             {/* ═══ HERO: THE GOLDEN GATEWAY ═══ */}
-            <section className="relative min-h-[100dvh] flex items-center pt-28 md:pt-32 pb-12 overflow-hidden bg-[#060606]">
+            <section className="relative min-h-[100vh] flex items-center pt-24 md:pt-28 pb-12 overflow-hidden bg-[#060606]">
 
                 {/* Immersive Media Backdrop */}
                 <div className="absolute inset-0 z-0">

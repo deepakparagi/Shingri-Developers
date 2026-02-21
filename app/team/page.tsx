@@ -35,7 +35,7 @@ export default function TeamPage() {
         <main className="bg-monte-beige min-h-screen">
 
             {/* ═══ HERO: CREATIVE VISIONARIES BENTO ═══ */}
-            <section className="relative h-[100dvh] flex items-center pt-52 md:pt-64 overflow-hidden bg-[#070707]">
+            <section className="relative min-h-[110vh] flex items-center pt-24 md:pt-32 pb-20 overflow-hidden bg-[#070707]">
 
                 {/* Decorative background elements */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -115,7 +115,7 @@ export default function TeamPage() {
                     </div>
 
                     {/* ── RIGHT visual composition block: Architectural Mosaic (Non-Image) ── */}
-                    <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[550px] xl:h-[650px] 2xl:h-[700px] w-full flex items-center justify-center lg:justify-end -mt-24 lg:-mt-24">
+                    <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[550px] xl:h-[650px] 2xl:h-[700px] w-full flex items-center justify-center lg:justify-end">
                         <div className="relative w-full h-full max-w-[320px] sm:max-w-[450px] lg:max-w-[550px] xl:max-w-[650px] flex items-center justify-center">
 
                             {/* Central Abstract SVG Motif — Kinetic Blueprint */}

@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, Menu, X, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { allProjects } from "@/data/projects";
 import Image from "next/image";
-import { EASE, APPLE_EASE, DUR } from "@/lib/motion";
+import { EASE, APPLE_EASE, DUR, magneticHover, APPLE_SPRING_STIFF } from "@/lib/motion";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,14 +17,18 @@ export default function Header() {
     const [filteredProjects, setFilteredProjects] = useState(allProjects);
 
     const [scrolled, setScrolled] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const { scrollY } = useScroll();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = scrollY.getPrevious() ?? 0;
+        if (latest > previous && latest > 150) {
+            setHidden(true);
+        } else {
+            setHidden(false);
+        }
+        setScrolled(latest > 50);
+    });
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -70,28 +74,38 @@ export default function Header() {
 
     return (
         <>
-            <header className={cn(
-                "fixed top-0 left-0 w-full z-[1000] transition-all duration-500 py-3 md:py-4",
-                scrolled
-                    ? "glass-dark shadow-[0_4px_32px_rgba(0,0,0,0.55)]"
-                    : "bg-transparent border-b border-transparent"
-            )}>
+            <motion.header
+                variants={{
+                    visible: { y: 0 },
+                    hidden: { y: "-110%" },
+                }}
+                animate={hidden ? "hidden" : "visible"}
+                transition={{ duration: 0.45, ease: APPLE_EASE }}
+                className={cn(
+                    "fixed top-0 left-0 w-full z-[1000] py-3 md:py-4",
+                    scrolled
+                        ? "glass-dark shadow-[0_4px_32px_rgba(0,0,0,0.55)]"
+                        : "bg-transparent border-b border-transparent"
+                )}
+            >
                 {/* Global Container for Alignment */}
                 <div className="container-global flex justify-between items-center relative">
                     <div className="flex items-center justify-between gap-8 ml-1">
                         {/* Logo */}
                         {/* Logo — Enhanced for Brand Prominence */}
-                        <Link href="/" className="relative z-50 flex-shrink-0">
-                            <div className="relative h-12 w-36 md:h-16 md:w-48 transition-all duration-300 hover:scale-105">
-                                <Image
-                                    src="/images/logo.png"
-                                    alt="SHINGRI Developers"
-                                    fill
-                                    className="object-contain object-left brightness-110 drop-shadow-[0_0_12px_rgba(212,175,55,0.2)]"
-                                    priority
-                                />
-                            </div>
-                        </Link>
+                        <motion.div {...magneticHover}>
+                            <Link href="/" className="relative z-50 flex-shrink-0">
+                                <div className="relative h-12 w-36 md:h-16 md:w-48 transition-all duration-300">
+                                    <Image
+                                        src="/images/logo.png"
+                                        alt="SHINGRI Developers"
+                                        fill
+                                        className="object-contain object-left brightness-110 drop-shadow-[0_0_12px_rgba(212,175,55,0.2)]"
+                                        priority
+                                    />
+                                </div>
+                            </Link>
+                        </motion.div>
                     </div>
 
                     {/* Desktop Navigation - Centered */}
@@ -110,15 +124,14 @@ export default function Header() {
                                         className="text-sm font-medium tracking-[0.15em] text-white hover:text-monte-gold transition-colors duration-300 uppercase relative group py-1"
                                     >
                                         {link.label}
-                                        {/* Animated underline — slides in from left */}
+                                        {/* Animated underline — expands from center */}
                                         <motion.span
-                                            className="absolute -bottom-0.5 left-0 h-[1px] bg-monte-gold"
-                                            initial={{ width: isActive ? "100%" : "0%", left: isActive ? "0%" : "50%" }}
-                                            animate={{ width: isActive ? "100%" : "0%", left: isActive ? "0%" : "50%" }}
-                                            transition={{ duration: DUR.base, ease: APPLE_EASE }}
+                                            className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-monte-gold origin-center"
+                                            initial={{ scaleX: isActive ? 1 : 0 }}
+                                            animate={{ scaleX: isActive ? 1 : 0 }}
+                                            whileHover={{ scaleX: 1 }}
+                                            transition={{ duration: 0.4, ease: APPLE_EASE }}
                                         />
-                                        {/* Hover underline via CSS (group-hover) */}
-                                        <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-monte-gold/50 transition-all duration-300 group-hover:w-full" />
                                     </Link>
                                 </motion.div>
                             );
@@ -139,7 +152,7 @@ export default function Header() {
                         </button>
                     </div>
                 </div>
-            </header>
+            </motion.header>
 
             {/* Search Overlay - Full Screen Dark Glass */}
             <AnimatePresence>

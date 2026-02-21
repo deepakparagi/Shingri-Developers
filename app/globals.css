@@ -84,6 +84,7 @@
 
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -94,6 +95,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  /* Mobile Scroll Optimizations */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent layout shifts on mobile during scroll */
+.relative {
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 /* Typography Utility Classes for consistency */
@@ -185,17 +194,17 @@ html.lenis body {
   /* Fluid Typography using clamp() */
   /* Optimized for 320px (Mobile) to 1920px (Desktop) */
   :root {
-    --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.875rem);
-    --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 1rem);
-    --text-base: clamp(0.9rem, 0.85rem + 0.25vw, 1.125rem);
+    --text-xs: clamp(0.7rem, 0.65rem + 0.15vw, 0.875rem);
+    --text-sm: clamp(0.8rem, 0.75rem + 0.2vw, 1rem);
+    --text-base: clamp(0.9rem, 0.85rem + 0.2vw, 1.125rem);
     --text-lg: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
-    --text-xl: clamp(1.15rem, 1.1rem + 0.25vw, 1.5rem);
-    --text-2xl: clamp(1.35rem, 1.2rem + 0.75vw, 1.875rem);
-    --text-3xl: clamp(1.75rem, 1.5rem + 1.25vw, 2.25rem);
-    --text-4xl: clamp(2rem, 1.7rem + 1.5vw, 3rem);
-    --text-5xl: clamp(2.5rem, 2.1rem + 2vw, 3.75rem);
-    --text-6xl: clamp(3rem, 2.5rem + 2.5vw, 6rem);
-    --text-7xl: clamp(3.5rem, 3rem + 3vw, 7.5rem);
+    --text-xl: clamp(1.15rem, 1.1rem + 0.3vw, 1.5rem);
+    --text-2xl: clamp(1.35rem, 1.2rem + 0.5vw, 1.875rem);
+    --text-3xl: clamp(1.75rem, 1.5rem + 0.75vw, 2.25rem);
+    --text-4xl: clamp(2rem, 1.8rem + 1vw, 3rem);
+    --text-5xl: clamp(2.5rem, 2.2rem + 1.2vw, 3.75rem);
+    --text-6xl: clamp(3rem, 2.8rem + 1.5vw, 5rem);
+    --text-7xl: clamp(3.5rem, 3.2rem + 2vw, 6.5rem);
   }
 
   /* Accessibility */
@@ -294,5 +303,33 @@ html.lenis body {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
     background-size: 1000px 100%;
     animation: shimmer 2s infinite linear;
+  }
+
+  /* Premium Shine Sweep Effect */
+  .shine-sweep {
+    position: relative;
+    overflow: hidden !important;
+  }
+
+  .shine-sweep::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(to right,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
+    transform: rotate(25deg);
+    transition: none;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .shine-sweep:hover::after {
+    left: 200%;
+    transition: left 0.8s cubic-bezier(0.19, 1, 0.22, 1);
   }
 }

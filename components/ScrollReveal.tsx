@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { EASE } from "@/lib/motion";
+import { EASE, APPLE_EASE } from "@/lib/motion";
 
 interface ScrollRevealProps {
     children: React.ReactNode;
@@ -42,9 +42,10 @@ export default function ScrollReveal({
         <motion.div
             ref={ref}
             className={className}
-            initial={{ opacity: 0, y }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y }}
-            transition={{ duration: 0.65, delay, ease: EASE }}
+            initial={{ opacity: 0, y, scale: 0.99 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y, scale: 0.99 }}
+            transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+            style={{ willChange: "transform, opacity" }}
         >
             {children}
         </motion.div>

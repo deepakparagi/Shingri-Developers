@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { pageVariants } from "@/lib/motion";
+import { APPLE_EASE, DUR, pageVariants } from "@/lib/motion";
 
 /**
  * PageTransition

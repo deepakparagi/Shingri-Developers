@@ -7,7 +7,6 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Loader from "@/components/Loader";
 
 import Header from "@/components/Header";
-import NotificationIsland from "@/components/NotificationIsland";
 import ScrollProgress from "@/components/ScrollProgress";
 
 // Headings / Display Font
@@ -44,7 +43,6 @@ export default function RootLayout({
         dmSans.variable
       )}>
         <ScrollProgress />
-        <NotificationIsland />
         <Loader />
         <Header />
 

@@ -3,7 +3,7 @@
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Linkedin, Twitter, Mail, Check, Star, Award, Users, Building2, MapPin } from "lucide-react";
+import { Linkedin, Twitter, Mail, Check, Star, Award, Users, Building2, MapPin, History, Shield, Compass } from "lucide-react";
 
 export default function AboutPage() {
     return (
@@ -12,7 +12,7 @@ export default function AboutPage() {
 
 
             {/* ═══ HERO: LEGACY & ARCHITECTURAL DEPTH ═══ */}
-            <section className="relative min-h-[100dvh] pt-32 pb-20 md:pt-40 md:pb-24 lg:pt-32 lg:pb-20 flex items-center overflow-hidden bg-[#080808]">
+            <section className="relative h-[100dvh] flex items-center pt-48 md:pt-72 overflow-hidden bg-[#080808]">
 
                 {/* Animated ambient background */}
                 <motion.div
@@ -22,100 +22,170 @@ export default function AboutPage() {
                     style={{ background: "radial-gradient(ellipse 80% 70% at 20% 50%, rgba(212,175,55,0.04) 0%, transparent 60%)" }}
                 />
 
-                {/* Giant ghost background word */}
-                <div className="pointer-events-none select-none absolute inset-0 flex items-center justify-center overflow-hidden">
-                    <motion.span
-                        initial={{ opacity: 0, x: -40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 2, ease: "easeOut" }}
-                        className="font-serif text-[20vw] md:text-[16vw] lg:text-[14vw] leading-none tracking-[0.15em] whitespace-nowrap"
-                        style={{ color: "rgba(255,255,255,0.025)" }}
-                    >
-                        LEGACY
-                    </motion.span>
-                </div>
+                <div className="relative z-10 w-full max-w-[1440px] xl:max-w-[1500px] mx-auto px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-24 xl:gap-32">
 
-                {/* Vertical gold accent line */}
-                <motion.div
-                    initial={{ scaleY: 0 }}
-                    animate={{ scaleY: 1 }}
-                    transition={{ duration: 1.4, delay: 0.4, ease: [0.33, 1, 0.68, 1] }}
-                    className="absolute left-8 md:left-16 lg:left-20 top-1/4 bottom-1/4 w-[1.5px] origin-top"
-                    style={{ background: "linear-gradient(to bottom, transparent, rgba(212,175,55,0.7) 30%, rgba(212,175,55,0.7) 70%, transparent)" }}
-                />
-
-                {/* Main content — offset right to clear the gold line */}
-                <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-8 md:px-24 lg:px-32 xl:px-36 pt-0 pb-32">
-                    <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.25 } } }}
-                    >
-                        {/* Label */}
+                    {/* ── LEFT content block: Heritage ── */}
+                    <div className="w-full max-w-xl xl:max-w-2xl flex flex-col items-center text-center lg:items-start lg:text-left mx-auto lg:mx-0 space-y-4 md:space-y-10">
                         <motion.div
-                            variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.7 } } }}
-                            className="flex items-center gap-3 mb-8"
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                            className="flex flex-col items-center lg:items-start"
                         >
-                            <span className="text-[11px] font-bold tracking-[0.35em] uppercase" style={{ color: "rgba(212,175,55,0.8)" }}>
-                                Our Story
-                            </span>
-                        </motion.div>
+                            {/* Category label — Symmetrical on Mobile */}
+                            <div className="flex items-center justify-center lg:justify-start gap-6 mb-4 md:mb-6">
+                                <div className="w-12 h-[1.5px] bg-monte-gold/80" />
+                                <span className="text-[11px] md:text-xs font-bold tracking-[0.5em] uppercase text-monte-gold">
+                                    Our Story
+                                </span>
+                                <div className="w-12 h-[1.5px] bg-monte-gold/80 lg:hidden" />
+                            </div>
 
-                        {/* Heading lines */}
-                        <div className="overflow-hidden mb-2">
-                            <motion.h1
-                                variants={{ hidden: { y: "110%", opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 1.2, ease: [0.33, 1, 0.68, 1] } } }}
-                                className="font-serif leading-[0.85] tracking-tight"
-                                style={{ color: "#ffffff" }}
+                            {/* Main heading — Balanced Cinematic Presence */}
+                            <h1 className="font-serif leading-[0.98] tracking-tight text-white mb-6 md:mb-10">
+                                <motion.span
+                                    initial={{ opacity: 0, y: 40 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1, delay: 0.1 }}
+                                    className="block text-monte-beige/40 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl 2xl:text-9xl"
+                                >
+                                    Building
+                                </motion.span>
+                                <motion.span
+                                    initial={{ opacity: 0, y: 40 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1, delay: 0.2 }}
+                                    className="block text-monte-beige text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl 2xl:text-9xl -mt-1 md:-mt-2"
+                                >
+                                    Legacy
+                                </motion.span>
+                            </h1>
+
+                            {/* Since 1995 Badge — Refined Scale & Symmetry */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 1.2, delay: 0.4 }}
+                                className="flex items-center justify-center lg:justify-start gap-6 md:gap-10"
                             >
-                                <span className="block text-[15vw] sm:text-[11vw] md:text-[9vw] lg:text-[8rem] xl:text-[9rem]">Building</span>
-                                <span className="block text-[15vw] sm:text-[11vw] md:text-[9vw] lg:text-[8rem] xl:text-[9rem]">Legacy</span>
-                            </motion.h1>
+                                <div className="h-[1px] w-12 md:w-20 bg-gradient-to-r from-monte-gold to-transparent" />
+                                <div className="flex items-center gap-4 md:gap-5">
+                                    <span className="text-3xl md:text-5xl lg:text-6xl font-serif text-monte-gold leading-none">30+</span>
+                                    <span className="text-[9px] md:text-[10px] tracking-[0.4em] uppercase text-white/40 leading-none mt-1">Years of Experience</span>
+                                </div>
+                                <div className="h-[1px] w-12 md:w-20 bg-gradient-to-l from-monte-gold to-transparent" />
+                            </motion.div>
+
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1, delay: 0.6 }}
+                                className="text-sm md:text-lg lg:text-xl text-white/50 leading-relaxed max-w-lg xl:max-w-xl mt-6 md:mt-10 font-light text-center lg:text-left"
+                            >
+                                Three decades of transforming skylines, crafting communities, and redefining what it means to live well with unparalleled vision.
+                            </motion.p>
+                        </motion.div>
+                    </div>
+
+                    {/* ── RIGHT visual composition block: Architectural Master Plan ── */}
+                    <div className="relative h-[340px] sm:h-[420px] md:h-[500px] lg:h-[550px] xl:h-[650px] 2xl:h-[700px] w-full flex items-center justify-center lg:justify-end -mt-24 lg:-mt-56">
+                        <div className="relative w-full h-full max-w-[420px] sm:max-w-[500px] lg:max-w-[550px] xl:max-w-[650px] flex items-center justify-center">
+
+                            {/* Blueprint Grid Background Layer */}
+                            <div className="absolute inset-0 z-0 opacity-10 pointer-events-none"
+                                style={{
+                                    backgroundImage: 'linear-gradient(to right, #d4af37 1px, transparent 1px), linear-gradient(to bottom, #d4af37 1px, transparent 1px)',
+                                    backgroundSize: '40px 40px'
+                                }}
+                            />
+
+                            {/* Center Kinetic Timeline Motif */}
+                            <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30">
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+                                    className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px]"
+                                >
+                                    {/* Concentric Circles pulse */}
+                                    <motion.div
+                                        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+                                        transition={{ duration: 4, repeat: Infinity }}
+                                        className="absolute inset-0 border border-monte-gold/40 rounded-full"
+                                    />
+                                    <div className="absolute inset-12 border border-monte-gold/20 rounded-full" />
+                                    <div className="absolute inset-24 border border-monte-gold/10 rounded-full" />
+
+                                    {/* Pulsing Core */}
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-monte-gold rounded-full blur-[4px] shadow-[0_0_15px_#d4af37]" />
+                                </motion.div>
+                            </div>
+
+                            {/* Floating Legacy Cells */}
+                            <div className="relative z-10 w-full grid grid-cols-2 gap-8 md:gap-12">
+
+                                {/* Cell 1: Foundation */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1.2, delay: 0.4 }}
+                                    className="col-span-1 aspect-square bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl md:rounded-[2rem] flex flex-col items-center justify-center p-6 group hover:border-monte-gold/30 transition-all shadow-2xl"
+                                >
+                                    <History className="w-6 h-6 md:w-12 md:h-12 text-monte-gold/60 mb-6 md:mb-8 group-hover:scale-110 transition-transform" />
+                                    <span className="text-sm md:text-xl font-bold uppercase tracking-[0.2em] text-monte-gold">1995</span>
+                                    <span className="text-[7px] md:text-[9px] tracking-[0.2em] uppercase text-white/40 mt-1">Founded</span>
+                                    <div className="mt-6 md:mt-8 w-6 h-[1px] bg-monte-gold/20" />
+                                </motion.div>
+
+                                {/* Cell 2: Excellence */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: 40 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 1.2, delay: 0.6 }}
+                                    className="col-span-1 aspect-square bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl md:rounded-[2rem] flex flex-col items-center justify-center p-6 group translate-y-8 md:translate-y-16 hover:border-monte-gold/30 transition-all shadow-2xl"
+                                >
+                                    <Award className="w-6 h-6 md:w-12 md:h-12 text-monte-gold/60 mb-6 md:mb-8 group-hover:scale-110 transition-transform" />
+                                    <span className="text-sm md:text-xl font-bold uppercase tracking-[0.2em] text-monte-gold">Global</span>
+                                    <span className="text-[7px] md:text-[9px] tracking-[0.2em] uppercase text-white/40 mt-1">Standards</span>
+                                    <div className="mt-6 md:mt-8 w-6 h-[1px] bg-monte-gold/20" />
+                                </motion.div>
+
+                                {/* Cell 3: Vision */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: -40 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 1.2, delay: 0.8 }}
+                                    className="col-span-1 aspect-square bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl md:rounded-[2rem] flex flex-col items-center justify-center p-6 group -translate-y-4 md:-translate-y-8 hover:border-monte-gold/30 transition-all shadow-2xl"
+                                >
+                                    <Compass className="w-6 h-6 md:w-12 md:h-12 text-monte-gold/60 mb-6 md:mb-8 group-hover:scale-110 transition-transform" />
+                                    <span className="text-sm md:text-xl font-bold uppercase tracking-[0.2em] text-monte-gold">Elite</span>
+                                    <span className="text-[7px] md:text-[9px] tracking-[0.2em] uppercase text-white/40 mt-1">Planning</span>
+                                    <div className="mt-6 md:mt-8 w-6 h-[1px] bg-monte-gold/20" />
+                                </motion.div>
+
+                                {/* Cell 4: Security */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 40 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1.2, delay: 1 }}
+                                    className="col-span-1 aspect-square bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl md:rounded-[2rem] flex flex-col items-center justify-center p-6 group translate-y-4 md:translate-y-8 hover:border-monte-gold/30 transition-all shadow-2xl"
+                                >
+                                    <Shield className="w-6 h-6 md:w-12 md:h-12 text-monte-gold/60 mb-6 md:mb-8 group-hover:scale-110 transition-transform" />
+                                    <span className="text-sm md:text-xl font-bold uppercase tracking-[0.2em] text-monte-gold">Secure</span>
+                                    <span className="text-[7px] md:text-[9px] tracking-[0.2em] uppercase text-white/40 mt-1">Commitment</span>
+                                    <div className="mt-6 md:mt-8 w-6 h-[1px] bg-monte-gold/20" />
+                                </motion.div>
+
+                            </div>
                         </div>
-
-                        {/* Since 1995 */}
-                        <motion.div
-                            variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } } }}
-                            className="mt-6 mb-8"
-                        >
-                            <span className="text-2xl md:text-3xl font-serif" style={{ color: "rgba(212,175,55,0.85)" }}>
-                                Since 1995
-                            </span>
-                        </motion.div>
-
-                        {/* Supporting text */}
-                        <motion.p
-                            variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9 } } }}
-                            className="text-base md:text-lg max-w-md leading-relaxed"
-                            style={{ color: "rgba(255,255,255,0.38)" }}
-                        >
-                            Three decades of transforming skylines, crafting communities, and redefining what it means to live well.
-                        </motion.p>
-
-                        {/* Right — Circular year badge (Desktop: Absolute, Mobile: Stacked) */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.85 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1.2, delay: 0.9 }}
-                            className="relative mt-12 md:absolute md:mt-0 md:right-0 lg:-right-48 md:top-1/2 md:-translate-y-1/2 flex flex-col items-center justify-center w-28 h-28 lg:w-36 lg:h-36 rounded-full mx-auto md:mx-0"
-                            style={{ border: "1px solid rgba(212,175,55,0.25)" }}
-                        >
-                            <span className="text-3xl lg:text-4xl font-serif" style={{ color: "rgba(212,175,55,0.85)" }}>30+</span>
-                            <span className="text-[9px] tracking-[0.25em] uppercase mt-1" style={{ color: "rgba(255,255,255,0.35)" }}>
-                                Years
-                            </span>
-                        </motion.div>
-                    </motion.div>
+                    </div>
                 </div>
-
-
 
                 {/* Bottom border */}
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
             </section>
 
             {/* Sustainability & Innovation - Replaces Founder Spotlight */}
-            <section className="px-4 md:px-8 lg:px-24 pb-10 md:pb-24">
+            <section className="px-4 md:px-8 lg:px-24 pt-20 md:pt-32 pb-10 md:pb-24">
                 <div className="max-w-screen-2xl mx-auto">
                     <div className="flex flex-col lg:flex-row items-center gap-16">
                         <motion.div
@@ -133,9 +203,9 @@ export default function AboutPage() {
                             />
                         </motion.div>
                         <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8 }}
+                            initial={{ opacity: 0, x: 50, scale: 0.98 }}
+                            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                             viewport={{ once: true }}
                             className="w-full lg:w-1/2"
                         >
@@ -181,6 +251,10 @@ export default function AboutPage() {
                             ].map((loc, i) => (
                                 <motion.div
                                     key={i}
+                                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.1 + i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                                     whileHover={{ y: -5 }}
                                     className="bg-white border border-monte-border p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-all cursor-default"
                                 >
@@ -225,10 +299,16 @@ export default function AboutPage() {
                                     { val: "10k+", label: "Trees Planted" },
                                     { val: "3", label: "Upcoming Townships" },
                                 ].map((stat, i) => (
-                                    <div key={i}>
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.1 + i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                                    >
                                         <h4 className="text-4xl md:text-5xl font-serif text-monte-text-primary">{stat.val}</h4>
                                         <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-monte-text-secondary mt-2 font-sans">{stat.label}</p>
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </div>
@@ -236,8 +316,7 @@ export default function AboutPage() {
                 </div>
             </section >
 
-            {/* Awards & Recognition */}
-            < section className="py-24 px-4 md:px-8 lg:px-24 bg-monte-sand text-monte-text-primary text-center border-t border-monte-border/20" >
+            <section className="py-24 px-4 md:px-8 lg:px-24 bg-monte-sand text-monte-text-primary text-center border-t border-monte-border/20">
                 <h2 className="text-4xl font-serif mb-12 text-monte-text-primary">Awards & Recognition</h2>
                 <div className="flex flex-wrap justify-center gap-8 lg:gap-16">
                     {[
@@ -246,7 +325,14 @@ export default function AboutPage() {
                         { icon: Users, title: "Customer Choice Award", year: "2022" },
                         { icon: Building2, title: "Green Building Certification", year: "IGBC Gold" }
                     ].map((award, i) => (
-                        <div key={i} className="flex flex-col items-center gap-4 group w-36 sm:w-auto">
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 + i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                            className="flex flex-col items-center gap-4 group w-36 sm:w-auto"
+                        >
                             <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-monte-gold group-hover:bg-monte-gold group-hover:text-monte-charcoal transition-colors duration-500">
                                 <award.icon size={40} strokeWidth={1} />
                             </div>
@@ -254,13 +340,12 @@ export default function AboutPage() {
                                 <h3 className="text-xl font-medium text-monte-text-primary">{award.title}</h3>
                                 <p className="text-monte-text-secondary">{award.year}</p>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
-            </section >
-
+            </section>
             {/* Client Testimonials */}
-            < section className="py-24 px-4 md:px-8 lg:px-24 bg-white border-t border-monte-border/20" >
+            <section className="py-24 px-4 md:px-8 lg:px-24 bg-white border-t border-monte-border/20">
                 <h2 className="text-4xl font-serif text-center text-monte-text-primary mb-16">Client Stories</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {[

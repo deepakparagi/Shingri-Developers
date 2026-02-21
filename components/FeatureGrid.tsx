@@ -3,9 +3,7 @@
 import { Shield, Coins, TrendingUp, Building2, ArrowDown } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { EASE, fadeUp, staggerContainer } from "@/lib/motion";
-
-const APPLE_EASE = EASE;
+import { EASE, APPLE_EASE, DUR, fadeUp, staggerContainer } from "@/lib/motion";
 
 const containerVars = staggerContainer(0.08, 0.1);
 const itemVars = fadeUp;
@@ -24,7 +22,7 @@ export default function FeatureGrid() {
                         initial={{ opacity: 0, y: 18 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.65, ease: APPLE_EASE }}
+                        transition={{ duration: 0.8, ease: APPLE_EASE }}
                         className="text-3xl md:text-5xl font-serif text-monte-text-primary mb-12 md:mb-16 text-center md:text-left"
                     >
                         Why Invest with SHINGRI?
@@ -62,7 +60,7 @@ export default function FeatureGrid() {
                         initial={{ opacity: 0, y: 18 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.65, ease: APPLE_EASE }}
+                        transition={{ duration: 0.8, ease: APPLE_EASE }}
                         className="text-3xl md:text-5xl font-serif text-monte-text-primary mb-12 text-center md:text-left"
                     >
                         Discover Properties

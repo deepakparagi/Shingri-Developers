@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { APPLE_EASE, APPLE_SPRING, revealVariants, DUR } from "@/lib/motion";
 
 const mobileItems = [
     {
@@ -24,22 +25,22 @@ export default function VennDiagram() {
             {/* Heading Block */}
             <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto px-4">
                 <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
+                    initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8, ease: APPLE_EASE }}
                     style={{ color: '#ffffff' }}
                     className="text-3xl md:text-5xl font-light tracking-tight text-center"
                 >
                     Path to Smart Ownership
                 </motion.h2>
                 <motion.p
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.15 }}
+                    transition={{ duration: 0.8, delay: 0.15, ease: APPLE_EASE }}
                     style={{ color: '#ffffff' }}
-                    className="text-sm md:text-base mt-4 text-center"
+                    className="text-sm md:text-base mt-4 text-center opacity-80"
                 >
                     A strategic approach to high-yield investment
                 </motion.p>

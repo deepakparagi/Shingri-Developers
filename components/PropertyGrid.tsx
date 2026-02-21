@@ -2,13 +2,31 @@
 
 import PropertyCard from "./PropertyCard";
 import { motion } from "framer-motion";
-import { fadeUp, staggerContainer } from "@/lib/motion";
+import { APPLE_EASE, APPLE_SPRING, fadeUp, staggerContainer } from "@/lib/motion";
 
 import { allProjects } from "@/data/projects";
 
 // ── Entrance Constants — Standardized ────────────────────────────
-const containerVars = staggerContainer(0.1, 0.2);
-const itemVars = fadeUp;
+const containerVars = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.3,
+        },
+    },
+};
+
+const itemVars = {
+    hidden: { opacity: 0, y: 40, scale: 0.98 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: { ...APPLE_SPRING },
+    },
+};
 
 export default function PropertyGrid() {
     return (

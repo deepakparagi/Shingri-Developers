@@ -6,7 +6,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { allProjects } from "@/data/projects";
-import { EASE, DUR, SPRING, magneticHover, ambientMotion, buttonHover, buttonTap, buttonTransition } from "@/lib/motion";
+import { EASE, DUR, SPRING, APPLE_EASE, APPLE_SPRING, magneticHover, ambientMotion, buttonHover, buttonTap, buttonTransition } from "@/lib/motion";
 
 const SLIDE_DURATION = 8000;
 
@@ -20,8 +20,8 @@ const heroContainerVariants = {
 };
 
 const heroItemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { ...SPRING } },
+    hidden: { opacity: 0, y: 40, scale: 0.98 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { ...APPLE_SPRING } },
 };
 
 export default function Hero() {
@@ -58,7 +58,7 @@ export default function Hero() {
                     initial={{ scale: 1.08, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ opacity: 0, scale: 1 }}
-                    transition={{ duration: 1.4, ease: EASE }}
+                    transition={{ duration: 1.6, ease: APPLE_EASE }}
                     className="absolute inset-0 z-0"
                     style={{ y: bgY }}
                 >
@@ -75,11 +75,11 @@ export default function Hero() {
             </AnimatePresence>
 
             {/* ── 2. CONTENT ──────────────────────────────────────────────── */}
-            <div className="container-global relative z-10 h-full flex flex-col lg:flex-row items-center lg:justify-between pt-8 pb-24 md:pt-12 md:pb-28 lg:pt-8 lg:pb-20 gap-8 lg:gap-0">
+            <div className="container-global relative z-10 h-full flex flex-col lg:flex-row items-center lg:justify-between pt-6 pb-20 md:pt-10 md:pb-24 lg:pt-6 lg:pb-16 gap-8 lg:gap-0">
 
                 {/* LEFT: Text & Stats — staggered entrance */}
                 <motion.div
-                    className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left"
+                    className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left h-full"
                     variants={heroContainerVariants}
                     initial="hidden"
                     animate="visible"
@@ -87,7 +87,7 @@ export default function Hero() {
                     {/* Location Label */}
                     <motion.div
                         variants={heroItemVariants}
-                        className="flex items-center justify-center lg:justify-start gap-2 mb-4 lg:mb-6 opacity-90"
+                        className="flex items-center justify-center lg:justify-start gap-2 mb-4 lg:mb-5 opacity-90"
                     >
                         <MapPin size={14} className="text-monte-gold" />
                         <AnimatePresence mode="wait">
@@ -97,7 +97,7 @@ export default function Hero() {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 8 }}
                                 transition={{ duration: 0.35, ease: EASE }}
-                                className="text-[10px] md:text-xs uppercase tracking-[0.2em] !text-white font-medium"
+                                className="text-[10px] md:text-xs uppercase tracking-[0.2em] !text-monte-beige font-medium"
                             >
                                 {currentProject.location}
                             </motion.span>
@@ -105,11 +105,13 @@ export default function Hero() {
                     </motion.div>
 
                     {/* Headline — masked text reveal */}
-                    <div className="mb-6 lg:mb-6 overflow-hidden">
+                    <div className="mb-5 lg:mb-6 overflow-hidden">
                         <div className="overflow-hidden">
                             <motion.h1
-                                variants={heroItemVariants}
-                                className="font-light text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-none !text-white"
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                transition={{ duration: 0.8, ease: APPLE_EASE, delay: 0.2 }}
+                                className="font-light text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-none !text-monte-beige"
                             >
                                 The Art of
                             </motion.h1>
@@ -117,8 +119,10 @@ export default function Hero() {
                         <div className="overflow-hidden">
                             <motion.div animate={ambientMotion.animate} transition={ambientMotion.transition as any}>
                                 <motion.h1
-                                    variants={heroItemVariants}
-                                    className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-none !text-monte-gold my-2"
+                                    initial={{ y: "100%" }}
+                                    animate={{ y: 0 }}
+                                    transition={{ duration: 0.8, ease: APPLE_EASE, delay: 0.3 }}
+                                    className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-none !text-monte-gold my-1 md:my-2"
                                 >
                                     Fine Living
                                 </motion.h1>
@@ -126,8 +130,10 @@ export default function Hero() {
                         </div>
                         <div className="overflow-hidden">
                             <motion.h1
-                                variants={heroItemVariants}
-                                className="font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-none !text-white"
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                transition={{ duration: 0.8, ease: APPLE_EASE, delay: 0.4 }}
+                                className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-none !text-monte-beige"
                             >
                                 Redefined.
                             </motion.h1>
@@ -137,7 +143,7 @@ export default function Hero() {
                     {/* Stats Row */}
                     <motion.div
                         variants={heroItemVariants}
-                        className="flex flex-wrap justify-center lg:justify-start items-center gap-6 md:gap-12 mb-8 lg:mb-8 lg:border-l-2 lg:border-monte-gold lg:pl-6"
+                        className="flex flex-wrap justify-center lg:justify-start items-center gap-6 md:gap-10 mb-6 lg:mb-8 lg:border-l-2 lg:border-monte-gold lg:pl-6 text-left"
                     >
                         {[
                             { value: "30+", label: "Luxury Projects" },
@@ -146,7 +152,7 @@ export default function Hero() {
                         ].map((stat) => (
                             <div key={stat.label}>
                                 <p className="text-xl md:text-3xl font-bold !text-monte-gold">{stat.value}</p>
-                                <p className="text-[8px] md:text-[10px] uppercase tracking-wider !text-white/80">{stat.label}</p>
+                                <p className="text-[8px] md:text-[10px] uppercase tracking-wider !text-monte-beige/80">{stat.label}</p>
                             </div>
                         ))}
                     </motion.div>

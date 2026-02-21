@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { APPLE_EASE, APPLE_SPRING, DUR, revealVariants, staggerContainer } from "@/lib/motion";
 
 export default function Footer() {
     return (
@@ -12,10 +13,10 @@ export default function Footer() {
             {/* ── TOP SECTION ── */}
             <div className="container-global py-16 md:py-20">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    initial={{ opacity: 0, y: 40, scale: 0.99 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                     className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start"
                 >
                     {/* Left: Heading + Form */}
@@ -106,45 +107,51 @@ export default function Footer() {
             {/* ── BOTTOM SECTION: 4-column nav ── */}
             <div className="border-t border-white/10">
                 <div className="container-global py-10 md:py-12">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={staggerContainer(0.1, 0.1)}
+                        className="grid grid-cols-2 md:grid-cols-4 gap-8"
+                    >
 
                         {/* Tagline col */}
-                        <div className="flex flex-col gap-3 col-span-2 md:col-span-1">
+                        <motion.div variants={revealVariants() as any} className="flex flex-col gap-3 col-span-2 md:col-span-1">
                             <p className="text-sm font-bold font-serif !text-white leading-relaxed uppercase tracking-widest">
                                 SHINGRI Developers
                             </p>
                             <p className="text-sm font-semibold !text-white leading-relaxed">
                                 Building tomorrow's landmarks today. Smart properties with strong investment returns across India.
                             </p>
-                        </div>
+                        </motion.div>
 
                         {/* Navigation */}
-                        <div className="flex flex-col gap-3">
+                        <motion.div variants={revealVariants() as any} className="flex flex-col gap-3">
                             <h4 className="text-sm font-bold font-serif !text-white uppercase tracking-widest mb-1">Navigation</h4>
                             <Link href="/" className="text-sm font-semibold !text-white hover:text-white/70 transition-colors">Home</Link>
                             <Link href="/projects" className="text-sm font-semibold !text-white hover:text-white/70 transition-colors">Projects</Link>
                             <Link href="/about" className="text-sm font-semibold !text-white hover:text-white/70 transition-colors">About Us</Link>
                             <Link href="/contact" className="text-sm font-semibold !text-white hover:text-white/70 transition-colors">Contact</Link>
-                        </div>
+                        </motion.div>
 
                         {/* Projects */}
-                        <div className="flex flex-col gap-3">
+                        <motion.div variants={revealVariants() as any} className="flex flex-col gap-3">
                             <h4 className="text-sm font-bold font-serif !text-white uppercase tracking-widest mb-1">Projects</h4>
                             <Link href="/projects" className="text-sm font-semibold !text-white hover:text-white/70 transition-colors">Ongoing</Link>
                             <Link href="/projects" className="text-sm font-semibold !text-white hover:text-white/70 transition-colors">Upcoming</Link>
                             <Link href="/projects" className="text-sm font-semibold !text-white hover:text-white/70 transition-colors">Completed</Link>
-                        </div>
+                        </motion.div>
 
                         {/* Contact */}
-                        <div className="flex flex-col gap-3">
+                        <motion.div variants={revealVariants() as any} className="flex flex-col gap-3">
                             <h4 className="text-sm font-bold font-serif !text-white uppercase tracking-widest mb-1">Contact Us</h4>
                             <p className="text-sm font-semibold !text-white leading-relaxed">
                                 Tarnal Pete, Subhas Road,<br />Betageri-Gadag 582102
                             </p>
                             <a href="tel:+918762891055" className="text-sm font-semibold !text-white hover:text-white/70 transition-colors">+91 87628 91055</a>
                             <a href="mailto:adityashingri7@gmail.com" className="text-sm font-semibold !text-white hover:text-white/70 transition-colors">adityashingri7@gmail.com</a>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
 
                     {/* Copyright */}
                     <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs !text-white">

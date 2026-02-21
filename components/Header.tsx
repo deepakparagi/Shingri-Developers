@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { allProjects } from "@/data/projects";
 import Image from "next/image";
-import { EASE } from "@/lib/motion";
+import { EASE, APPLE_EASE, DUR } from "@/lib/motion";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,13 +80,14 @@ export default function Header() {
                 <div className="container-global flex justify-between items-center relative">
                     <div className="flex items-center justify-between gap-8 ml-1">
                         {/* Logo */}
+                        {/* Logo — Enhanced for Brand Prominence */}
                         <Link href="/" className="relative z-50 flex-shrink-0">
-                            <div className="relative h-10 w-24 md:h-12 md:w-32 transition-transform duration-300 hover:scale-105">
+                            <div className="relative h-12 w-36 md:h-16 md:w-48 transition-all duration-300 hover:scale-105">
                                 <Image
                                     src="/images/logo.png"
                                     alt="SHINGRI Developers"
                                     fill
-                                    className="object-contain object-left drop-shadow-sm"
+                                    className="object-contain object-left brightness-110 drop-shadow-[0_0_12px_rgba(212,175,55,0.2)]"
                                     priority
                                 />
                             </div>
@@ -102,7 +103,7 @@ export default function Header() {
                                     key={link.href}
                                     initial={{ opacity: 0, y: -10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.1 + i * 0.05, duration: 0.6, ease: EASE }}
+                                    transition={{ delay: 0.1 + i * 0.05, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                                 >
                                     <Link
                                         href={link.href}
@@ -112,9 +113,9 @@ export default function Header() {
                                         {/* Animated underline — slides in from left */}
                                         <motion.span
                                             className="absolute -bottom-0.5 left-0 h-[1px] bg-monte-gold"
-                                            initial={{ width: "0%" }}
-                                            animate={{ width: isActive ? "100%" : "0%" }}
-                                            transition={{ duration: 0.35, ease: EASE }}
+                                            initial={{ width: isActive ? "100%" : "0%", left: isActive ? "0%" : "50%" }}
+                                            animate={{ width: isActive ? "100%" : "0%", left: isActive ? "0%" : "50%" }}
+                                            transition={{ duration: DUR.base, ease: APPLE_EASE }}
                                         />
                                         {/* Hover underline via CSS (group-hover) */}
                                         <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-monte-gold/50 transition-all duration-300 group-hover:w-full" />

@@ -55,11 +55,11 @@ export default function ProjectClient({ slug }: { slug: string }) {
             </section>
 
             {/* Overview & Key Stats */}
-            <section className="py-24 px-4 md:px-8 lg:px-24">
+            <section className="pt-12 md:pt-16 pb-0 px-4 md:px-8 lg:px-24">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
                     <div className="lg:col-span-2">
-                        <h2 className="text-3xl font-serif text-monte-black mb-8">Overview</h2>
-                        <p className="text-lg text-gray-600 leading-relaxed mb-12">
+                        <h2 className="text-3xl font-serif text-monte-black mb-4">Overview</h2>
+                        <p className="text-lg text-gray-600 leading-relaxed mb-8">
                             {project.description}
                         </p>
 
@@ -108,8 +108,8 @@ export default function ProjectClient({ slug }: { slug: string }) {
             </section>
 
             {/* Gallery */}
-            <section className="py-24 bg-white px-4 md:px-8 lg:px-24">
-                <h2 className="text-3xl font-serif text-monte-black mb-12">Gallery</h2>
+            <section className="pt-8 pb-16 md:pb-24 bg-white px-4 md:px-8 lg:px-24">
+                <h2 className="text-3xl font-serif text-monte-black mb-10">Gallery</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {project.gallery?.map((img, index) => (
                         <div key={index} className="relative aspect-[4/3] rounded-lg overflow-hidden group">

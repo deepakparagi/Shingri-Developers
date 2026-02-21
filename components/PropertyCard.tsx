@@ -7,7 +7,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { EASE, SPRING } from "@/lib/motion";
+import { EASE, DUR, SPRING, APPLE_EASE, APPLE_SPRING } from "@/lib/motion";
 
 interface PropertyProps {
     slug?: string;
@@ -38,9 +38,9 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
         <motion.div
             onMouseEnter={() => setIsExpanded(true)}
             onMouseLeave={() => setIsExpanded(false)}
-            whileHover={{ y: -12 }}
-            whileTap={{ scale: 0.98 }}
-            transition={SPRING}
+            whileHover={{ y: -16, scale: 1.01 }}
+            whileTap={{ scale: 0.97 }}
+            transition={APPLE_SPRING}
             className={cn(
                 "rounded-[32px] transition-all duration-700 bg-white border border-monte-border",
                 isExpanded ? "shadow-2xl shadow-monte-gold/15" : "hover:shadow-xl shadow-transparent"
@@ -64,7 +64,7 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
                         sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className={cn(
-                        "absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-opacity duration-700",
+                        "absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-opacity duration-1000",
                         isExpanded ? "opacity-50" : "opacity-70"
                     )} />
                 </div>
@@ -100,7 +100,7 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.5, ease: EASE }}
+                                transition={{ duration: 0.6, ease: APPLE_EASE }}
                                 className="overflow-hidden px-5 md:px-6"
                             >
                                 {/* Divider */}

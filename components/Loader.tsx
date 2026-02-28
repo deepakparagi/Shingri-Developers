@@ -9,265 +9,141 @@ export default function Loader() {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        // Smooth progress animation
         const progressInterval = setInterval(() => {
             setProgress((prev) => {
                 if (prev >= 100) {
                     clearInterval(progressInterval);
                     return 100;
                 }
-                return prev + 2;
+                const remaining = 100 - prev;
+                return Math.min(100, prev + Math.max(1, remaining * 0.07));
             });
         }, 30);
 
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 3000);
-
-        return () => {
-            clearTimeout(timer);
-            clearInterval(progressInterval);
-        };
+        const timer = setTimeout(() => setLoading(false), 2800);
+        return () => { clearTimeout(timer); clearInterval(progressInterval); };
     }, []);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.2
-            }
-        },
-        exit: {
-            opacity: 0,
-            scale: 0.95,
-            transition: { 
-                duration: 0.6,
-                ease: [0.43, 0.13, 0.23, 0.96]
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { y: 30, opacity: 0 },
-        show: { 
-            y: 0, 
-            opacity: 1, 
-            transition: { 
-                duration: 0.8,
-                ease: [0.43, 0.13, 0.23, 0.96]
-            } 
-        }
-    };
-
-    const logoVariants = {
-        hidden: { scale: 0.8, opacity: 0 },
-        show: { 
-            scale: 1, 
-            opacity: 1,
-            transition: { 
-                duration: 1,
-                ease: [0.43, 0.13, 0.23, 0.96]
-            }
-        }
-    };
+    const circumference = 2 * Math.PI * 72;
+    const strokeDashoffset = circumference - (progress / 100) * circumference;
 
     return (
         <AnimatePresence mode="wait">
             {loading && (
                 <motion.div
-                    className="fixed inset-0 z-[10000] bg-white flex flex-col items-center justify-center text-monte-charcoal px-4 overflow-hidden"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
+                    className="fixed inset-0 z-[10000] flex flex-col items-center justify-center overflow-hidden"
+                    style={{ background: "#F8F4ED" }}
+                    initial={{ opacity: 1 }}
+                    exit={{ opacity: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }}
                 >
-                    {/* Animated Background Grid */}
-                    <div className="absolute inset-0 opacity-[0.03]">
-                        <div className="absolute inset-0" style={{
-                            backgroundImage: `linear-gradient(rgba(198, 167, 94, 0.1) 1px, transparent 1px),
-                                            linear-gradient(90deg, rgba(198, 167, 94, 0.1) 1px, transparent 1px)`,
-                            backgroundSize: '50px 50px'
-                        }} />
-                    </div>
+                    {/* Soft warm radial tint */}
+                    <div
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
+                        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 55%)" }}
+                    />
 
-                    {/* Radial Glow Effect */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <motion.div
-                            animate={{
-                                scale: [1, 1.2, 1],
-                                opacity: [0.05, 0.1, 0.05]
-                            }}
-                            transition={{
-                                duration: 3,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
-                            className="w-[600px] h-[600px] rounded-full bg-monte-gold blur-[120px]"
-                        />
-                    </div>
-
-                    {/* Content Container */}
+                    {/* ── Center content ── */}
                     <div className="relative z-10 flex flex-col items-center">
-                        {/* Welcome Text */}
-                        <motion.div
-                            variants={itemVariants}
-                            className="overflow-hidden mb-6"
-                        >
-                            <p className="text-xs md:text-sm font-sans tracking-[0.4em] uppercase !text-monte-charcoal/60 font-semibold">
-                                Welcome to
-                            </p>
-                        </motion.div>
 
-                        {/* Logo with Enhanced Visibility */}
+                        {/* Progress Ring + Logo */}
                         <motion.div
-                            variants={logoVariants}
-                            className="relative mb-8"
+                            initial={{ opacity: 0, scale: 0.85 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                            className="relative flex items-center justify-center mb-6"
                         >
-                            {/* Stronger Glow Effect Behind Logo */}
+                            {/* SVG Progress Ring */}
+                            <svg className="absolute" width="180" height="180" viewBox="0 0 180 180">
+                                {/* Track ring */}
+                                <circle
+                                    cx="90" cy="90" r="72"
+                                    fill="none"
+                                    stroke="rgba(198,167,94,0.12)"
+                                    strokeWidth="2"
+                                />
+                                {/* Progress arc */}
+                                <circle
+                                    cx="90" cy="90" r="72"
+                                    fill="none"
+                                    stroke="#C6A75E"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
+                                    strokeDasharray={circumference}
+                                    strokeDashoffset={strokeDashoffset}
+                                    transform="rotate(-90 90 90)"
+                                    style={{ transition: "stroke-dashoffset 0.2s ease-out" }}
+                                />
+                            </svg>
+
+                            {/* Logo with card backdrop */}
                             <motion.div
                                 animate={{
-                                    opacity: [0.3, 0.5, 0.3],
-                                    scale: [0.95, 1.05, 0.95]
+                                    boxShadow: [
+                                        "0 0 30px rgba(198,167,94,0.08)",
+                                        "0 0 50px rgba(198,167,94,0.15)",
+                                        "0 0 30px rgba(198,167,94,0.08)",
+                                    ]
                                 }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                                className="absolute inset-0 blur-3xl bg-monte-gold/25 rounded-full"
-                            />
-                            
-                            {/* Logo with better contrast */}
-                            <div className="relative w-72 h-36 sm:w-96 sm:h-44 md:w-[420px] md:h-48 p-4 bg-gradient-to-br from-white via-monte-sand/30 to-white rounded-3xl shadow-2xl border border-monte-gold/20">
-                                <Image
-                                    src="/images/logo.png"
-                                    alt="SHINGRI Developers"
-                                    fill
-                                    className="object-contain drop-shadow-xl"
-                                    priority
-                                    style={{ filter: 'contrast(1.1) brightness(0.95)' }}
-                                />
-                            </div>
-                        </motion.div>
-
-                        {/* Tagline */}
-                        <motion.div
-                            variants={itemVariants}
-                            className="overflow-hidden mb-10"
-                        >
-                            <p className="text-sm md:text-base font-serif !text-monte-charcoal/70 tracking-wide">
-                                Building Dreams Since 1995
-                            </p>
-                        </motion.div>
-
-                        {/* Progress Bar Container */}
-                        <motion.div
-                            variants={itemVariants}
-                            className="w-64 md:w-80 relative"
-                        >
-                            {/* Progress Bar Background */}
-                            <div className="h-[3px] bg-monte-charcoal/15 rounded-full overflow-hidden relative shadow-inner">
-                                {/* Animated Progress */}
-                                <motion.div
-                                    className="h-full bg-gradient-to-r from-monte-gold via-monte-charcoal to-monte-gold rounded-full relative shadow-lg"
-                                    initial={{ width: "0%" }}
-                                    animate={{ width: `${progress}%` }}
-                                    transition={{ duration: 0.3, ease: "easeOut" }}
-                                >
-                                    {/* Shimmer Effect */}
-                                    <motion.div
-                                        animate={{
-                                            x: ["-100%", "200%"]
-                                        }}
-                                        transition={{
-                                            duration: 1.5,
-                                            repeat: Infinity,
-                                            ease: "linear"
-                                        }}
-                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent"
-                                    />
-                                </motion.div>
-                            </div>
-
-                            {/* Progress Percentage */}
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5 }}
-                                className="mt-4 text-center"
+                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                className="relative w-28 h-28 md:w-32 md:h-32 rounded-full bg-white/60 backdrop-blur-sm flex items-center justify-center border border-[#C6A75E]/15"
                             >
-                                <span className="text-sm font-semibold !text-monte-charcoal/50 tracking-wider">
-                                    {progress}%
-                                </span>
+                                <div className="relative w-20 h-20 md:w-24 md:h-24">
+                                    <Image
+                                        src="/images/logo.png"
+                                        alt="SHINGRI Developers"
+                                        fill
+                                        className="object-contain"
+                                        priority
+                                        style={{ filter: 'contrast(1.3) saturate(1.2) brightness(0.9)' }}
+                                    />
+                                </div>
                             </motion.div>
                         </motion.div>
 
-                        {/* Decorative Elements */}
-                        <motion.div
-                            variants={itemVariants}
-                            className="mt-8 flex items-center gap-3"
+                        {/* Tagline */}
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                            className="text-sm md:text-base font-serif text-[#8B7740] tracking-[0.12em] mb-3"
                         >
-                            <motion.div
-                                animate={{ scaleX: [0, 1, 0] }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                                className="w-8 h-[2px] bg-gradient-to-r from-transparent to-monte-gold"
-                            />
-                            <motion.div
-                                animate={{
-                                    scale: [1, 1.3, 1],
-                                    opacity: [0.5, 1, 0.5]
-                                }}
-                                transition={{
-                                    duration: 1.5,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                                className="w-2 h-2 rounded-full bg-monte-gold shadow-lg"
-                            />
-                            <motion.div
-                                animate={{ scaleX: [0, 1, 0] }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                    delay: 0.5
-                                }}
-                                className="w-8 h-[2px] bg-gradient-to-l from-transparent to-monte-gold"
-                            />
-                        </motion.div>
+                            Building Dreams Since 1995
+                        </motion.p>
+
+                        {/* Decorative gold line */}
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                            className="w-16 h-[1.5px] bg-gradient-to-r from-transparent via-[#C6A75E] to-transparent mb-5"
+                        />
+
+                        {/* Percentage */}
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.5 }}
+                            className="text-xs font-semibold tracking-[0.3em] text-[#C6A75E]/80"
+                        >
+                            {Math.round(progress)}%
+                        </motion.span>
                     </div>
 
-                    {/* Corner Decorations - More Visible */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.25 }}
-                        transition={{ delay: 0.5 }}
-                        className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-monte-gold/40"
-                    />
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.25 }}
-                        transition={{ delay: 0.6 }}
-                        className="absolute top-8 right-8 w-16 h-16 border-r-2 border-t-2 border-monte-gold/40"
-                    />
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.25 }}
-                        transition={{ delay: 0.7 }}
-                        className="absolute bottom-8 left-8 w-16 h-16 border-l-2 border-b-2 border-monte-gold/40"
-                    />
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.25 }}
-                        transition={{ delay: 0.8 }}
-                        className="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-monte-gold/40"
-                    />
+                    {/* Corner accents */}
+                    {[
+                        "top-6 left-6 border-l-2 border-t-2",
+                        "top-6 right-6 border-r-2 border-t-2",
+                        "bottom-6 left-6 border-l-2 border-b-2",
+                        "bottom-6 right-6 border-r-2 border-b-2",
+                    ].map((pos, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 + i * 0.1, duration: 0.6 }}
+                            className={`absolute ${pos} w-8 h-8 md:w-10 md:h-10 border-[#C6A75E]/20`}
+                        />
+                    ))}
                 </motion.div>
             )}
         </AnimatePresence>

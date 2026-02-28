@@ -182,7 +182,7 @@ export default function ProjectsPage() {
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
             </section>
 
-            <div className="container-global pt-24 md:pt-32 pb-8 md:pb-12">
+            <div className="container-global pt-16 md:pt-20 pb-8 md:pb-12">
 
                 {/* Filter Tabs & Dropdown */}
                 <div className="mb-8 md:mb-12 border-b border-monte-border/30 pb-4">
@@ -258,12 +258,12 @@ export default function ProjectsPage() {
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12 pt-16 md:pt-24 border-t border-white/10">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12 pt-4 md:pt-6 pb-8 md:pb-12 border-t border-white/10">
                             {[
-                                { val: "12+", label: "Ongoing Projects" },
-                                { val: "25k+", label: "Safe Communities" },
-                                { val: "15+", label: "Awards Won" },
-                                { val: "30+", label: "Years Experience" },
+                                { val: "30+", label: "Luxury Projects" },
+                                { val: "500+", label: "Happy Families" },
+                                { val: "1995", label: "Est. Since" },
+                                { val: "100%", label: "On-Time Delivery" },
                             ].map((s, i) => (
                                 <motion.div
                                     key={i}
@@ -271,9 +271,10 @@ export default function ProjectsPage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 + i * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                                    className="text-center"
                                 >
-                                    <h4 className="text-3xl md:text-5xl font-serif text-monte-gold mb-2">{s.val}</h4>
-                                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">{s.label}</p>
+                                    <h4 className="text-3xl md:text-5xl font-serif text-monte-gold mb-3">{s.val}</h4>
+                                    <p className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-white/50 !mb-0">{s.label}</p>
                                 </motion.div>
                             ))}
                         </div>

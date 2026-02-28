@@ -118,7 +118,7 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
     return (
         <motion.div
             ref={cardRef}
-            style={{
+            style={isTouchDevice ? {} : {
                 rotateX,
                 rotateY,
                 perspective: "1200px",
@@ -143,7 +143,7 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
             <Link
                 href={`/projects/${property.slug}`}
                 onClick={handleTap}
-                className="block relative w-full h-[480px] sm:h-[580px] md:h-[680px] rounded-[32px] overflow-hidden cursor-pointer"
+                className="block relative w-full h-[480px] sm:h-[580px] md:h-[680px] rounded-[32px] overflow-hidden cursor-pointer touch-manipulation"
             >
                 {/* Visual Content Layer (for preserve-3d effect) */}
                 <div className="absolute inset-0 z-0 overflow-hidden rounded-[32px]">
@@ -155,8 +155,8 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
                         className={cn(
                             "object-cover transition-transform ease-out will-change-transform",
                             isTouchDevice ? "duration-500" : "duration-1000",
-                            isExpanded
-                                ? (isTouchDevice ? "scale-[1.05]" : "scale-[1.08]")
+                            (isExpanded || isTouchDevice)
+                                ? (isTouchDevice ? "scale-[1.03]" : "scale-[1.08]")
                                 : "scale-100"
                         )}
                         sizes="(max-width: 768px) 100vw, 50vw"
@@ -166,7 +166,7 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
                     <div className={cn(
                         "absolute inset-0 transition-opacity duration-700 ease-in-out",
                         "bg-gradient-to-t from-black/90 via-black/30 to-transparent",
-                        isExpanded ? "opacity-70" : "opacity-85"
+                        (isExpanded || isTouchDevice) ? "opacity-60" : "opacity-85"
                     )} />
 
                     {/* Dynamic Glare Effect */}
@@ -183,7 +183,7 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
                     {/* Gold accent line */}
                     <div className={cn(
                         "absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-monte-gold to-transparent transition-all duration-700",
-                        isExpanded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+                        (isExpanded || isTouchDevice) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
                     )} />
                 </div>
 
@@ -207,11 +207,11 @@ export default function PropertyCard({ property }: { property: PropertyProps }) 
                                     <div className="flex items-center gap-2 mt-2">
                                         <span className={cn(
                                             "w-1 h-1 rounded-full bg-monte-gold transition-opacity duration-500",
-                                            isExpanded ? "opacity-100" : "opacity-0"
+                                            (isExpanded || isTouchDevice) ? "opacity-100" : "opacity-0"
                                         )} />
                                         <p className={cn(
                                             "text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase transition-colors duration-500",
-                                            isExpanded ? "text-monte-gold" : "text-monte-charcoal/50"
+                                            (isExpanded || isTouchDevice) ? "text-monte-gold" : "text-monte-charcoal/50"
                                         )}>
                                             {property.location}
                                         </p>

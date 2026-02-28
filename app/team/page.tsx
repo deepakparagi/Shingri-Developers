@@ -49,10 +49,10 @@ export default function TeamPage() {
                     />
                 </div>
 
-                <div className="relative z-10 w-full max-w-[1440px] xl:max-w-[1500px] mx-auto px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-24 xl:gap-32">
+                <div className="relative z-10 w-full max-w-[1440px] xl:max-w-[1500px] mx-auto px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-24 xl:gap-32">
 
                     {/* ── LEFT content block: Typography ── */}
-                    <div className="w-full max-w-xl xl:max-w-2xl flex flex-col items-center text-center lg:items-start lg:text-left mx-auto lg:mx-0 space-y-6 md:space-y-10">
+                    <div className="w-full max-w-xl xl:max-w-2xl flex flex-col items-center text-center lg:items-start lg:text-left mx-auto lg:mx-0 space-y-2 md:space-y-10">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -60,7 +60,7 @@ export default function TeamPage() {
                             className="flex flex-col items-center lg:items-start"
                         >
                             {/* Category label — Symmetrical on Mobile */}
-                            <div className="flex items-center justify-center lg:justify-start gap-6 mb-4 md:mb-6">
+                            <div className="flex items-center justify-center lg:justify-start gap-6 mb-2 md:mb-6">
                                 <div className="w-12 h-[1.5px] bg-monte-gold/80" />
                                 <span className="text-[11px] md:text-xs font-bold tracking-[0.5em] uppercase text-monte-gold">
                                     Human-Centric Leadership
@@ -69,7 +69,7 @@ export default function TeamPage() {
                             </div>
 
                             {/* Main heading — Balanced Cinematic Presence */}
-                            <h1 className="font-serif leading-[0.98] tracking-tight text-monte-beige mb-6 md:mb-10">
+                            <h1 className="font-serif leading-[0.98] tracking-tight text-monte-beige mb-3 md:mb-10">
                                 <motion.span
                                     initial={{ opacity: 0, y: 40 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ export default function TeamPage() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: DUR.cinematic, delay: 0.6, ease: APPLE_EASE }}
-                                className="text-sm md:text-lg lg:text-xl text-white/50 leading-relaxed max-w-lg xl:max-w-xl mt-6 md:mt-10 font-light text-center lg:text-left"
+                                className="text-sm md:text-lg lg:text-xl text-white/50 leading-relaxed max-w-lg xl:max-w-xl mt-3 md:mt-10 font-light text-center lg:text-left"
                             >
                                 The architects of ambition, shaping India&apos;s luxury real estate landscape with precision, heart, and heritage.
                             </motion.p>
